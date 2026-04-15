@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planum – Businessplan</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+      --green-50: #f0fdf4;
+      --green-100: #dcfce7;
+      --green-200: #bbf7d0;
+      --green-400: #4ade80;
+      --green-500: #22c55e;
+      --green-600: #16a34a;
+      --green-700: #15803d;
+      --green-800: #166534;
+      --green-900: #14532d;
+      --stone-50: #fafaf9;
+      --stone-100: #f5f5f4;
+      --stone-200: #e7e5e4;
+      --stone-300: #d6d3d1;
+      --stone-400: #a8a29e;
+      --stone-500: #78716c;
+      --stone-600: #57534e;
+      --stone-700: #44403c;
+      --stone-800: #292524;
+      --stone-900: #1c1917;
+      --amber-500: #f59e0b;
+      --red-500: #ef4444;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--stone-100);
+      color: var(--stone-800);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ─── Hero ─── */
+    .hero {
+      background: linear-gradient(135deg, var(--green-800) 0%, var(--green-900) 40%, #0c3a1e 100%);
+      color: white;
+      padding: 80px 40px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(74, 222, 128, 0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '🌿';
+      position: absolute;
+      top: 30px;
+      right: 50px;
+      font-size: 80px;
+      opacity: 0.15;
+    }
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .hero .logo {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green-400);
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      letter-spacing: -1px;
+    }
+    .hero .subtitle {
+      font-size: 19px;
+      font-weight: 300;
+      color: var(--green-200);
+      max-width: 620px;
+      line-height: 1.6;
+    }
+    .hero-meta {
+      margin-top: 32px;
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .hero-meta span {
+      font-size: 13px;
+      color: var(--green-200);
+      background: rgba(255,255,255,0.08);
+      padding: 6px 14px;
+      border-radius: 20px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ─── Layout ─── */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+    .content {
+      padding: 48px 0 80px;
+    }
+
+    /* ─── Section ─── */
+    section {
+      margin-bottom: 48px;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--green-600);
+      margin-bottom: 8px;
+    }
+    section > h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--stone-900);
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+    h3 {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--stone-800);
+      margin: 28px 0 12px;
+    }
+    p, li {
+      color: var(--stone-600);
+      margin-bottom: 10px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    strong {
+      color: var(--stone-800);
+      font-weight: 600;
+    }
+
+    /* ─── Cards ─── */
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+      border: 1px solid var(--stone-200);
+    }
+    .card h3 {
+      margin-top: 0;
+    }
+
+    /* ─── Key Figures Row ─── */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .kpi {
+      background: white;
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+      border: 1px solid var(--stone-200);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .kpi .value {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--green-700);
+      letter-spacing: -1px;
+    }
+    .kpi .label {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--stone-500);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    /* ─── Tables ─── */
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 16px 0;
+      border-radius: 12px;
+      border: 1px solid var(--stone-200);
+      background: white;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    thead {
+      background: var(--green-50);
+    }
+    th {
+      font-weight: 600;
+      color: var(--green-800);
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid var(--green-200);
+    }
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--stone-100);
+      color: var(--stone-600);
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    tbody tr:hover {
+      background: var(--stone-50);
+    }
+    tr.total td {
+      font-weight: 700;
+      color: var(--stone-900);
+      background: var(--green-50);
+      border-top: 2px solid var(--green-200);
+    }
+    tr.highlight td {
+      font-weight: 600;
+      color: var(--green-700);
+    }
+
+    /* ─── USP Grid ─── */
+    .usp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .usp-item {
+      background: white;
+      border-radius: 14px;
+      padding: 24px;
+      border: 1px solid var(--stone-200);
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+    .usp-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: var(--green-50);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .usp-item h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--stone-800);
+      margin-bottom: 4px;
+    }
+    .usp-item p {
+      font-size: 13px;
+      color: var(--stone-500);
+      margin: 0;
+    }
+
+    /* ─── Ampel Badges ─── */
+    .ampel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .ampel-item {
+      padding: 16px 20px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+      font-size: 14px;
+    }
+    .ampel-item.green { background: #ecfdf5; color: #065f46; border: 1px solid #a7f3d0; }
+    .ampel-item.yellow { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+    .ampel-item.red { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+    .ampel-item.bell { background: var(--stone-50); color: var(--stone-700); border: 1px solid var(--stone-200); }
+    .ampel-dot {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    /* ─── Timeline ─── */
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+      margin: 20px 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--green-400), var(--green-200));
+      border-radius: 2px;
+    }
+    .timeline-item {
+      position: relative;
+      padding: 0 0 28px;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      background: var(--green-500);
+      border-radius: 50%;
+      border: 3px solid var(--green-100);
+    }
+    .timeline-item .phase {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--green-600);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .timeline-item .time {
+      font-size: 13px;
+      color: var(--stone-400);
+      margin-bottom: 2px;
+    }
+    .timeline-item .desc {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--stone-800);
+    }
+
+    /* ─── Risk Badges ─── */
+    .risk-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .risk-badge.low { background: #ecfdf5; color: #065f46; }
+    .risk-badge.medium { background: #fffbeb; color: #92400e; }
+    .risk-badge.high { background: #fef2f2; color: #991b1b; }
+
+    /* ─── Divider ─── */
+    .divider {
+      height: 1px;
+      background: var(--stone-200);
+      margin: 48px 0;
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      background: var(--stone-800);
+      color: var(--stone-400);
+      text-align: center;
+      padding: 32px 40px;
+      font-size: 13px;
+    }
+    footer strong {
+      color: var(--stone-200);
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 640px) {
+      .hero { padding: 48px 24px 40px; }
+      .hero h1 { font-size: 32px; }
+      .hero .subtitle { font-size: 16px; }
+      .container { padding: 0 20px; }
+      .usp-grid { grid-template-columns: 1fr; }
+      .kpi-row { grid-template-columns: 1fr 1fr; }
+      .card { padding: 20px; }
+    }
+
+    /* ─── Print ─── */
+    @media print {
+      body { background: white; }
+      .hero { padding: 40px; }
+      .card, .kpi, .usp-item { box-shadow: none; border: 1px solid #ddd; }
+      section { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HERO ═══ -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="logo">Planum</div>
+      <h1>Businessplan</h1>
+      <p class="subtitle">Intelligentes Pflanzen-Tracking – Physische QR-Codes verbunden mit KI-gestützter Pflege-App.</p>
+      <div class="hero-meta">
+        <span>April 2026</span>
+        <span>Version 1.0</span>
+        <span>Planum UG (in Gründung)</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="content">
+
+      <!-- ═══ 1. EXECUTIVE SUMMARY ═══ -->
+      <section>
+        <div class="section-label">Kapitel 1</div>
+        <h2>Executive Summary</h2>
+        <div class="card">
+          <p><strong>Planum</strong> verbindet physische QR-Code-Sticker mit einer KI-gestützten Pflanzen-Tracking-App. Kunden kaufen auf Amazon ein Paket mit 20 QR-Code-Stickern für 19,99€, kleben diese auf ihre Pflanzen und nutzen die Web-App zur Identifikation, Pflege-Tracking und Optimierung. Ein integrierter Shop generiert zusätzliche Einnahmen über Affiliate-Provisionen und Eigenmarken-Produkte.</p>
+        </div>
+        <div class="kpi-row">
+          <div class="kpi">
+            <div class="value">19,99€</div>
+            <div class="label">Einmalkauf</div>
+          </div>
+          <div class="kpi">
+            <div class="value">37%</div>
+            <div class="label">Marge</div>
+          </div>
+          <div class="kpi">
+            <div class="value">~3.000€</div>
+            <div class="label">Startkapital</div>
+          </div>
+          <div class="kpi">
+            <div class="value">~39k€</div>
+            <div class="label">Jahresgewinn (Y1)</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ═══ 2. MARKTANALYSE ═══ -->
+      <section>
+        <div class="section-label">Kapitel 2</div>
+        <h2>Marktanalyse</h2>
+
+        <h3>Marktgröße</h3>
+        <p>Der globale Markt für Pflanzen-Identifikations-Apps wurde 2024 auf <strong>1,2 Mrd. USD</strong> geschätzt und soll bis 2033 auf <strong>3,5 Mrd. USD</strong> wachsen (CAGR 12,5%). Der breitere Pflanzenpflegemarkt wächst von 3,4 Mrd. USD (2025) auf 8,4 Mrd. USD (2035) bei einer CAGR von 9,5%.</p>
+
+        <h3>Zielgruppe</h3>
+        <div class="card">
+          <ul>
+            <li><strong>Primär:</strong> Millennials & Gen Z mit Zimmerpflanzen (25–40 Jahre)</li>
+            <li><strong>Sekundär:</strong> Hobby-Gärtner 40+ mit wachsendem Technik-Interesse</li>
+            <li><strong>Markttrend:</strong> "Plant Parenting" als Lifestyle-Trend seit COVID-19</li>
+            <li><strong>Deutschland:</strong> ca. 36 Mio. Haushalte, ~70% mit Zimmerpflanzen → <strong>25 Mio. potenzielle Haushalte</strong></li>
+          </ul>
+        </div>
+
+        <h3>Wettbewerbsanalyse</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>App</th>
+                <th>Modell</th>
+                <th>Preis</th>
+                <th>Stärken</th>
+                <th>Schwächen</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Planta</strong></td>
+                <td>Freemium / Abo</td>
+                <td>37,99€/Jahr</td>
+                <td>Gieß-Erinnerungen, schönes UI</td>
+                <td>Kein physisches Produkt, Abo-Müdigkeit</td>
+              </tr>
+              <tr>
+                <td><strong>Greg</strong></td>
+                <td>Freemium / Abo</td>
+                <td>~40€/Jahr</td>
+                <td>Standort-basierte Pflege</td>
+                <td>Komplex, keine Hardware</td>
+              </tr>
+              <tr>
+                <td><strong>PlantNet</strong></td>
+                <td>Kostenlos</td>
+                <td>0€</td>
+                <td>Wissenschaftlich genau</td>
+                <td>Nur Identifikation, keine Pflege</td>
+              </tr>
+              <tr>
+                <td><strong>PictureThis</strong></td>
+                <td>Freemium / Abo</td>
+                <td>29,99€/Jahr</td>
+                <td>Große Datenbank</td>
+                <td>Aggressive Abo-Werbung</td>
+              </tr>
+              <tr class="highlight">
+                <td><strong>Planum</strong></td>
+                <td>Einmalkauf + Shop</td>
+                <td>19,99€ einmalig</td>
+                <td>Physisch + Digital, kein Abo, KI</td>
+                <td>Noch kein Markenname</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ═══ USPs ═══ -->
+      <section>
+        <h3>Alleinstellungsmerkmale (USP)</h3>
+        <div class="usp-grid">
+          <div class="usp-item">
+            <div class="usp-icon">📦</div>
+            <div>
+              <h4>Physisch + Digital</h4>
+              <p>Greifbarer Wert durch QR-Sticker – kein reines Software-Abo.</p>
+            </div>
+          </div>
+          <div class="usp-item">
+            <div class="usp-icon">💰</div>
+            <div>
+              <h4>Einmalkauf statt Abo</h4>
+              <p>Klarer Gegenpol zur weit verbreiteten Abo-Müdigkeit.</p>
+            </div>
+          </div>
+          <div class="usp-item">
+            <div class="usp-icon">🔗</div>
+            <div>
+              <h4>QR-Code je Pflanze</h4>
+              <p>Jede Pflanze bekommt ihre eigene digitale Identität.</p>
+            </div>
+          </div>
+          <div class="usp-item">
+            <div class="usp-icon">🤖</div>
+            <div>
+              <h4>KI-gestützte Pflege</h4>
+              <p>Automatische Erkennung + personalisierte Pflegepläne.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ═══ 3. PRODUKTBESCHREIBUNG ═══ -->
+      <section>
+        <div class="section-label">Kapitel 3</div>
+        <h2>Produktbeschreibung</h2>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="card">
+            <h3 style="margin-top:0;">Physisches Produkt (Amazon)</h3>
+            <ul>
+              <li><strong>20 QR-Code-Sticker</strong> in Premium-Verpackung</li>
+              <li>Wetterfest, UV-beständig (Oracal 3551 Folie)</li>
+              <li>Einzigartige UUID pro Sticker</li>
+              <li>Nachhaltige Kartonage mit Planum-Branding</li>
+              <li>Quick-Start-Guide als Beilage</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 style="margin-top:0;">Digitale App (Web-App)</h3>
+            <ul>
+              <li><strong>Registrierung:</strong> QR scannen → Foto → KI erkennt</li>
+              <li><strong>Dashboard:</strong> Ampelsystem-Übersicht</li>
+              <li><strong>Pflege-Tracker:</strong> Gießen, Düngen, Umtopfen</li>
+              <li><strong>KI-Empfehlungen:</strong> Art, Standort, Jahreszeit</li>
+              <li><strong>Shop:</strong> Kuratierte Affiliate-Produkte</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ═══ 4. FINANZPLANUNG ═══ -->
+      <section>
+        <div class="section-label">Kapitel 4</div>
+        <h2>Finanzplanung</h2>
+
+        <h3>Produktkostenkalkulation (pro 20er-Paket)</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th>Position</th><th style="text-align:right">Kosten</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>QR-Code-Sticker (20 Stk., Premium-Folie, Druck)</td><td style="text-align:right">1,20€</td></tr>
+              <tr><td>Verpackung (Kartonage, bedruckt)</td><td style="text-align:right">0,80€</td></tr>
+              <tr><td>Quick-Start-Beilage (Druck)</td><td style="text-align:right">0,15€</td></tr>
+              <tr><td>Versand an Amazon FBA-Lager</td><td style="text-align:right">0,35€</td></tr>
+              <tr class="total"><td>Herstellungskosten gesamt</td><td style="text-align:right">2,50€</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Amazon FBA Kostenkalkulation (VK 19,99€)</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th>Position</th><th style="text-align:right">Betrag</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Verkaufspreis (brutto)</td><td style="text-align:right">19,99€</td></tr>
+              <tr><td>– MwSt. (19%)</td><td style="text-align:right">-3,19€</td></tr>
+              <tr><td>= Netto-Verkaufspreis</td><td style="text-align:right">16,80€</td></tr>
+              <tr><td>– Amazon Verkaufsgebühr (15%)</td><td style="text-align:right">-2,52€</td></tr>
+              <tr><td>– FBA Versandgebühr (Kleinpaket)</td><td style="text-align:right">-2,89€</td></tr>
+              <tr><td>– FBA Lagergebühr (anteilig)</td><td style="text-align:right">-0,15€</td></tr>
+              <tr><td>– Herstellungskosten</td><td style="text-align:right">-2,50€</td></tr>
+              <tr><td>– Amazon PPC Werbekosten (~15%)</td><td style="text-align:right">-2,52€</td></tr>
+              <tr class="total"><td>Gewinn pro Einheit (Marge 37,0%)</td><td style="text-align:right">6,22€</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Software-Betriebskosten (monatlich)</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th>Position</th><th style="text-align:right">Kosten/Monat</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Supabase (Pro Plan)</td><td style="text-align:right">25€</td></tr>
+              <tr><td>Vercel (Pro Plan)</td><td style="text-align:right">20€</td></tr>
+              <tr><td>Plant.id API (500 Calls/Mo)</td><td style="text-align:right">50€</td></tr>
+              <tr><td>Domain + SSL</td><td style="text-align:right">2€</td></tr>
+              <tr><td>E-Mail-Service (Resend)</td><td style="text-align:right">10€</td></tr>
+              <tr class="total"><td>Gesamt</td><td style="text-align:right">107€</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:13px; color:var(--stone-400); margin-top:8px;">Bei Skalierung (>10.000 Nutzer): ca. 350–500€/Monat</p>
+
+        <h3>Umsatzprognose (12 Monate)</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Monat</th>
+                <th style="text-align:right">Verkäufe/Mo</th>
+                <th style="text-align:right">Umsatz (brutto)</th>
+                <th style="text-align:right">Gewinn (Amazon)</th>
+                <th style="text-align:right">Shop-Affiliate</th>
+                <th style="text-align:right">Gesamt-Gewinn</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>1–3</td><td style="text-align:right">100</td><td style="text-align:right">1.999€</td><td style="text-align:right">622€</td><td style="text-align:right">50€</td><td style="text-align:right">672€</td></tr>
+              <tr><td>4–6</td><td style="text-align:right">300</td><td style="text-align:right">5.997€</td><td style="text-align:right">1.866€</td><td style="text-align:right">200€</td><td style="text-align:right">2.066€</td></tr>
+              <tr><td>7–9</td><td style="text-align:right">600</td><td style="text-align:right">11.994€</td><td style="text-align:right">3.732€</td><td style="text-align:right">500€</td><td style="text-align:right">4.232€</td></tr>
+              <tr><td>10–12</td><td style="text-align:right">1.000</td><td style="text-align:right">19.990€</td><td style="text-align:right">6.220€</td><td style="text-align:right">1.000€</td><td style="text-align:right">7.220€</td></tr>
+              <tr class="total"><td>Jahr 1 Gesamt</td><td style="text-align:right">6.000</td><td style="text-align:right">119.940€</td><td style="text-align:right">37.320€</td><td style="text-align:right">5.250€</td><td style="text-align:right">42.570€</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:13px; color:var(--stone-400); margin-top:8px;">Abzüglich Software-Kosten (1.284€/Jahr) und Startkosten → <strong style="color:var(--green-700)">Netto-Jahresgewinn: ca. 36.000–39.000€</strong></p>
+
+        <h3>Startkapitalbedarf</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th>Position</th><th style="text-align:right">Einmalig</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Erste Produktionscharge (500 Pakete)</td><td style="text-align:right">1.250€</td></tr>
+              <tr><td>Amazon Seller-Konto (Professional)</td><td style="text-align:right">39€/Mo</td></tr>
+              <tr><td>Logo & Branding-Design</td><td style="text-align:right">500€</td></tr>
+              <tr><td>Produktfotografie</td><td style="text-align:right">300€</td></tr>
+              <tr><td>Amazon PPC Startbudget</td><td style="text-align:right">500€</td></tr>
+              <tr><td>Domain + erste 3 Monate Hosting</td><td style="text-align:right">400€</td></tr>
+              <tr class="total"><td>Gesamt Startkapital</td><td style="text-align:right">~3.000€</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ═══ 5. MONETARISIERUNG ═══ -->
+      <section>
+        <div class="section-label">Kapitel 5</div>
+        <h2>Monetarisierungsstrategie</h2>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="card">
+            <h3 style="margin-top:0;">Primär: Amazon-Verkauf</h3>
+            <ul>
+              <li><strong>Starter-Paket:</strong> 20 QR-Codes – 19,99€</li>
+              <li><strong>Erweiterungs-Paket:</strong> 10 QR-Codes – 9,99€</li>
+              <li><strong>Family-Paket:</strong> 50 QR-Codes – 39,99€</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 style="margin-top:0;">Sekundär: Integrierter Shop</h3>
+            <ul>
+              <li><strong>Affiliate:</strong> 3–10% auf Dünger, Erde, Töpfe etc.</li>
+              <li>5–15€ pro aktivem Nutzer/Jahr</li>
+              <li><strong>Eigenmarke (Phase 2):</strong> Planum Bio-Dünger, Erde</li>
+              <li>Margen: 40–60%</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px;">
+          <h3 style="margin-top:0;">Tertiär: Premium-Features & Zusätzliches (Phase 2)</h3>
+          <ul>
+            <li><strong>Planum Pro</strong> (einmalig 4,99€): Erweiterte KI-Diagnose, Krankheitserkennung, unbegrenzte Pflanzen</li>
+            <li><strong>Planum für Teams:</strong> Büro-/Gemeinschaftsgärten (B2B)</li>
+            <li><strong>API-Zugang:</strong> Für Gärtnereien und Pflanzenhändler</li>
+            <li><strong>Branded Content:</strong> Kooperationen mit Dehner, OBI etc.</li>
+            <li><strong>Saisonale Bundles:</strong> Frühlings-Starter-Kit, Winterpflege-Set</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ═══ 6. AMAZON-STRATEGIE ═══ -->
+      <section>
+        <div class="section-label">Kapitel 6</div>
+        <h2>Amazon-Strategie</h2>
+
+        <div class="card">
+          <h3 style="margin-top:0;">Listing-Optimierung</h3>
+          <p><strong>Titel:</strong> "Planum Pflanzen-Tracker | 20 QR-Code Sticker mit KI-App | Gieß-Erinnerungen, Pflanzenerkennung & Pflege-Tipps | Geschenkidee für Pflanzenliebhaber"</p>
+          <p style="margin-top:8px;"><strong>Kategorie:</strong> Garten > Gartenarbeit > Pflanzenpflege</p>
+          <p style="margin-top:8px;"><strong>Keywords:</strong> Pflanzen App, Gießerinnerung, Pflanzen Tracker, Pflanzenpflege, QR Code Pflanzen, Geschenk Pflanzenliebhaber, Plant Care</p>
+        </div>
+
+        <h3>Launch-Strategie</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="phase">Pre-Launch</div>
+            <div class="time">Woche 1–2</div>
+            <div class="desc">Vine-Programm für erste Reviews</div>
+          </div>
+          <div class="timeline-item">
+            <div class="phase">Soft Launch</div>
+            <div class="time">Woche 3–4</div>
+            <div class="desc">Niedrige PPC-Gebote, Long-Tail Keywords</div>
+          </div>
+          <div class="timeline-item">
+            <div class="phase">Main Launch</div>
+            <div class="time">Monat 2</div>
+            <div class="desc">Aggressive PPC, Deal des Tages</div>
+          </div>
+          <div class="timeline-item">
+            <div class="phase">Skalierung</div>
+            <div class="time">Monat 3+</div>
+            <div class="desc">Sponsored Brands, Produktvideos</div>
+          </div>
+        </div>
+
+        <h3>Gebührenstruktur 2026</h3>
+        <div class="card">
+          <ul>
+            <li>Verkaufsgebühr: ~15% (Kategorie Garten)</li>
+            <li>FBA-Versandgebühr: ~2,89€ (Kleinpaket, nach Reduktion Dez 2025)</li>
+            <li>Lagergebühr: ~0,15€/Monat pro Einheit</li>
+            <li>Digital Services Fee (ab März 2026): in Verkaufsgebühr integriert</li>
+            <li>PPC-Budget: 15–20% in Startphase, 10% nach Etablierung</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ═══ 7. TECHNOLOGIE ═══ -->
+      <section>
+        <div class="section-label">Kapitel 7</div>
+        <h2>Technologie & KI-Integration</h2>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="card">
+            <h3 style="margin-top:0;">Pflanzenidentifikation</h3>
+            <ul>
+              <li><strong>Primär:</strong> Plant.id API (Kindwise) – 0,10€/Call</li>
+              <li><strong>Fallback:</strong> PlantNet API – kostenlos bis 500 Calls/Tag</li>
+              <li><strong>Genauigkeit:</strong> >95% bei gängigen Zimmerpflanzen</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 style="margin-top:0;">Pflege-KI</h3>
+            <ul>
+              <li>GPT-4-basierte Pflegeempfehlungen</li>
+              <li>Berücksichtigt: Art, Standort, Licht, Jahreszeit, Gieß-Historik</li>
+              <li>Lernt aus Nutzer-Feedback</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Ampelsystem-Logik</h3>
+        <div class="ampel-grid">
+          <div class="ampel-item green"><span class="ampel-dot">🟢</span> <strong>Gut</strong> – Alle Aktionen im Zeitplan</div>
+          <div class="ampel-item yellow"><span class="ampel-dot">🟡</span> <strong>Bedarf</strong> – Aktion in 1–2 Tagen</div>
+          <div class="ampel-item red"><span class="ampel-dot">🔴</span> <strong>Hoher Bedarf</strong> – Aktion überfällig</div>
+          <div class="ampel-item bell"><span class="ampel-dot">🔔</span> <strong>Push</strong> – Bei Status-Wechsel</div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ═══ 8. RECHTLICHES ═══ -->
+      <section>
+        <div class="section-label">Kapitel 8</div>
+        <h2>Rechtliches & Compliance</h2>
+        <div class="card">
+          <ul>
+            <li><strong>DSGVO:</strong> Nutzerdaten in EU gehostet (Supabase EU-Region)</li>
+            <li><strong>Impressum & AGB:</strong> Erforderlich für Web-App</li>
+            <li><strong>Amazon Compliance:</strong> CE-Kennzeichnung nicht erforderlich für einfache Aufkleber</li>
+            <li><strong>Markenrecht:</strong> "Planum" als Wortmarke beim DPMA anmelden (~290€)</li>
+            <li><strong>Verpackungsgesetz:</strong> Registrierung bei LUCID (Zentrale Stelle Verpackungsregister)</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ═══ 9. RISIKEN ═══ -->
+      <section>
+        <div class="section-label">Kapitel 9</div>
+        <h2>Risiken & Mitigation</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Risiko</th>
+                <th>Wahrsch.</th>
+                <th>Impact</th>
+                <th>Mitigation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Niedrige Amazon-Reviews</td>
+                <td><span class="risk-badge medium">Mittel</span></td>
+                <td><span class="risk-badge high">Hoch</span></td>
+                <td>Vine-Programm, exzellenter Support</td>
+              </tr>
+              <tr>
+                <td>KI-Erkennung ungenau</td>
+                <td><span class="risk-badge low">Niedrig</span></td>
+                <td><span class="risk-badge medium">Mittel</span></td>
+                <td>Manuelle Korrektur + Feedback-Loop</td>
+              </tr>
+              <tr>
+                <td>Kopie durch Wettbewerber</td>
+                <td><span class="risk-badge medium">Mittel</span></td>
+                <td><span class="risk-badge medium">Mittel</span></td>
+                <td>First-Mover, Community aufbauen</td>
+              </tr>
+              <tr>
+                <td>API-Kosten steigen</td>
+                <td><span class="risk-badge low">Niedrig</span></td>
+                <td><span class="risk-badge medium">Mittel</span></td>
+                <td>Fallback-APIs, eigenes ML-Modell (Phase 3)</td>
+              </tr>
+              <tr>
+                <td>Geringe App-Nutzung</td>
+                <td><span class="risk-badge medium">Mittel</span></td>
+                <td><span class="risk-badge high">Hoch</span></td>
+                <td>Gamification, Push-Notifications</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- ═══ 10. TIMELINE ═══ -->
+      <section>
+        <div class="section-label">Kapitel 10</div>
+        <h2>Meilensteine & Timeline</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="phase">Phase 1</div>
+            <div class="time">Monat 1</div>
+            <div class="desc">Landingpage live, MVP der App</div>
+          </div>
+          <div class="timeline-item">
+            <div class="phase">Phase 2</div>
+            <div class="time">Monat 2</div>
+            <div class="desc">KI-Integration, Beta-Test (50 Nutzer)</div>
+          </div>
+          <div class="timeline-item">
+            <div class="phase">Phase 3</div>
+            <div class="time">Monat 3</div>
+            <div class="desc">Amazon-Listing live, erste Verkäufe</div>
+          </div>
+          <div class="timeline-item">
+            <div class="phase">Phase 4</div>
+            <div class="time">Monat 4–6</div>
+            <div class="desc">Optimierung, Shop-Integration</div>
+          </div>
+          <div class="timeline-item">
+            <div class="phase">Phase 5</div>
+            <div class="time">Monat 7–9</div>
+            <div class="desc">Erweiterungspakete, Marketing-Push</div>
+          </div>
+          <div class="timeline-item">
+            <div class="phase">Phase 6</div>
+            <div class="time">Monat 10–12</div>
+            <div class="desc">Break-Even, Eigenmarke planen</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>Erstellt: April 2026 &middot; Version 1.0 &middot; <strong>Planum UG</strong> (in Gründung)</p>
+  </footer>
+
+</body>
+</html>
