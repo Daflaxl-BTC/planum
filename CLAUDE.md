@@ -28,12 +28,21 @@ Planum ist eine Web-App für das Tracking und die Pflege von Zimmerpflanzen in P
 8. Integrierter Pflegeshop (Affiliate)
 
 ## Datenbankschema (Supabase)
-- `users` – Auth, Profil
-- `qr_packages` – Aktivierungscodes, Lizenz
-- `plants` – Registrierte Pflanzen mit Arteninfo
-- `care_logs` – Gieß-/Dünge-/Umtopf-Events
-- `care_schedules` – KI-generierte Pflegepläne
-- `plant_species` – Artendatenbank mit Pflegeinfos
+Siehe `supabase/migrations/` für das kanonische Schema. Kurzüberblick:
+- `profiles` – 1:1 zu `auth.users`, Profil + Benachrichtigungen
+- `households` – geteilter Zugang für Familienmitglieder (Owner/Admin/Member)
+- `household_members` – Verknüpfung `auth.users` ↔ `households`
+- `qr_packages` – Aktivierungscode (`code`) pro Amazon-Paket, bindet an Household
+- `qr_slots` – N UUIDs pro Paket; `qr_slots.uuid` steckt im QR-Code-Link
+- `plants` – Registrierte Pflanzen, `slot_uuid` referenziert Slot, `household_id` autorisiert
+- `care_logs` – Gieß-/Dünge-/Umtopf-/Misting-/Prune-Events (Enum `care_action`)
+- `plant_species` – Artendatenbank mit Pflegeinfos (geseedet mit 20 gängigen Arten)
+- `care_schedules` – *(TODO, noch nicht migriert)*
+
+Mandantenisolation läuft über RLS gegen `household_members`. Aktivierung via
+RPC `activate_qr_package(code, household_id)`; anonyme Scan-Lookups via
+`lookup_plant_uuid(plant_uuid)`. Beim Signup wird automatisch ein Default-
+Haushalt angelegt (Trigger `handle_new_user`).
 
 ## Ordnerstruktur
 ```
@@ -46,6 +55,9 @@ Planum/
 │   ├── index.html
 │   ├── src/
 │   └── public/
+├── supabase/
+│   ├── migrations/        # SQL-Migrationen (Schema + RLS)
+│   └── seed/              # Hilfsskripte, z. B. Testpaket
 └── README.md
 ```
 
