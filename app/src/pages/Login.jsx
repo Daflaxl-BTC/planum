@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, Navigate, useLocation } from 'react-router-dom'
+import { Navigate, useLocation } from 'react-router-dom'
 import { supabase } from '../lib/supabase.js'
 import { useAuth } from '../contexts/AuthContext.jsx'
 import { LeafIcon } from '../components/Icons.jsx'
@@ -85,7 +85,7 @@ export default function Login() {
         )}
 
         <p className="text-center text-xs text-sage-400 mt-8">
-          Zurück zur <Link to="/" className="text-moss-600 hover:underline">Startseite</Link>
+          Zurück zur <a href="/" className="text-moss-600 hover:underline">Startseite</a>
         </p>
       </div>
     </div>
