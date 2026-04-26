@@ -24,10 +24,9 @@
 
 with
   base as (
-    -- An die Production-URL anpassen!
-    -- Aktuell live: https://planum-quick-alert.vercel.app/app
-    -- Spaeter ggf.: https://app.planum.de/app
-    select 'https://planum-quick-alert.vercel.app/app'::text as base_url
+    -- Production: planumplants.de (Domain registriert 2026-04-26).
+    -- App lebt unter /app/, daher /app im Pfad.
+    select 'https://planumplants.de/app'::text as base_url
   ),
   ordered_slots as (
     select
