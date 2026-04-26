@@ -7,6 +7,7 @@ import {
   CheckIcon,
   ChevronDownIcon,
   ChevronLeftIcon,
+  QrIcon,
   SparklesIcon,
 } from '../components/Icons.jsx'
 import { computeNextDue } from '../lib/careLogic.js'
@@ -334,6 +335,16 @@ export default function RegisterPlant() {
       </div>
 
       <form onSubmit={handleSubmit} className="px-6 space-y-5">
+        {slotUuid && (
+          <div className="flex items-start gap-3 p-3 rounded-2xl bg-moss-50 border border-moss-100 text-moss-800">
+            <QrIcon className="w-5 h-5 flex-shrink-0 mt-0.5 text-moss-600" />
+            <div className="text-xs leading-relaxed">
+              <p className="font-medium">QR-Sticker wird zugewiesen</p>
+              <p className="text-moss-700 break-all">{slotUuid}</p>
+            </div>
+          </div>
+        )}
+
         {/* Photo */}
         <div>
           <label className="label">Foto</label>
