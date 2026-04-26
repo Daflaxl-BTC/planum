@@ -8,6 +8,7 @@ import PlantDetail from './pages/PlantDetail.jsx'
 import RegisterPlant from './pages/RegisterPlant.jsx'
 import Settings from './pages/Settings.jsx'
 import ScanPlaceholder from './pages/ScanPlaceholder.jsx'
+import ScanResolver from './pages/ScanResolver.jsx'
 import Shop from './pages/Shop.jsx'
 import NotFound from './pages/NotFound.jsx'
 
@@ -21,6 +22,7 @@ export default function App() {
         <Route index element={<Dashboard />} />
         <Route path="plant/new" element={<RegisterPlant />} />
         <Route path="plant/:id" element={<PlantDetail />} />
+        <Route path="qr/:slotUuid" element={<ScanResolver />} />
         <Route path="scan" element={<ScanPlaceholder />} />
         <Route path="shop" element={<Shop />} />
         <Route path="settings" element={<Settings />} />
