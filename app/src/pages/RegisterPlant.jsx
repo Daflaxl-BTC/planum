@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { supabase } from '../lib/supabase.js'
 import { useAuth } from '../contexts/AuthContext.jsx'
 import {
@@ -165,6 +165,9 @@ function SpeciesSelect({ species, value, onChange }) {
 
 export default function RegisterPlant() {
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const slotUuid = searchParams.get('slot') || null
+  const householdId = searchParams.get('household') || null
   const { user } = useAuth()
   const fileInputRef = useRef(null)
   const [species, setSpecies] = useState([])
@@ -283,21 +286,28 @@ export default function RegisterPlant() {
       const nextWater = computeNextDue({}, intervalSource, 'water', now)
       const nextFert = computeNextDue({}, intervalSource, 'fertilize', now)
 
+      const insertPayload = {
+        user_id: user.id,
+        nickname: form.nickname.trim(),
+        species_id: form.species_id || null,
+        detected_species_name:
+          !form.species_id && detectedFallback ? detectedFallback.scientific_name : null,
+        detected_confidence:
+          !form.species_id && detectedFallback ? detectedFallback.probability : null,
+        location: form.location.trim() || null,
+        photo_url,
+        next_water_due_at: nextWater.toISOString(),
+        next_fertilize_due_at: nextFert.toISOString(),
+      }
+      // Wenn ueber Slot-Scan gestartet, slot_uuid + household_id explizit setzen,
+      // damit der plants_claim_slot-Trigger nicht den falschen Default-Haushalt
+      // pruefen muss (z.B. der ungenutzte Auto-Haushalt eines Familienmitglieds).
+      if (slotUuid) insertPayload.slot_uuid = slotUuid
+      if (householdId) insertPayload.household_id = householdId
+
       const { data: inserted, error: insErr } = await supabase
         .from('plants')
-        .insert({
-          user_id: user.id,
-          nickname: form.nickname.trim(),
-          species_id: form.species_id || null,
-          detected_species_name:
-            !form.species_id && detectedFallback ? detectedFallback.scientific_name : null,
-          detected_confidence:
-            !form.species_id && detectedFallback ? detectedFallback.probability : null,
-          location: form.location.trim() || null,
-          photo_url,
-          next_water_due_at: nextWater.toISOString(),
-          next_fertilize_due_at: nextFert.toISOString(),
-        })
+        .insert(insertPayload)
         .select('id')
         .single()
       if (insErr) throw insErr

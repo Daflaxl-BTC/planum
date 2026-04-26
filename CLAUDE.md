@@ -10,7 +10,9 @@ Planum ist eine Web-App für das Tracking und die Pflege von Zimmerpflanzen in P
   mit Auto-Populate von `plant_species` bei probability ≥ 0.6
 - **Hosting**: Vercel
 - **Zahlungen**: Stripe (optional für Shop)
-- **QR-Codes**: Unique IDs, verlinken auf `app.planum.de/plant/{uuid}`
+- **QR-Codes**: Unique IDs, verlinken auf `app.planum.de/qr/{slot_uuid}`
+  (siehe `ScanResolver` — entscheidet je nach Slot-Status zwischen Code-
+  Aktivierung, Haushaltsbeitritt, Pflanze-registrieren oder Detail-Seite)
 
 ## Monetarisierungsmodell
 - **Einmalkauf**: 19,99€ QR-Code-Paket (20 Slots) auf Amazon
@@ -44,11 +46,19 @@ Pflegetermine liegen direkt auf `plants` (`next_water_due_at`, `next_fertilize_d
 weil die On-Plant-Felder den Use-Case decken.
 
 Mandantenisolation läuft über RLS gegen `household_members`. Aktivierung via
-RPC `activate_qr_package(code, household_id)`; anonyme Scan-Lookups via
-`lookup_plant_uuid(plant_uuid)`. Beim Signup wird automatisch ein Default-
-Haushalt angelegt (Trigger `handle_new_user`). Slot-Bindung läuft über den
-Trigger `plants_claim_slot` (Migration 05): Insert mit `slot_uuid` belegt den
-Slot exklusiv und blockt Cross-Household-Versuche.
+RPC `activate_qr_package(code, household_id)`; Scan-Lookups via
+`lookup_plant_uuid(plant_uuid)` (Migration 06: gibt zusätzlich `household_id`,
+`household_name` und — nur für Mitglieder — `plant_id` zurück). Beim Signup
+wird automatisch ein Default-Haushalt angelegt (Trigger `handle_new_user`).
+Slot-Bindung läuft über den Trigger `plants_claim_slot` (Migration 05):
+Insert mit `slot_uuid` belegt den Slot exklusiv und blockt Cross-Household-
+Versuche. Familien-Beitritt via Slot-Scan über RPC
+`join_household_via_slot(slot_uuid)` (Migration 06): macht den scannenden
+User zum `member` des Paket-Haushalts (idempotent).
+
+Erst-Charge: 251 Pakete (5020 Slots) werden via
+`supabase/seed/initial_packages.sql` erzeugt; Codes/Slot-URLs zum Drucken
+exportierst du mit `supabase/seed/export_codes.sql` (CSV-Download im SQL Editor).
 
 ## Ordnerstruktur
 ```

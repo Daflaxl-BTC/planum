@@ -7,6 +7,10 @@ export default function Settings() {
   const { user, signOut } = useAuth()
   const [profile, setProfile] = useState(null)
   const [saving, setSaving] = useState(false)
+  const [code, setCode] = useState('')
+  const [activating, setActivating] = useState(false)
+  const [activateMsg, setActivateMsg] = useState(null)
+  const [activateErr, setActivateErr] = useState(null)
 
   useEffect(() => {
     if (!user) return
@@ -25,6 +29,37 @@ export default function Settings() {
       .single()
     if (!error) setProfile(data)
     setSaving(false)
+  }
+
+  async function handleActivate(e) {
+    e.preventDefault()
+    if (activating) return
+    setActivating(true)
+    setActivateErr(null)
+    setActivateMsg(null)
+    try {
+      const { data: members, error: mErr } = await supabase
+        .from('household_members')
+        .select('household_id, joined_at')
+        .order('joined_at', { ascending: true })
+        .limit(1)
+      if (mErr) throw mErr
+      const householdId = members?.[0]?.household_id
+      if (!householdId) {
+        throw new Error('Du bist in keinem Haushalt — bitte neu einloggen.')
+      }
+      const { data: pkg, error: actErr } = await supabase.rpc('activate_qr_package', {
+        p_code: code.trim(),
+        p_household_id: householdId,
+      })
+      if (actErr) throw actErr
+      setActivateMsg(`Paket aktiviert (${pkg?.slot_count ?? 20} Slots verfügbar).`)
+      setCode('')
+    } catch (err) {
+      setActivateErr(err.message || 'Aktivierung fehlgeschlagen.')
+    } finally {
+      setActivating(false)
+    }
   }
 
   return (
@@ -59,6 +94,40 @@ export default function Settings() {
               }`} />
             </button>
           </div>
+        </div>
+
+        <div className="card p-5">
+          <p className="font-medium text-sage-900">QR-Paket aktivieren</p>
+          <p className="text-xs text-sage-500 mt-0.5">
+            Code aus der Verpackung eingeben, um die 20 QR-Sticker für deinen Haushalt freizuschalten.
+          </p>
+          <form onSubmit={handleActivate} className="mt-4 space-y-3">
+            <input
+              type="text"
+              value={code}
+              onChange={(e) => setCode(e.target.value.toUpperCase())}
+              placeholder="PLNM-XXXX-YYYY"
+              className="input font-mono tracking-wider"
+              disabled={activating}
+            />
+            {activateErr && (
+              <p className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-xl px-4 py-3">
+                {activateErr}
+              </p>
+            )}
+            {activateMsg && (
+              <p className="text-sm text-emerald-700 bg-emerald-50 border border-emerald-100 rounded-xl px-4 py-3">
+                {activateMsg}
+              </p>
+            )}
+            <button
+              type="submit"
+              className="btn-primary w-full"
+              disabled={activating || code.trim().length === 0}
+            >
+              {activating ? 'Wird aktiviert…' : 'Code aktivieren'}
+            </button>
+          </form>
         </div>
 
         <button onClick={signOut} className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-white border border-sage-200 text-sage-700 font-medium hover:bg-sage-50 transition-colors">
