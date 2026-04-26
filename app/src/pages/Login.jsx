@@ -22,7 +22,7 @@ export default function Login() {
     setError(null)
     const { error } = await supabase.auth.signInWithOtp({
       email: email.trim(),
-      options: { emailRedirectTo: `${window.location.origin}/auth/callback` },
+      options: { emailRedirectTo: `${window.location.origin}/app/auth/callback` },
     })
     if (error) {
       setStatus('error')

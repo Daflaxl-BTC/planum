@@ -144,7 +144,7 @@ function Navbar() {
           <a href="#how-it-works" className="text-sm text-sage-600 hover:text-sage-900 transition-colors">So funktioniert's</a>
           <a href="#pricing" className="text-sm text-sage-600 hover:text-sage-900 transition-colors">Pakete</a>
           <a href="#faq" className="text-sm text-sage-600 hover:text-sage-900 transition-colors">FAQ</a>
-          <a href="https://planum-two.vercel.app" className="text-sm text-sage-600 hover:text-sage-900 transition-colors">Mein Bereich</a>
+          <a href="/app/" className="text-sm text-sage-600 hover:text-sage-900 transition-colors">Mein Bereich</a>
           <a href="#cta" className="btn-primary !py-2.5 !px-6 text-sm">Jetzt kaufen</a>
         </div>
 
@@ -159,7 +159,7 @@ function Navbar() {
           <a href="#how-it-works" onClick={() => setMobileOpen(false)} className="block text-sage-700 font-medium">So funktioniert's</a>
           <a href="#pricing" onClick={() => setMobileOpen(false)} className="block text-sage-700 font-medium">Pakete</a>
           <a href="#faq" onClick={() => setMobileOpen(false)} className="block text-sage-700 font-medium">FAQ</a>
-          <a href="https://planum-two.vercel.app" onClick={() => setMobileOpen(false)} className="block text-sage-700 font-medium">Mein Bereich</a>
+          <a href="/app/" onClick={() => setMobileOpen(false)} className="block text-sage-700 font-medium">Mein Bereich</a>
           <a href="#cta" onClick={() => setMobileOpen(false)} className="btn-primary w-full text-center text-sm">Jetzt kaufen</a>
         </div>
       )}
