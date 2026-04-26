@@ -5,8 +5,9 @@ Planum ist eine Web-App für das Tracking und die Pflege von Zimmerpflanzen in P
 
 ## Tech-Stack
 - **Frontend**: React (Vite) + Tailwind CSS
-- **Backend**: Supabase (Auth, DB, Storage)
-- **KI-Bilderkennung**: Plant.id API (Kindwise) / PlantNet API
+- **Backend**: Supabase (Auth, DB, Storage, Edge Functions)
+- **KI-Bilderkennung**: Plant.id v3 (Kindwise) — Edge Function `identify-plant`
+  mit Auto-Populate von `plant_species` bei probability ≥ 0.6
 - **Hosting**: Vercel
 - **Zahlungen**: Stripe (optional für Shop)
 - **QR-Codes**: Unique IDs, verlinken auf `app.planum.de/plant/{uuid}`
@@ -37,12 +38,17 @@ Siehe `supabase/migrations/` für das kanonische Schema. Kurzüberblick:
 - `plants` – Registrierte Pflanzen, `slot_uuid` referenziert Slot, `household_id` autorisiert
 - `care_logs` – Gieß-/Dünge-/Umtopf-/Misting-/Prune-Events (Enum `care_action`)
 - `plant_species` – Artendatenbank mit Pflegeinfos (geseedet mit 20 gängigen Arten)
-- `care_schedules` – *(TODO, noch nicht migriert)*
+
+Pflegetermine liegen direkt auf `plants` (`next_water_due_at`, `next_fertilize_due_at`,
+`next_repot_due_at`); eine separate `care_schedules`-Tabelle wurde verworfen,
+weil die On-Plant-Felder den Use-Case decken.
 
 Mandantenisolation läuft über RLS gegen `household_members`. Aktivierung via
 RPC `activate_qr_package(code, household_id)`; anonyme Scan-Lookups via
 `lookup_plant_uuid(plant_uuid)`. Beim Signup wird automatisch ein Default-
-Haushalt angelegt (Trigger `handle_new_user`).
+Haushalt angelegt (Trigger `handle_new_user`). Slot-Bindung läuft über den
+Trigger `plants_claim_slot` (Migration 05): Insert mit `slot_uuid` belegt den
+Slot exklusiv und blockt Cross-Household-Versuche.
 
 ## Ordnerstruktur
 ```
@@ -57,6 +63,7 @@ Planum/
 │   └── public/
 ├── supabase/
 │   ├── migrations/        # SQL-Migrationen (Schema + RLS)
+│   ├── functions/         # Edge Functions (z. B. identify-plant)
 │   └── seed/              # Hilfsskripte, z. B. Testpaket
 └── README.md
 ```
