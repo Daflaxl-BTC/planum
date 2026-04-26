@@ -8,7 +8,7 @@ import PlantDetail from './pages/PlantDetail.jsx'
 import RegisterPlant from './pages/RegisterPlant.jsx'
 import Settings from './pages/Settings.jsx'
 import ScanPlaceholder from './pages/ScanPlaceholder.jsx'
-import ShopPlaceholder from './pages/ShopPlaceholder.jsx'
+import Shop from './pages/Shop.jsx'
 import NotFound from './pages/NotFound.jsx'
 
 export default function App() {
@@ -22,7 +22,7 @@ export default function App() {
         <Route path="plant/new" element={<RegisterPlant />} />
         <Route path="plant/:id" element={<PlantDetail />} />
         <Route path="scan" element={<ScanPlaceholder />} />
-        <Route path="shop" element={<ShopPlaceholder />} />
+        <Route path="shop" element={<Shop />} />
         <Route path="settings" element={<Settings />} />
       </Route>
 
