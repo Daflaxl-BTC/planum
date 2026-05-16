@@ -26,15 +26,18 @@ export function statusForDueDate(dueAt, now = new Date()) {
   return 'good'
 }
 
-// Worst-of for overall plant status
+// Worst-of for overall plant status. Returns 'unknown' wenn weder ein
+// Wasser- noch ein Duenger-Faelligkeitsdatum gesetzt ist (frische Pflanze
+// ohne Logs) -- 'good' impliziert, dass wir aktiv geprueft haben.
 export function overallStatus(plant) {
   const statuses = [
     statusForDueDate(plant.next_water_due_at),
     statusForDueDate(plant.next_fertilize_due_at),
   ].filter(Boolean)
+  if (statuses.length === 0) return 'unknown'
   if (statuses.includes('urgent')) return 'urgent'
   if (statuses.includes('needs')) return 'needs'
-  return statuses.length ? 'good' : 'good'
+  return 'good'
 }
 
 export function formatDueLabel(dueAt, actionLabel, now = new Date()) {

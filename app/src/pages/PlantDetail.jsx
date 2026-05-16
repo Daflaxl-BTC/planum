@@ -10,6 +10,7 @@ import {
 import {
   overallStatus, formatDueLabel, prettyDate, prettyRelative, computeNextDue,
 } from '../lib/careLogic.js'
+import { devError } from '../lib/devLog.js'
 
 const ACTION_META = {
   water: {
@@ -65,7 +66,7 @@ export default function PlantDetail() {
         .order('logged_at', { ascending: false })
         .limit(20),
     ])
-    if (plantErr) console.error(plantErr)
+    if (plantErr) devError(plantErr)
     setPlant(plantData)
     setLogs(logData ?? [])
     setLoading(false)
@@ -91,12 +92,12 @@ export default function PlantDetail() {
       action,
     })
     if (logErr) {
-      console.error(logErr)
+      devError(logErr)
       setPendingAction(null)
       return
     }
     const { error: updErr } = await supabase.from('plants').update(updates).eq('id', plant.id)
-    if (updErr) console.error(updErr)
+    if (updErr) devError(updErr)
 
     await load()
     setPendingAction(null)

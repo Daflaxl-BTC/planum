@@ -47,9 +47,12 @@ weil die On-Plant-Felder den Use-Case decken.
 
 Mandantenisolation läuft über RLS gegen `household_members`. Aktivierung via
 RPC `activate_qr_package(code, household_id)`; Scan-Lookups via
-`lookup_plant_uuid(plant_uuid)` (Migration 06: gibt zusätzlich `household_id`,
-`household_name` und — nur für Mitglieder — `plant_id` zurück). Beim Signup
-wird automatisch ein Default-Haushalt angelegt (Trigger `handle_new_user`).
+`lookup_plant_uuid(plant_uuid)`. Die Funktion gibt für jeden Anrufer (anon +
+authenticated) die Booleans `package_activated`, `plant_registered` und
+`user_is_member` zurück. Identitätsdaten — `household_id`, `household_name`
+und `plant_id` — sind seit Migration 07 nur für Mitglieder des Pakets sichtbar;
+für alle anderen Anrufer sind die drei Felder `null`. Beim Signup wird
+automatisch ein Default-Haushalt angelegt (Trigger `handle_new_user`).
 Slot-Bindung läuft über den Trigger `plants_claim_slot` (Migration 05):
 Insert mit `slot_uuid` belegt den Slot exklusiv und blockt Cross-Household-
 Versuche. Familien-Beitritt via Slot-Scan über RPC

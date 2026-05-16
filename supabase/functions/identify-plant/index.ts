@@ -38,6 +38,14 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
 
 const PLANT_ID_URL = "https://plant.id/api/v3/identification";
 const AUTO_POPULATE_THRESHOLD = 0.6;
+// Base64 expandiert binaere Daten um ~4/3. 13.5 MB Base64 ≈ 10 MB Bild.
+const MAX_IMAGE_BASE64_BYTES = 13_500_000;
+// Rate-Limit pro User: 30 identify-plant-Calls pro 5 Minuten.
+// Plant.id Free-Tier = 100 Credits/Monat -> deckt einen normalen User
+// auch bei mehreren Sessions ab, blockiert aber Scripted-Floods.
+const RATE_LIMIT_ACTION = "identify_plant";
+const RATE_LIMIT_MAX_REQUESTS = 30;
+const RATE_LIMIT_WINDOW_SECONDS = 300;
 const PLANT_ID_DETAILS = [
   "common_names",
   "description",
@@ -145,6 +153,12 @@ Deno.serve(async (req) => {
   if (!image || typeof image !== "string" || image.length < 100) {
     return jsonResponse({ error: "image_base64 required" }, 400);
   }
+  if (image.length > MAX_IMAGE_BASE64_BYTES) {
+    return jsonResponse(
+      { error: `image too large (max ${MAX_IMAGE_BASE64_BYTES} base64 bytes ≈ 10 MB)` },
+      413,
+    );
+  }
 
   const userClient = createClient(supabaseUrl, supabaseAnon, {
     global: { headers: { Authorization: authHeader } },
@@ -153,6 +167,43 @@ Deno.serve(async (req) => {
   const { data: userData, error: userErr } = await userClient.auth.getUser();
   if (userErr || !userData?.user) {
     return jsonResponse({ error: "not authenticated" }, 401);
+  }
+
+  // adminClient = Service-Role: NUR fuer Rate-Limit-Pruefung und den
+  // Auto-Populate-INSERT in plant_species. Niemals fuer User-Daten.
+  const adminClient = createClient(supabaseUrl, serviceKey, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
+
+  const { data: limitRows, error: limitErr } = await adminClient.rpc(
+    "consume_rate_limit",
+    {
+      p_user_id: userData.user.id,
+      p_action: RATE_LIMIT_ACTION,
+      p_max_requests: RATE_LIMIT_MAX_REQUESTS,
+      p_window_seconds: RATE_LIMIT_WINDOW_SECONDS,
+    },
+  );
+  if (limitErr) {
+    console.error("rate-limit check failed", limitErr);
+    return jsonResponse({ error: "rate limit check failed" }, 500);
+  }
+  const limit = Array.isArray(limitRows) ? limitRows[0] : limitRows;
+  if (limit && limit.allowed === false) {
+    return new Response(
+      JSON.stringify({
+        error: "rate_limit_exceeded",
+        retry_after_seconds: limit.retry_after_s ?? RATE_LIMIT_WINDOW_SECONDS,
+      }),
+      {
+        status: 429,
+        headers: {
+          ...corsHeaders,
+          "Content-Type": "application/json",
+          "Retry-After": String(limit.retry_after_s ?? RATE_LIMIT_WINDOW_SECONDS),
+        },
+      },
+    );
   }
 
   // Plant.id-Call
@@ -183,7 +234,6 @@ Deno.serve(async (req) => {
         suggestions: [],
         best_match_species_id: null,
         diag_error: `Plant.id ${res.status}: ${text.slice(0, 400)}`,
-        api_key_length: apiKey.length,
       });
     }
     plantIdJson = await res.json();
@@ -207,10 +257,8 @@ Deno.serve(async (req) => {
     return jsonResponse({ suggestions: [], best_match_species_id: null });
   }
 
-  // Service-role nur fuer Auto-Populate-INSERTs.
-  const adminClient = createClient(supabaseUrl, serviceKey, {
-    auth: { persistSession: false, autoRefreshToken: false },
-  });
+  // adminClient wurde oben fuer den Rate-Limit-Check angelegt und wird
+  // hier fuer den Auto-Populate-INSERT in plant_species weiterverwendet.
 
   const enriched: Array<{
     scientific_name: string;

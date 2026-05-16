@@ -5,6 +5,7 @@ import { useAuth } from '../contexts/AuthContext.jsx'
 import StatusDot from '../components/StatusDot.jsx'
 import { PlusIcon, SparklesIcon } from '../components/Icons.jsx'
 import { overallStatus, statusForDueDate, formatDueLabel } from '../lib/careLogic.js'
+import { devError } from '../lib/devLog.js'
 
 export default function Dashboard() {
   const { user } = useAuth()
@@ -24,7 +25,7 @@ export default function Dashboard() {
         .is('archived_at', null)
         .order('created_at', { ascending: false })
       if (!active) return
-      if (error) console.error(error)
+      if (error) devError(error)
       setPlants(data ?? [])
       setLoading(false)
     })()
@@ -49,10 +50,13 @@ export default function Dashboard() {
         <h1 className="font-display text-3xl text-sage-900 mt-0.5">Deine Pflanzen</h1>
 
         {plants.length > 0 && (
-          <div className="mt-5 flex gap-2">
+          <div className="mt-5 flex gap-2 flex-wrap">
             <StatusPill status="urgent" count={counts.urgent || 0} label="Dringend" />
             <StatusPill status="needs" count={counts.needs || 0} label="Bald fällig" />
             <StatusPill status="good" count={counts.good || 0} label="OK" />
+            {(counts.unknown || 0) > 0 && (
+              <StatusPill status="unknown" count={counts.unknown} label="Noch unbekannt" />
+            )}
           </div>
         )}
       </header>
@@ -99,9 +103,10 @@ function StatusPill({ status, count, label }) {
     good: 'bg-emerald-50 text-emerald-700 border-emerald-100',
     needs: 'bg-amber-50 text-amber-700 border-amber-100',
     urgent: 'bg-red-50 text-red-700 border-red-100',
+    unknown: 'bg-sage-50 text-sage-600 border-sage-100',
   }
   return (
-    <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium ${colors[status]}`}>
+    <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-medium ${colors[status] ?? colors.unknown}`}>
       <StatusDot status={status} size="sm" pulse={false} />
       <span>{count} {label}</span>
     </div>
@@ -112,7 +117,7 @@ function PlantCard({ plant }) {
   const status = overallStatus(plant)
   const speciesName = plant.species?.common_name_de || plant.detected_species_name || 'Unbekannte Art'
 
-  let headline = 'Alles bestens'
+  let headline = status === 'unknown' ? 'Noch keine Pflegedaten' : 'Alles bestens'
   const waterStatus = statusForDueDate(plant.next_water_due_at)
   const fertStatus = statusForDueDate(plant.next_fertilize_due_at)
   if (waterStatus === 'urgent') headline = formatDueLabel(plant.next_water_due_at, 'Gießen')
