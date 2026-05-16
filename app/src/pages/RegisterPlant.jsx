@@ -11,8 +11,11 @@ import {
   SparklesIcon,
 } from '../components/Icons.jsx'
 import { computeNextDue } from '../lib/careLogic.js'
+import { devError, devWarn } from '../lib/devLog.js'
 
 const MIN_SUGGESTION_PROBABILITY = 0.05
+const MAX_IMAGE_BYTES = 10 * 1024 * 1024 // 10 MB -- matched zur Edge-Function (~13.5 MB base64).
+const ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/heic', 'image/heif']
 
 function fileToBase64(file) {
   return new Promise((resolve, reject) => {
@@ -168,7 +171,7 @@ export default function RegisterPlant() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
   const slotUuid = searchParams.get('slot') || null
-  const householdId = searchParams.get('household') || null
+  const householdIdParam = searchParams.get('household') || null
   const { user } = useAuth()
   const fileInputRef = useRef(null)
   const [species, setSpecies] = useState([])
@@ -185,6 +188,13 @@ export default function RegisterPlant() {
   const [aiSuggestions, setAiSuggestions] = useState(null)
   const [aiError, setAiError] = useState(null)
   const [detectedFallback, setDetectedFallback] = useState(null)
+  // Verified household-id: NUR die household_id, die der Slot tatsaechlich
+  // im Backend hat und in der der User Mitglied ist. Verhindert, dass ein
+  // manipulierter `?household=`-Query-Param eine Pflanze in einen fremden
+  // Haushalt schreibt (RLS+Trigger blockieren das ohnehin, aber so sieht
+  // der User die UX-Fehlermeldung vor dem Submit statt eines DB-Errors).
+  const [verifiedHouseholdId, setVerifiedHouseholdId] = useState(null)
+  const [slotChecking, setSlotChecking] = useState(Boolean(slotUuid))
 
   useEffect(() => {
     supabase
@@ -194,9 +204,71 @@ export default function RegisterPlant() {
       .then(({ data }) => setSpecies(data ?? []))
   }, [])
 
+  useEffect(() => {
+    if (!slotUuid) {
+      setSlotChecking(false)
+      return
+    }
+    let active = true
+    setSlotChecking(true)
+    supabase
+      .rpc('lookup_plant_uuid', { p_plant_uuid: slotUuid })
+      .then(({ data, error: rpcErr }) => {
+        if (!active) return
+        if (rpcErr) {
+          setError(rpcErr.message)
+          setSlotChecking(false)
+          return
+        }
+        const info = Array.isArray(data) ? data[0] : data
+        if (!info || !info.package_activated || !info.user_is_member) {
+          // ScanResolver kennt den richtigen Flow (Aktivierung, Beitritt,
+          // unbekannter Slot). Dort hin redirecten statt hier zu raten.
+          navigate(`/qr/${slotUuid}`, { replace: true })
+          return
+        }
+        if (info.plant_registered && info.plant_id) {
+          navigate(`/plant/${info.plant_id}`, { replace: true })
+          return
+        }
+        if (householdIdParam && householdIdParam !== info.household_id) {
+          // Query-Param wurde manipuliert oder ist veraltet — wir
+          // verwenden die vertrauenswuerdige household_id aus dem Slot.
+          devWarn('[register] household query param mismatch — using slot household')
+        }
+        setVerifiedHouseholdId(info.household_id)
+        setSlotChecking(false)
+      })
+    return () => { active = false }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [slotUuid])
+
   async function handleFile(e) {
     const file = e.target.files?.[0]
+    // input wert leeren, damit derselbe File-Pick erneut triggern kann.
+    e.target.value = ''
     if (!file) return
+
+    // Mime-Type-Whitelist: Browser-Kameras liefern fast immer JPEG;
+    // einige iOS-Versionen liefern HEIC. Andere Formate (gif, svg, pdf)
+    // sind weder fuer Plant.id noch fuer das Storage-Hosting sinnvoll.
+    if (!file.type.startsWith('image/') || (file.type && !ALLOWED_IMAGE_TYPES.includes(file.type))) {
+      setAiSuggestions(null)
+      setDetectedFallback(null)
+      setPhotoFile(null)
+      setPhotoPreview(null)
+      setAiError('Bitte ein JPEG-, PNG-, WebP- oder HEIC-Bild waehlen.')
+      return
+    }
+    if (file.size > MAX_IMAGE_BYTES) {
+      setAiSuggestions(null)
+      setDetectedFallback(null)
+      setPhotoFile(null)
+      setPhotoPreview(null)
+      setAiError(`Das Bild ist zu gross (max ${Math.round(MAX_IMAGE_BYTES / 1024 / 1024)} MB).`)
+      return
+    }
+
     setPhotoFile(file)
     setAiSuggestions(null)
     setAiError(null)
@@ -216,7 +288,7 @@ export default function RegisterPlant() {
       })
       if (fnErr) throw fnErr
       if (data?.diag_error) {
-        console.error('identify-plant diag', data)
+        devError('identify-plant diag', data)
         setAiError(data.diag_error)
         return
       }
@@ -227,13 +299,16 @@ export default function RegisterPlant() {
         setForm((f) => ({ ...f, species_id: best }))
       }
     } catch (err) {
-      console.error('identify-plant', err)
+      devError('identify-plant', err)
       let detail = err.message || 'KI-Erkennung nicht verfügbar'
       try {
         const body = await err?.context?.json?.()
         if (body) {
-          console.error('identify-plant body', body)
-          if (body.upstream_status) {
+          devError('identify-plant body', body)
+          if (body.error === 'rate_limit_exceeded') {
+            const wait = Math.max(1, body.retry_after_seconds ?? 60)
+            detail = `Zu viele Bild-Analysen in kurzer Zeit. Bitte in ${wait}s erneut versuchen.`
+          } else if (body.upstream_status) {
             detail = `Plant.id ${body.upstream_status}: ${(body.upstream_body || '').slice(0, 200)}`
           } else if (body.error) {
             detail = body.error
@@ -300,11 +375,12 @@ export default function RegisterPlant() {
         next_water_due_at: nextWater.toISOString(),
         next_fertilize_due_at: nextFert.toISOString(),
       }
-      // Wenn ueber Slot-Scan gestartet, slot_uuid + household_id explizit setzen,
-      // damit der plants_claim_slot-Trigger nicht den falschen Default-Haushalt
-      // pruefen muss (z.B. der ungenutzte Auto-Haushalt eines Familienmitglieds).
+      // Wenn ueber Slot-Scan gestartet, slot_uuid + verified household_id
+      // explizit setzen, damit der plants_claim_slot-Trigger nicht den
+      // falschen Default-Haushalt pruefen muss. verifiedHouseholdId kommt
+      // aus dem Slot-Lookup -- nicht aus dem (manipulierbaren) Query-Param.
       if (slotUuid) insertPayload.slot_uuid = slotUuid
-      if (householdId) insertPayload.household_id = householdId
+      if (verifiedHouseholdId) insertPayload.household_id = verifiedHouseholdId
 
       const { data: inserted, error: insErr } = await supabase
         .from('plants')
@@ -315,7 +391,7 @@ export default function RegisterPlant() {
 
       navigate(`/plant/${inserted.id}`, { replace: true })
     } catch (err) {
-      console.error(err)
+      devError(err)
       setError(err.message || 'Etwas ist schiefgelaufen.')
       setSubmitting(false)
     }
@@ -489,8 +565,16 @@ export default function RegisterPlant() {
           <p className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-xl px-4 py-3">{error}</p>
         )}
 
-        <button type="submit" className="btn-primary w-full" disabled={submitting}>
-          {submitting ? 'Wird gespeichert…' : 'Pflanze hinzufügen'}
+        <button
+          type="submit"
+          className="btn-primary w-full"
+          disabled={submitting || slotChecking}
+        >
+          {slotChecking
+            ? 'Slot wird geprüft…'
+            : submitting
+              ? 'Wird gespeichert…'
+              : 'Pflanze hinzufügen'}
         </button>
       </form>
     </div>

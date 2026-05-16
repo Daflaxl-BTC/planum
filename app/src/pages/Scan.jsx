@@ -2,24 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import QrScanner from 'qr-scanner'
 import { supabase } from '../lib/supabase.js'
+import { parseSlotUuid } from '../lib/slotUuid.js'
+import { devError } from '../lib/devLog.js'
 import { CameraIcon, ChevronLeftIcon, QrIcon, SparklesIcon } from '../components/Icons.jsx'
-
-const UUID_RE = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i
-
-function parseSlotUuid(text) {
-  if (!text) return null
-  try {
-    const url = new URL(text)
-    const m = url.pathname.match(/\/(?:plant|scan|qr|s)\/([0-9a-f-]{36})/i)
-    if (m) return m[1].toLowerCase()
-    const fallback = url.pathname.match(UUID_RE) || url.search.match(UUID_RE)
-    if (fallback) return fallback[0].toLowerCase()
-  } catch {
-    const m = text.trim().match(UUID_RE)
-    if (m) return m[0].toLowerCase()
-  }
-  return null
-}
 
 export default function Scan() {
   const navigate = useNavigate()
@@ -73,7 +58,7 @@ export default function Scan() {
           setPhase('scanning')
         }
       } catch (err) {
-        console.error('[scan] camera start failed', err)
+        devError('[scan] camera start failed', err)
         if (cancelled) return
         scanner.destroy()
         scannerRef.current = null
@@ -151,7 +136,7 @@ export default function Scan() {
 
       navigate(`/plant/new?slot=${slotUuid}`)
     } catch (err) {
-      console.error('[scan] resolve failed', err)
+      devError('[scan] resolve failed', err)
       setResolveError(err.message || 'Slot konnte nicht aufgelöst werden.')
       handlingRef.current = false
     }
@@ -163,7 +148,7 @@ export default function Scan() {
       await scannerRef.current.toggleFlash()
       setFlashOn(scannerRef.current.isFlashOn())
     } catch (err) {
-      console.error('[scan] flash toggle failed', err)
+      devError('[scan] flash toggle failed', err)
     }
   }
 
@@ -188,7 +173,7 @@ export default function Scan() {
         await scannerRef.current.start()
         setPhase('scanning')
       } catch (err) {
-        console.error('[scan] restart failed', err)
+        devError('[scan] restart failed', err)
         setErrorMsg(err.message || 'Kamera konnte nicht neu gestartet werden.')
         setPhase('error')
       }
