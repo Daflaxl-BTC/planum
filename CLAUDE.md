@@ -5,12 +5,15 @@ Planum ist eine Web-App für das Tracking und die Pflege von Zimmerpflanzen in P
 
 ## Tech-Stack
 - **Frontend**: React (Vite) + Tailwind CSS
-- **Backend**: Supabase (Auth, DB, Storage)
-- **KI-Bilderkennung**: Plant.id API (Kindwise) / PlantNet API
+- **Backend**: Supabase (Auth, DB, Storage, Edge Functions)
+- **KI-Bilderkennung**: Plant.id v3 (Kindwise) — Edge Function `identify-plant`
+  mit Auto-Populate von `plant_species` bei probability ≥ 0.6
 - **Hosting**: Vercel
 - **Zahlungen**: Stripe (optional für Shop)
-- **QR-Codes**: Unique IDs, verlinken auf `app.planum.de/plant/{uuid}`
-  - ⚠️ Domain uneinheitlich: Mai-Seeds nutzen app.planum.de, Juni-Marketing-Assets www.planumplants.de, Vercel-Deploy unter /app/-Pfad — vor weiteren QR-Drucken final klären.
+- **QR-Codes**: Unique IDs, verlinken auf `app.planum.de/qr/{slot_uuid}`
+  (siehe `ScanResolver` — entscheidet je nach Slot-Status zwischen Code-
+  Aktivierung, Haushaltsbeitritt, Pflanze-registrieren oder Detail-Seite)
+  - ⚠️ Domain uneinheitlich: Mai-Seeds nutzen app.planum.de, Juni-Marketing-Assets www.planumplants.de, Vercel-Deploy unter /app/-Pfad, iOS-Migration setzt planumplants.de/app — vor weiteren QR-Drucken final klären.
 
 ## Monetarisierungsmodell — Dreistufig: Gratis / Basis / Pro
 Leitprinzip **Pro ⊇ Basis** (kein Feature wird höher wieder weggenommen/verkauft). Volle Spec: `docs/entitlements-stufenmodell.md` (Stand 10.07.2026).
@@ -31,19 +34,45 @@ Leitprinzip **Pro ⊇ Basis** (kein Feature wird höher wieder weggenommen/verka
 8. Integrierter Pflegeshop (Affiliate)
 
 ## Datenbankschema (Supabase)
-- `users` – Auth, Profil
-- `qr_packages` – Aktivierungscodes, Lizenz
-- `plants` – Registrierte Pflanzen mit Arteninfo
-- `care_logs` – Gieß-/Dünge-/Umtopf-Events
-- `care_schedules` – KI-generierte Pflegepläne
-- `plant_species` – Artendatenbank mit Pflegeinfos
+Siehe `supabase/migrations/` für das kanonische Schema. Kurzüberblick:
+- `profiles` – 1:1 zu `auth.users`, Profil + Benachrichtigungen
+- `households` – geteilter Zugang für Familienmitglieder (Owner/Admin/Member)
+- `household_members` – Verknüpfung `auth.users` ↔ `households`
+- `qr_packages` – Aktivierungscode (`code`) pro Amazon-Paket, bindet an Household
+- `qr_slots` – N UUIDs pro Paket; `qr_slots.uuid` steckt im QR-Code-Link
+- `plants` – Registrierte Pflanzen, `slot_uuid` referenziert Slot, `household_id` autorisiert
+- `care_logs` – Gieß-/Dünge-/Umtopf-/Misting-/Prune-Events (Enum `care_action`)
+- `plant_species` – Artendatenbank mit Pflegeinfos (geseedet mit 20 gängigen Arten)
+
+Pflegetermine liegen direkt auf `plants` (`next_water_due_at`, `next_fertilize_due_at`,
+`next_repot_due_at`); eine separate `care_schedules`-Tabelle wurde verworfen,
+weil die On-Plant-Felder den Use-Case decken.
+
+Mandantenisolation läuft über RLS gegen `household_members`. Aktivierung via
+RPC `activate_qr_package(code, household_id)`; Scan-Lookups via
+`lookup_plant_uuid(plant_uuid)` (Migration 06: gibt zusätzlich `household_id`,
+`household_name` und — nur für Mitglieder — `plant_id` zurück). Beim Signup
+wird automatisch ein Default-Haushalt angelegt (Trigger `handle_new_user`).
+Slot-Bindung läuft über den Trigger `plants_claim_slot` (Migration 05):
+Insert mit `slot_uuid` belegt den Slot exklusiv und blockt Cross-Household-
+Versuche. Familien-Beitritt via Slot-Scan über RPC
+`join_household_via_slot(slot_uuid)` (Migration 06): macht den scannenden
+User zum `member` des Paket-Haushalts (idempotent).
+
+Erst-Charge: 251 Pakete (5020 Slots) werden via
+`supabase/seed/initial_packages.sql` erzeugt; Codes/Slot-URLs zum Drucken
+exportierst du mit `supabase/seed/export_codes.sql` (CSV-Download im SQL Editor).
 
 ## Ordnerstruktur
 ```
 Planum/
 ├── CLAUDE.md              # Diese Datei
-├── app/                   # Web-App (Vite/React, Supabase, qr-scanner)
-├── supabase/              # Migrations, Functions, Seed
+├── app/                   # Web-App (Vite/React, Supabase, qr-scanner) + Capacitor-iOS-Schale (ios/)
+├── supabase/
+│   ├── migrations/        # SQL-Migrationen (Schema + RLS)
+│   ├── functions/         # Edge Functions (identify-plant, push-register, push-dispatch)
+│   └── seed/              # Hilfsskripte, z. B. Erst-Charge-Pakete
+├── native/                # iOS-Assets (AASA, Entitlements, Icons)
 ├── marketing/             # Marketing-Assets
 ├── scripts/               # u. a. generate-sample-urls.mjs
 ├── env/                   # Env-Dateien
