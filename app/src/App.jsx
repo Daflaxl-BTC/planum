@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 import Login from './pages/Login.jsx'
+import ResetPassword from './pages/ResetPassword.jsx'
 import AuthCallback from './pages/AuthCallback.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 import PlantDetail from './pages/PlantDetail.jsx'
@@ -16,6 +17,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/auth/callback" element={<AuthCallback />} />
 
       <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>

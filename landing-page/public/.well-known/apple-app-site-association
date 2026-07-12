@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["L52X6JA945.de.planumplants.app"],
+        "components": [
+          { "/": "/nfc/*", "comment": "Signierter NFC-Token — Redemption/Slot-Zuordnung" },
+          { "/": "/p/*", "comment": "Oeffentliche Pflanzenseite (ohne Token)" }
+        ]
+      }
+    ]
+  }
+}

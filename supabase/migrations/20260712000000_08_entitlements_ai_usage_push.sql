@@ -1,4 +1,4 @@
--- 07: Entitlements, KI-Nutzungs-Log, Push-Token (App-Umbau Web -> Native)
+-- 08: Entitlements, KI-Nutzungs-Log, Push-Token (App-Umbau Web -> Native)
 -- Quelle: docs/ios-migration-plan.md Abschnitt 5.1 + 5.4.
 -- RLS: Nutzer liest NUR eigenen Datensatz; Schreiben ausschliesslich service-role
 --      (keine insert/update/delete-Policies -> service-role bypassed RLS).

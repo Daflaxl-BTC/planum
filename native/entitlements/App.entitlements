@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Kanonische Referenz. Wird von Xcode unter ios/App/App/App.entitlements verwendet.
+     aps-environment: 'development' fuer Debug/TestFlight-Sideload, 'production' fuer
+     App-Store-Release — Xcode (Signing & Capabilities) verwaltet den Wert je Build. -->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>com.apple.developer.associated-domains</key>
+	<array>
+		<string>applinks:planumplants.de</string>
+		<string>applinks:www.planumplants.de</string>
+	</array>
+	<key>aps-environment</key>
+	<string>development</string>
+</dict>
+</plist>
