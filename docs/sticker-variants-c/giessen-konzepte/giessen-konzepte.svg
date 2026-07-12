@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 916 1162" role="img">
+<rect x="0" y="0" width="916" height="1162" fill="#fbfcf9"/>
+<defs>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eaf6fd"/><stop offset="1" stop-color="#c3e4f4"/></linearGradient>
+<linearGradient id="gWater" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5fb0e6"/><stop offset="1" stop-color="#1f6aa8"/></linearGradient>
+<linearGradient id="gWave" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4ba0dd"/><stop offset="1" stop-color="#2272ad"/></linearGradient>
+<radialGradient id="gDrop" cx="0.38" cy="0.30" r="0.78"><stop offset="0" stop-color="#f1fbff"/><stop offset="0.5" stop-color="#7cc2ee"/><stop offset="1" stop-color="#2b7fc0"/></radialGradient>
+<radialGradient id="gPuddle" cx="0.5" cy="0.42" r="0.72"><stop offset="0" stop-color="#d3edfb"/><stop offset="1" stop-color="#6fa9d2"/></radialGradient>
+<linearGradient id="gMeadow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfe6c0"/><stop offset="1" stop-color="#79bd8b"/></linearGradient>
+<linearGradient id="gMetal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3eaee"/><stop offset="1" stop-color="#9fb2bd"/></linearGradient>
+<linearGradient id="gGrey" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbe3e9"/><stop offset="1" stop-color="#a9b8c2"/></linearGradient>
+<clipPath id="cc"><circle r="54"/></clipPath>
+</defs>
+<style>.t{font-family:-apple-system,Segoe UI,sans-serif;font-size:20px;font-weight:600;fill:#14241d}.sb{font-family:-apple-system,Segoe UI,sans-serif;font-size:13px;fill:#5d6f66}.nm{font-family:-apple-system,Segoe UI,sans-serif;font-size:13px;font-weight:600;fill:#14241d}.ds{font-family:-apple-system,Segoe UI,sans-serif;font-size:11px;fill:#6a7b72}</style>
+<text class="t" x="24" y="36">Gieß-Sticker — 20 Wasser-Konzepte</text>
+<text class="sb" x="24" y="58">Eigene Kategorie „Gießen" · runde Sticker 50 mm · zum Abwägen</text>
+<g transform="translate(136,152)"><g clip-path="url(#cc)"><rect x="-54" y="-54" width="108" height="108" fill="url(#gSky)"/>
+<path d="M-54 28 C-40 20 -34 -2 -16 2 C-2 5 2 24 18 17 C30 12 31 -8 46 -4 C52 -2 54 6 54 10 L54 54 L-54 54 Z" fill="url(#gWave)"/>
+<path d="M-16 2 C-9 -4 -1 -2 3 6" fill="none" stroke="#fff" stroke-width="2.4" opacity="0.85"/>
+<circle cx="-16" cy="1" r="3" fill="#fff" opacity="0.9"/><circle cx="-9" cy="-2" r="2.3" fill="#fff" opacity="0.8"/><circle cx="-2" cy="1" r="2" fill="#fff" opacity="0.75"/><circle cx="45" cy="-4" r="2.3" fill="#fff" opacity="0.8"/></g><circle r="54" fill="none" stroke="#C9A35B" stroke-width="3"/></g>
+<text class="nm" x="136" y="226" text-anchor="middle">1 · Welle</text>
+<text class="ds" x="136" y="242" text-anchor="middle">Hokusai-Welle</text>
+<g transform="translate(358,152)"><g clip-path="url(#cc)"><rect x="-54" y="-54" width="108" height="108" fill="url(#gSky)"/>
+<rect x="-54" y="32" width="108" height="22" fill="url(#gMeadow)"/>
+<g stroke="#3f93cf" stroke-width="2.1" stroke-linecap="round" opacity="0.85" fill="none"><path d="M-40 -40 L-49 -25"/><path d="M-24 -46 L-33 -31"/><path d="M-8 -40 L-17 -25"/><path d="M8 -46 L-1 -31"/><path d="M24 -40 L15 -25"/><path d="M40 -46 L31 -31"/><path d="M-32 -18 L-41 -3"/><path d="M-12 -22 L-21 -7"/><path d="M8 -18 L-1 -3"/><path d="M28 -22 L19 -7"/><path d="M44 -18 L35 -3"/></g>
+<ellipse cx="-22" cy="40" rx="9" ry="2.4" fill="#9fd0ee" opacity="0.7"/><ellipse cx="16" cy="44" rx="11" ry="2.6" fill="#9fd0ee" opacity="0.7"/></g><circle r="54" fill="none" stroke="#C9A35B" stroke-width="3"/></g>
+<text class="nm" x="358" y="226" text-anchor="middle">2 · Schräger Regen</text>
+<text class="ds" x="358" y="242" text-anchor="middle">Dichter Schlagregen</text>
+<g transform="translate(582,152)"><g clip-path="url(#cc)"><rect x="-54" y="-54" width="108" height="108" fill="url(#gSky)"/>
+<rect x="-54" y="32" width="108" height="22" fill="url(#gMeadow)"/>
+<path d="M-24 6 L-46 -12 L-41 -18 L-20 0 Z" fill="url(#gMetal)" stroke="#7f939f" stroke-width="1.2"/>
+<ellipse cx="-44" cy="-15" rx="6" ry="3.6" fill="#90a4ae" stroke="#71858f" stroke-width="1"/>
+<rect x="-22" y="-2" width="40" height="32" rx="9" fill="url(#gMetal)" stroke="#7f939f" stroke-width="1.5"/>
+<path d="M-14 -2 C-12 -20 10 -20 12 -2" fill="none" stroke="#8fa3ad" stroke-width="4"/>
+<path d="M18 4 C28 -1 28 17 18 12" fill="none" stroke="#8fa3ad" stroke-width="3"/>
+<g stroke="#5fb0e6" stroke-width="1.7" opacity="0.9" stroke-linecap="round"><path d="M-48 -11 L-50 8"/><path d="M-44 -11 L-45 11"/><path d="M-40 -11 L-41 7"/></g>
+<path d="M-46 32 q3 -11 0 -17 M-46 32 q-3 -11 0 -17" fill="none" stroke="#4f9a52" stroke-width="2"/></g><circle r="54" fill="none" stroke="#C9A35B" stroke-width="3"/></g>
+<text class="nm" x="582" y="226" text-anchor="middle">3 · Gießkanne</text>
+<text class="ds" x="582" y="242" text-anchor="middle">Klassisch, gießend</text>
+<g transform="translate(804,152)"><g clip-path="url(#cc)"><rect x="-54" y="-54" width="108" height="108" fill="url(#gMeadow)"/>
+<circle cx="-36" cy="-30" r="3" fill="#6bb07e" opacity="0.6"/><circle cx="34" cy="-12" r="3" fill="#6bb07e" opacity="0.6"/><circle cx="30" cy="36" r="3" fill="#6bb07e" opacity="0.6"/><circle cx="-30" cy="40" r="3" fill="#6bb07e" opacity="0.6"/>
+<path d="M-18 -54 C-42 -28 8 -16 -10 10 C-26 32 14 40 -4 54" fill="none" stroke="url(#gWater)" stroke-width="23" stroke-linecap="round"/>
+<path d="M-18 -54 C-42 -28 8 -16 -10 10 C-26 32 14 40 -4 54" fill="none" stroke="#d3edfb" stroke-width="3" opacity="0.55"/></g><circle r="54" fill="none" stroke="#C9A35B" stroke-width="3"/></g>
+<text class="nm" x="804" y="226" text-anchor="middle">4 · Bach / Fluss</text>
+<text class="ds" x="804" y="242" text-anchor="middle">Mäandernder Lauf</text>
+<g transform="translate(136,364)"><g clip-path="url(#cc)"><rect x="-54" y="-54" width="108" height="108" fill="url(#gSky)"/>
+<g fill="url(#gDrop)">
+<path transform="translate(-18,-12) scale(1.1)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/>
+<path transform="translate(16,-2) scale(1.4)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/>
+<path transform="translate(-4,22) scale(0.9)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/>
+<path transform="translate(30,26) scale(0.7)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/>
+</g></g><circle r="54" fill="none" stroke="#C9A35B" stroke-width="3"/></g>
+<text class="nm" x="136" y="438" text-anchor="middle">5 · Regentropfen</text>
+<text class="ds" x="136" y="454" text-anchor="middle">Simpel, wenige</text>
+<g transform="translate(358,364)"><g clip-path="url(#cc)"><rect x="-54" y="-54" width="108" height="108" fill="url(#gGrey)"/>
+<g fill="#cdd9e1" opacity="0.9"><circle cx="-14" cy="-30" r="13"/><circle cx="2" cy="-34" r="15"/><circle cx="18" cy="-29" r="12"/><circle cx="-2" cy="-24" r="14"/></g>
+<g stroke="#5fa0cf" stroke-width="2" stroke-linecap="round" opacity="0.85"><path d="M-18 -10 L-21 -1"/><path d="M-2 -8 L-5 1"/><path d="M14 -10 L11 -1"/></g>
+<ellipse cx="-6" cy="36" rx="40" ry="9" fill="url(#gPuddle)"/>
+<ellipse cx="-6" cy="36" rx="22" ry="5" fill="none" stroke="#fff" stroke-width="1.3" opacity="0.6"/>
+<ellipse cx="-6" cy="36" rx="34" ry="7.6" fill="none" stroke="#fff" stroke-width="1" opacity="0.4"/></g><circle r="54" fill="none" stroke="#C9A35B" stroke-width="3"/></g>
+<text class="nm" x="358" y="438" text-anchor="middle">6 · Nasser Tag</text>
+<text class="ds" x="358" y="454" text-anchor="middle">Wolke + Pfütze</text>
+<g transform="translate(582,364)"><g clip-path="url(#cc)"><rect x="-54" y="-54" width="108" height="108" fill="url(#gSky)"/>
+<path transform="scale(2.6)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z" fill="url(#gDrop)"/>
+<ellipse cx="-9" cy="-12" rx="6" ry="9" fill="#ffffff" opacity="0.6" transform="rotate(-20 -9 -12)"/>
+<circle cx="8" cy="14" r="3" fill="#ffffff" opacity="0.5"/></g><circle r="54" fill="none" stroke="#C9A35B" stroke-width="3"/></g>
+<text class="nm" x="582" y="438" text-anchor="middle">7 · Großer Tropfen</text>
+<text class="ds" x="582" y="454" text-anchor="middle">Glossy, fotonah</text>
+<g transform="translate(804,364)"><g clip-path="url(#cc)"><rect x="-54" y="-54" width="108" height="108" fill="url(#gWater)"/>
+<rect x="-54" y="-54" width="108" height="50" fill="#7cc2ee" opacity="0.5"/>
+<ellipse cx="0" cy="20" rx="40" ry="9" fill="none" stroke="#eaf7ff" stroke-width="1.5" opacity="0.6"/>
+<ellipse cx="0" cy="20" rx="26" ry="6" fill="none" stroke="#eaf7ff" stroke-width="1.3" opacity="0.5"/>
+<path d="M-18 14 C-15 -2 -11 2 -8 12 C-6 -4 -1 -4 0 10 C1 -4 6 -4 8 12 C11 2 15 -2 18 14 Z" fill="#e6f4fd"/>
+<circle cx="0" cy="-16" r="4.5" fill="url(#gDrop)"/><circle cx="0" cy="-26" r="2.4" fill="#eaf7ff"/></g><circle r="54" fill="none" stroke="#C9A35B" stroke-width="3"/></g>
+<text class="nm" x="804" y="438" text-anchor="middle">8 · Krone-Splash</text>
+<text class="ds" x="804" y="454" text-anchor="middle">Aufprall-Krone</text>
+<g transform="translate(136,576)"><g clip-path="url(#cc)"><rect x="-54" y="-54" width="108" height="108" fill="url(#gWater)"/>
+<circle r="10" fill="none" stroke="#eaf7ff" stroke-width="2" opacity="0.9"/><circle r="20" fill="none" stroke="#eaf7ff" stroke-width="1.8" opacity="0.7"/><circle r="30" fill="none" stroke="#eaf7ff" stroke-width="1.6" opacity="0.55"/><circle r="42" fill="none" stroke="#eaf7ff" stroke-width="1.4" opacity="0.4"/>
+<circle r="3.5" fill="#eaf7ff"/></g><circle r="54" fill="none" stroke="#C9A35B" stroke-width="3"/></g>
+<text class="nm" x="136" y="650" text-anchor="middle">9 · Wasserringe</text>
+<text class="ds" x="136" y="666" text-anchor="middle">Konzentrisch</text>
+<g transform="translate(358,576)"><g clip-path="url(#cc)"><rect x="-54" y="-54" width="108" height="108" fill="url(#gSky)"/>
+<rect x="-54" y="34" width="108" height="20" fill="url(#gMeadow)"/>
+<path d="M-18 -36 Q0 -44 18 -36 L13 -28 L-13 -28 Z" fill="url(#gMetal)" stroke="#7f939f" stroke-width="1.2"/>
+<g stroke="#5fb0e6" stroke-width="1.4" opacity="0.8" stroke-linecap="round"><path d="M0 -26 L-18 20"/><path d="M0 -26 L-14 20"/><path d="M0 -26 L-10 20"/><path d="M0 -26 L-6 20"/><path d="M0 -26 L-2 20"/><path d="M0 -26 L2 20"/><path d="M0 -26 L6 20"/><path d="M0 -26 L10 20"/><path d="M0 -26 L14 20"/><path d="M0 -26 L18 20"/></g>
+<path d="M0 40 q5 -13 0 -20 M0 40 q-5 -13 0 -20" fill="none" stroke="#4f9a52" stroke-width="2.2"/></g><circle r="54" fill="none" stroke="#C9A35B" stroke-width="3"/></g>
+<text class="nm" x="358" y="650" text-anchor="middle">10 · Brause-Spray</text>
+<text class="ds" x="358" y="666" text-anchor="middle">Fächernder Strahl</text>
+<g transform="translate(582,576)"><g clip-path="url(#cc)"><rect x="-54" y="-54" width="108" height="108" fill="url(#gSky)"/><path d="M-54 -20.9 L-51 -19.7 L-48 -18.7 L-45 -18.2 L-42 -18.0 L-39 -18.3 L-36 -19.0 L-33 -20.0 L-30 -21.2 L-27 -22.6 L-24 -23.8 L-21 -24.9 L-18 -25.6 L-15 -26.0 L-12 -25.9 L-9 -25.4 L-6 -24.5 L-3 -23.3 L0 -22.0 L3 -20.7 L6 -19.5 L9 -18.6 L12 -18.1 L15 -18.0 L18 -18.4 L21 -19.1 L24 -20.2 L27 -21.4 L30 -22.8 L33 -24.0 L36 -25.0 L39 -25.7 L42 -26.0 L45 -25.8 L48 -25.3 L51 -24.3 L54 -23.1" fill="none" stroke="#3f93cf" stroke-width="2.5" opacity="0.5"/><path d="M-54 -4.9 L-51 -3.7 L-48 -2.7 L-45 -2.2 L-42 -2.0 L-39 -2.3 L-36 -3.0 L-33 -4.0 L-30 -5.2 L-27 -6.6 L-24 -7.8 L-21 -8.9 L-18 -9.6 L-15 -10.0 L-12 -9.9 L-9 -9.4 L-6 -8.5 L-3 -7.3 L0 -6.0 L3 -4.7 L6 -3.5 L9 -2.6 L12 -2.1 L15 -2.0 L18 -2.4 L21 -3.1 L24 -4.2 L27 -5.4 L30 -6.8 L33 -8.0 L36 -9.0 L39 -9.7 L42 -10.0 L45 -9.8 L48 -9.3 L51 -8.3 L54 -7.1" fill="none" stroke="#3f93cf" stroke-width="3" opacity="0.7"/><path d="M-54 13.1 L-51 14.3 L-48 15.3 L-45 15.8 L-42 16.0 L-39 15.7 L-36 15.0 L-33 14.0 L-30 12.8 L-27 11.4 L-24 10.2 L-21 9.1 L-18 8.4 L-15 8.0 L-12 8.1 L-9 8.6 L-6 9.5 L-3 10.7 L0 12.0 L3 13.3 L6 14.5 L9 15.4 L12 15.9 L15 16.0 L18 15.6 L21 14.9 L24 13.8 L27 12.6 L30 11.2 L33 10.0 L36 9.0 L39 8.3 L42 8.0 L45 8.2 L48 8.7 L51 9.7 L54 10.9" fill="none" stroke="#3f93cf" stroke-width="3.5" opacity="0.85"/><path d="M-54 31.1 L-51 32.3 L-48 33.3 L-45 33.8 L-42 34.0 L-39 33.7 L-36 33.0 L-33 32.0 L-30 30.8 L-27 29.4 L-24 28.2 L-21 27.1 L-18 26.4 L-15 26.0 L-12 26.1 L-9 26.6 L-6 27.5 L-3 28.7 L0 30.0 L3 31.3 L6 32.5 L9 33.4 L12 33.9 L15 34.0 L18 33.6 L21 32.9 L24 31.8 L27 30.6 L30 29.2 L33 28.0 L36 27.0 L39 26.3 L42 26.0 L45 26.2 L48 26.7 L51 27.7 L54 28.9" fill="none" stroke="#3f93cf" stroke-width="4" opacity="1.0"/></g><circle r="54" fill="none" stroke="#C9A35B" stroke-width="3"/></g>
+<text class="nm" x="582" y="650" text-anchor="middle">11 · Wellenlinien</text>
+<text class="ds" x="582" y="666" text-anchor="middle">Minimal, Line-Art</text>
+<g transform="translate(804,576)"><g clip-path="url(#cc)"><rect x="-54" y="-54" width="108" height="108" fill="url(#gSky)"/>
+<g fill="#ffffff" stroke="#cfdde6" stroke-width="1.2"><circle cx="-16" cy="-18" r="14"/><circle cx="4" cy="-23" r="17"/><circle cx="22" cy="-17" r="13"/><circle cx="0" cy="-10" r="15"/></g>
+<g fill="url(#gDrop)"><path transform="translate(-18,12) scale(0.8)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(0,18) scale(0.9)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(18,12) scale(0.8)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/></g></g><circle r="54" fill="none" stroke="#C9A35B" stroke-width="3"/></g>
+<text class="nm" x="804" y="650" text-anchor="middle">12 · Regenwolke</text>
+<text class="ds" x="804" y="666" text-anchor="middle">Wolke mit Tropfen</text>
+<g transform="translate(136,788)"><g clip-path="url(#cc)"><rect x="-54" y="-54" width="108" height="108" fill="url(#gGrey)"/>
+<rect x="6" y="-46" width="11" height="18" rx="2" fill="url(#gMetal)" stroke="#7f939f" stroke-width="1"/>
+<path d="M11 -28 q0 9 -12 9 l0 7 q19 0 19 -16 z" fill="url(#gMetal)" stroke="#7f939f" stroke-width="1.2"/>
+<path transform="translate(-1,-8) scale(0.8)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z" fill="url(#gDrop)"/>
+<path transform="translate(-1,18) scale(0.55)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z" fill="url(#gDrop)" opacity="0.85"/>
+<ellipse cx="-1" cy="40" rx="20" ry="4.5" fill="url(#gPuddle)"/></g><circle r="54" fill="none" stroke="#C9A35B" stroke-width="3"/></g>
+<text class="nm" x="136" y="862" text-anchor="middle">13 · Wasserhahn</text>
+<text class="ds" x="136" y="878" text-anchor="middle">Tropfender Hahn</text>
+<g transform="translate(358,788)"><g clip-path="url(#cc)"><rect x="-54" y="-54" width="108" height="108" fill="url(#gMeadow)"/>
+<path d="M-6 40 C-40 20 -42 -20 -2 -38 C40 -20 36 22 -6 40 Z" fill="#3c8a52"/>
+<path d="M-2 -34 L-6 38" stroke="#7fd08f" stroke-width="2"/>
+<circle cx="-14" cy="-6" r="7" fill="url(#gDrop)"/><circle cx="10" cy="8" r="5" fill="url(#gDrop)"/><circle cx="4" cy="-18" r="4" fill="url(#gDrop)"/>
+<circle cx="-16" cy="-9" r="2" fill="#fff" opacity="0.7"/><circle cx="8" cy="5" r="1.4" fill="#fff" opacity="0.7"/></g><circle r="54" fill="none" stroke="#C9A35B" stroke-width="3"/></g>
+<text class="nm" x="358" y="862" text-anchor="middle">14 · Tau auf Blatt</text>
+<text class="ds" x="358" y="878" text-anchor="middle">Frischer Tau</text>
+<g transform="translate(582,788)"><g clip-path="url(#cc)"><rect x="-54" y="-54" width="108" height="108" fill="url(#gWater)"/><circle cx="-22" cy="-14" r="12" fill="#bfe3f5" opacity="0.45" stroke="#eaf7ff" stroke-width="1"/><circle cx="-26" cy="-18" r="3" fill="#fff" opacity="0.7"/><circle cx="14" cy="-22" r="9" fill="#bfe3f5" opacity="0.45" stroke="#eaf7ff" stroke-width="1"/><circle cx="11" cy="-25" r="2" fill="#fff" opacity="0.7"/><circle cx="28" cy="6" r="13" fill="#bfe3f5" opacity="0.45" stroke="#eaf7ff" stroke-width="1"/><circle cx="24" cy="2" r="3" fill="#fff" opacity="0.7"/><circle cx="-6" cy="18" r="15" fill="#bfe3f5" opacity="0.45" stroke="#eaf7ff" stroke-width="1"/><circle cx="-10" cy="14" r="3" fill="#fff" opacity="0.7"/><circle cx="-30" cy="22" r="8" fill="#bfe3f5" opacity="0.45" stroke="#eaf7ff" stroke-width="1"/><circle cx="-32" cy="20" r="2" fill="#fff" opacity="0.7"/><circle cx="8" cy="-2" r="6" fill="#bfe3f5" opacity="0.45" stroke="#eaf7ff" stroke-width="1"/><circle cx="6" cy="-4" r="1" fill="#fff" opacity="0.7"/></g><circle r="54" fill="none" stroke="#C9A35B" stroke-width="3"/></g>
+<text class="nm" x="582" y="862" text-anchor="middle">15 · Aqua-Blasen</text>
+<text class="ds" x="582" y="878" text-anchor="middle">Unterwasser-Blasen</text>
+<g transform="translate(804,788)"><g clip-path="url(#cc)"><rect x="-54" y="-54" width="108" height="108" fill="url(#gSky)"/><g fill="#5fb0e6" opacity="0.85"><path transform="translate(-34,-30) scale(0.5)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(-12,-30) scale(0.5)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(10,-30) scale(0.5)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(32,-30) scale(0.5)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(-34,-8) scale(0.5)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(-12,-8) scale(0.5)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(10,-8) scale(0.5)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(32,-8) scale(0.5)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(-34,14) scale(0.5)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(-12,14) scale(0.5)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(10,14) scale(0.5)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(32,14) scale(0.5)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(-34,36) scale(0.5)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(-12,36) scale(0.5)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(10,36) scale(0.5)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(32,36) scale(0.5)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/></g></g><circle r="54" fill="none" stroke="#C9A35B" stroke-width="3"/></g>
+<text class="nm" x="804" y="862" text-anchor="middle">16 · Tropfenmuster</text>
+<text class="ds" x="804" y="878" text-anchor="middle">Gleichmäßiges Raster</text>
+<g transform="translate(136,1000)"><g clip-path="url(#cc)"><rect x="-54" y="-54" width="108" height="108" fill="url(#gSky)"/>
+<g fill="url(#gDrop)"><path transform="translate(-26,-11) scale(0.45) rotate(-70)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(-17,-23) scale(0.45) rotate(-40)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(-4,-29) scale(0.45) rotate(-10)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(9,-28) scale(0.45) rotate(20)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(21,-19) scale(0.45) rotate(50)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(27,-6) scale(0.45) rotate(80)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/><path transform="translate(26,7) scale(0.45) rotate(110)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z"/></g>
+<path d="M-12 8 C-9 -8 -5 -3 -2 8 C0 -10 4 -10 6 6 C8 -2 11 -4 13 9 Z" fill="#5fb0e6"/>
+<circle cx="0" cy="6" r="6" fill="url(#gDrop)"/></g><circle r="54" fill="none" stroke="#C9A35B" stroke-width="3"/></g>
+<text class="nm" x="136" y="1074" text-anchor="middle">17 · Splash</text>
+<text class="ds" x="136" y="1090" text-anchor="middle">Dynamischer Spritzer</text>
+<g transform="translate(358,1000)"><g clip-path="url(#cc)"><rect x="-54" y="-54" width="108" height="108" fill="url(#gSky)"/>
+<path d="M-15 -16 L15 -16 L11 30 L-11 30 Z" fill="#eaf7ff" opacity="0.45" stroke="#9fb8c6" stroke-width="1.5"/>
+<path d="M-12 2 L12 2 L11 30 L-11 30 Z" fill="url(#gWater)" opacity="0.9"/>
+<path d="M-12 2 q6 -5 12 0 t12 0 l-1 4 q-6 5 -12 0 t-11 0 Z" fill="#7cc2ee"/>
+<path transform="translate(0,-30) scale(0.7)" d="M0 -14 C8 -2 7 9 0 13 C-7 9 -8 -2 0 -14 Z" fill="url(#gDrop)"/></g><circle r="54" fill="none" stroke="#C9A35B" stroke-width="3"/></g>
+<text class="nm" x="358" y="1074" text-anchor="middle">18 · Wasserglas</text>
+<text class="ds" x="358" y="1090" text-anchor="middle">Eingießen</text>
+<g transform="translate(582,1000)"><g clip-path="url(#cc)"><rect x="-54" y="-54" width="108" height="108" fill="url(#gSky)"/>
+<rect x="-54" y="6" width="108" height="48" fill="url(#gWater)"/>
+<path d="M-54 6 L54 6" stroke="#9fd0ee" stroke-width="1" opacity="0.7"/>
+<g stroke="#cdeafa" stroke-width="1.6" opacity="0.6" fill="none" stroke-linecap="round"><path d="M-40 18 q6 -4 12 0 t12 0"/><path d="M6 28 q6 -4 12 0 t12 0"/><path d="M-30 40 q6 -4 12 0 t12 0"/></g></g><circle r="54" fill="none" stroke="#C9A35B" stroke-width="3"/></g>
+<text class="nm" x="582" y="1074" text-anchor="middle">19 · Meer-Horizont</text>
+<text class="ds" x="582" y="1090" text-anchor="middle">Ruhige See</text>
+<g transform="translate(804,1000)"><g clip-path="url(#cc)"><rect x="-54" y="-54" width="108" height="108" fill="url(#gGrey)"/>
+<g stroke="#5fa0cf" stroke-width="2" stroke-linecap="round" opacity="0.85" fill="none"><path d="M-38 2 L-44 14"/><path d="M-20 -2 L-26 10"/><path d="M24 -2 L18 10"/><path d="M40 2 L34 14"/><path d="M-10 30 L-16 42"/><path d="M30 28 L24 40"/></g>
+<path d="M-34 -6 A34 34 0 0 1 34 -6 Q26 0 22 -6 Q14 2 10 -6 Q4 2 0 -6 Q-4 2 -10 -6 Q-14 2 -22 -6 Q-26 0 -34 -6 Z" fill="#c4492f"/>
+<path d="M0 -8 L-30 -8" stroke="#a8412c" stroke-width="1" opacity="0.5"/><path d="M0 -8 L-15 -8" stroke="#a8412c" stroke-width="1" opacity="0.5"/><path d="M0 -8 L15 -8" stroke="#a8412c" stroke-width="1" opacity="0.5"/><path d="M0 -8 L30 -8" stroke="#a8412c" stroke-width="1" opacity="0.5"/>
+<path d="M0 -6 L0 26 q0 8 -9 8" fill="none" stroke="#5a4632" stroke-width="3"/></g><circle r="54" fill="none" stroke="#C9A35B" stroke-width="3"/></g>
+<text class="nm" x="804" y="1074" text-anchor="middle">20 · Regenschirm</text>
+<text class="ds" x="804" y="1090" text-anchor="middle">Schutz im Regen</text>
+</svg>

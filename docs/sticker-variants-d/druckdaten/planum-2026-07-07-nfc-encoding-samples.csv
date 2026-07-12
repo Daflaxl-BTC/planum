@@ -1,0 +1,31 @@
+position,pair_id,sticker_type,die_cut_shape,size,plant_uuid,nfc_url_ndef_uri,lock_bit_after_encoding
+1,plant-01,profil,circle,"40mm (Ø), Datenformat 46x46mm",c29bd5c9-0424-4bf0-aebe-56e8f7716f97,https://www.planumplants.de/p/c29bd5c9-0424-4bf0-aebe-56e8f7716f97,yes
+2,plant-01,giessen,waterdrop,"32x40mm, Datenformat 38x46mm",c29bd5c9-0424-4bf0-aebe-56e8f7716f97,https://www.planumplants.de/p/c29bd5c9-0424-4bf0-aebe-56e8f7716f97?action=giessen,yes
+3,plant-02,profil,circle,"40mm (Ø), Datenformat 46x46mm",fd4186fb-fadc-4f2b-9b2b-b866245c61a8,https://www.planumplants.de/p/fd4186fb-fadc-4f2b-9b2b-b866245c61a8,yes
+4,plant-02,giessen,waterdrop,"32x40mm, Datenformat 38x46mm",fd4186fb-fadc-4f2b-9b2b-b866245c61a8,https://www.planumplants.de/p/fd4186fb-fadc-4f2b-9b2b-b866245c61a8?action=giessen,yes
+5,plant-03,profil,circle,"40mm (Ø), Datenformat 46x46mm",d3e2f705-5a0a-4e24-9fca-9ce68d06b49f,https://www.planumplants.de/p/d3e2f705-5a0a-4e24-9fca-9ce68d06b49f,yes
+6,plant-03,giessen,waterdrop,"32x40mm, Datenformat 38x46mm",d3e2f705-5a0a-4e24-9fca-9ce68d06b49f,https://www.planumplants.de/p/d3e2f705-5a0a-4e24-9fca-9ce68d06b49f?action=giessen,yes
+7,plant-04,profil,circle,"40mm (Ø), Datenformat 46x46mm",df03885a-4d86-4177-b24e-c2c9b533acde,https://www.planumplants.de/p/df03885a-4d86-4177-b24e-c2c9b533acde,yes
+8,plant-04,giessen,waterdrop,"32x40mm, Datenformat 38x46mm",df03885a-4d86-4177-b24e-c2c9b533acde,https://www.planumplants.de/p/df03885a-4d86-4177-b24e-c2c9b533acde?action=giessen,yes
+9,plant-05,profil,circle,"40mm (Ø), Datenformat 46x46mm",58095dcf-8786-46c0-86fa-ac501861fa20,https://www.planumplants.de/p/58095dcf-8786-46c0-86fa-ac501861fa20,yes
+10,plant-05,giessen,waterdrop,"32x40mm, Datenformat 38x46mm",58095dcf-8786-46c0-86fa-ac501861fa20,https://www.planumplants.de/p/58095dcf-8786-46c0-86fa-ac501861fa20?action=giessen,yes
+11,plant-06,profil,circle,"40mm (Ø), Datenformat 46x46mm",ee03c1fc-a442-4305-9c8a-b5c583535d9d,https://www.planumplants.de/p/ee03c1fc-a442-4305-9c8a-b5c583535d9d,yes
+12,plant-06,giessen,waterdrop,"32x40mm, Datenformat 38x46mm",ee03c1fc-a442-4305-9c8a-b5c583535d9d,https://www.planumplants.de/p/ee03c1fc-a442-4305-9c8a-b5c583535d9d?action=giessen,yes
+13,plant-07,profil,circle,"40mm (Ø), Datenformat 46x46mm",62c36e15-e193-4ef3-96ae-203995396f81,https://www.planumplants.de/p/62c36e15-e193-4ef3-96ae-203995396f81,yes
+14,plant-07,giessen,waterdrop,"32x40mm, Datenformat 38x46mm",62c36e15-e193-4ef3-96ae-203995396f81,https://www.planumplants.de/p/62c36e15-e193-4ef3-96ae-203995396f81?action=giessen,yes
+15,plant-08,profil,circle,"40mm (Ø), Datenformat 46x46mm",814aa9e0-d688-431c-ba35-de739f539e12,https://www.planumplants.de/p/814aa9e0-d688-431c-ba35-de739f539e12,yes
+16,plant-08,giessen,waterdrop,"32x40mm, Datenformat 38x46mm",814aa9e0-d688-431c-ba35-de739f539e12,https://www.planumplants.de/p/814aa9e0-d688-431c-ba35-de739f539e12?action=giessen,yes
+17,plant-09,profil,circle,"40mm (Ø), Datenformat 46x46mm",cac23f00-b07e-48c5-87e5-c75d5826cb9c,https://www.planumplants.de/p/cac23f00-b07e-48c5-87e5-c75d5826cb9c,yes
+18,plant-09,giessen,waterdrop,"32x40mm, Datenformat 38x46mm",cac23f00-b07e-48c5-87e5-c75d5826cb9c,https://www.planumplants.de/p/cac23f00-b07e-48c5-87e5-c75d5826cb9c?action=giessen,yes
+19,plant-10,profil,circle,"40mm (Ø), Datenformat 46x46mm",9df553fc-5f59-4728-956f-a39f19602c2c,https://www.planumplants.de/p/9df553fc-5f59-4728-956f-a39f19602c2c,yes
+20,plant-10,giessen,waterdrop,"32x40mm, Datenformat 38x46mm",9df553fc-5f59-4728-956f-a39f19602c2c,https://www.planumplants.de/p/9df553fc-5f59-4728-956f-a39f19602c2c?action=giessen,yes
+21,plant-11,profil,circle,"40mm (Ø), Datenformat 46x46mm",f3f92472-adf5-4bae-a782-b528e59fb0c8,https://www.planumplants.de/p/f3f92472-adf5-4bae-a782-b528e59fb0c8,yes
+22,plant-11,giessen,waterdrop,"32x40mm, Datenformat 38x46mm",f3f92472-adf5-4bae-a782-b528e59fb0c8,https://www.planumplants.de/p/f3f92472-adf5-4bae-a782-b528e59fb0c8?action=giessen,yes
+23,plant-12,profil,circle,"40mm (Ø), Datenformat 46x46mm",61286e13-eeed-4399-8941-80698668edbe,https://www.planumplants.de/p/61286e13-eeed-4399-8941-80698668edbe,yes
+24,plant-12,giessen,waterdrop,"32x40mm, Datenformat 38x46mm",61286e13-eeed-4399-8941-80698668edbe,https://www.planumplants.de/p/61286e13-eeed-4399-8941-80698668edbe?action=giessen,yes
+25,plant-13,profil,circle,"40mm (Ø), Datenformat 46x46mm",7f205d72-91a3-46af-b4d2-8a5b1b71cb0f,https://www.planumplants.de/p/7f205d72-91a3-46af-b4d2-8a5b1b71cb0f,yes
+26,plant-13,giessen,waterdrop,"32x40mm, Datenformat 38x46mm",7f205d72-91a3-46af-b4d2-8a5b1b71cb0f,https://www.planumplants.de/p/7f205d72-91a3-46af-b4d2-8a5b1b71cb0f?action=giessen,yes
+27,plant-14,profil,circle,"40mm (Ø), Datenformat 46x46mm",efda9559-ad8a-4502-99c3-f0a285014a17,https://www.planumplants.de/p/efda9559-ad8a-4502-99c3-f0a285014a17,yes
+28,plant-14,giessen,waterdrop,"32x40mm, Datenformat 38x46mm",efda9559-ad8a-4502-99c3-f0a285014a17,https://www.planumplants.de/p/efda9559-ad8a-4502-99c3-f0a285014a17?action=giessen,yes
+29,plant-15,profil,circle,"40mm (Ø), Datenformat 46x46mm",067eeafb-0056-44b3-9702-0512ba20988a,https://www.planumplants.de/p/067eeafb-0056-44b3-9702-0512ba20988a,yes
+30,plant-15,giessen,waterdrop,"32x40mm, Datenformat 38x46mm",067eeafb-0056-44b3-9702-0512ba20988a,https://www.planumplants.de/p/067eeafb-0056-44b3-9702-0512ba20988a?action=giessen,yes

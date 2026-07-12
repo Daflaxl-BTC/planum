@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Planum — Sticker Konzept &amp; Spezifikationen</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  :root{
+    --forest:#1F4D2C;--leaf:#2D5F3F;--sage:#87A878;--mist:#C7D7C2;
+    --cream:#F5F1E8;--paper:#FBFAF6;--ink:#15241B;--muted:#5C6B61;--line:#E2E6DD;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#fff;color:var(--ink);
+    font-family:-apple-system,"Helvetica Neue","Segoe UI",sans-serif;font-size:11pt;line-height:1.5}
+  .hero{background:linear-gradient(135deg,var(--forest),var(--leaf) 60%,var(--sage));
+    color:#fff;border-radius:14px;padding:22px 24px;margin-bottom:18px}
+  .hero h1{margin:0 0 6px;font-size:24pt;letter-spacing:-.3px}
+  .hero p{margin:0;opacity:.95;font-size:11pt}
+  .badges{margin-top:10px}
+  .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
+    padding:3px 10px;border-radius:999px;font-size:8pt;margin:2px 4px 0 0}
+  h2{font-size:14pt;color:var(--forest);border-bottom:1.5px solid var(--mist);padding-bottom:4px;
+    margin:18px 0 8px;page-break-after:avoid}
+  h3{font-size:11.5pt;color:var(--leaf);margin:10px 0 4px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:8px 0}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0}
+  .card{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff;break-inside:avoid}
+  .design-card{text-align:center}
+  .design-card .stage{background:#FAFAF7;border:1px solid var(--line);border-radius:10px;
+    padding:10px;display:flex;justify-content:center;margin-bottom:8px}
+  .design-card svg{width:120px;height:120px}
+  .tag{font-size:7pt;text-transform:uppercase;letter-spacing:1.4px;color:var(--sage);font-weight:700}
+  .design-card h3{margin:2px 0 4px;font-size:11pt;color:var(--ink)}
+  .design-card p{margin:0;font-size:9pt;color:var(--muted)}
+  table{width:100%;border-collapse:collapse;font-size:9.5pt;margin:6px 0}
+  th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:var(--cream);color:var(--forest);width:30%}
+  ul.checks{list-style:none;padding:0;margin:0}
+  ul.checks li{padding:3px 0 3px 18px;position:relative;font-size:10pt}
+  ul.checks li::before{content:"✓";position:absolute;left:0;color:var(--leaf);font-weight:700}
+  .callout{background:var(--cream);border-left:3px solid var(--sage);padding:8px 12px;
+    margin:8px 0;font-size:10pt;border-radius:0 8px 8px 0}
+  .callout.warn{background:#FDF4E3;border-left-color:#D4A24C}
+  .legend{font-size:8.5pt;color:var(--muted)}
+  .swatch{display:inline-block;width:11px;height:11px;border-radius:2px;
+    border:1px solid rgba(0,0,0,.1);margin:0 4px 0 6px;vertical-align:middle}
+  footer{margin-top:18px;font-size:8pt;color:var(--muted);text-align:center}
+  .pagebreak{page-break-before:always}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>Planum — QR &amp; NFC Sticker</h1>
+  <p>Konzept, Spezifikationen und drei Designvarianten für die Anfrage an einen Alibaba-Hersteller. Stand: 25.04.2026</p>
+  <div class="badges">
+    <span class="badge">Rund 30 mm</span>
+    <span class="badge">Wasserfest matt + UV</span>
+    <span class="badge">QR + NFC NTAG213 (alle Sticker)</span>
+    <span class="badge">29 € Hardware</span>
+    <span class="badge">+10 € App-Pro-Add-on</span>
+    <span class="badge">Erstbestellung: 50 Pakete</span>
+  </div>
+</div>
+
+<h2>1 · Produkt-Konzept</h2>
+<p>Planum-Sticker sind die physische Brücke zwischen einer Zimmerpflanze und ihrem digitalen Pflegeprofil. Jeder Sticker trägt einen einzigartigen QR-Code (Premium zusätzlich NFC), der auf <code>app.planum.de/plant/{uuid}</code> verlinkt. Der Kunde klebt den Sticker an den Pflanzentopf — ab da ist die Pflanze Teil seines digitalen Gartens.</p>
+<ul class="checks">
+  <li><strong>Funktional</strong> — QR muss zuverlässig scannen, auch nach 3 Jahren Gießwasser, Sonne und Erde-Kontakt.</li>
+  <li><strong>Ästhetisch</strong> — Auf einem schönen Topf nicht störend, sondern wie ein dezentes Markenzeichen.</li>
+  <li><strong>Wiedererkennbar</strong> — Markenführung Planum: ruhige Grüntöne, botanisches Motiv, klare Typografie.</li>
+</ul>
+
+<h2>2 · Drei Designvarianten</h2>
+<p style="color:var(--muted);font-size:9pt">Alle Designs: Durchmesser 30 mm · QR-Inhalt: <code>app.planum.de/plant/{uuid}</code> · Druck 4-färbig CMYK + Schutzlack.</p>
+
+<div class="grid-3">
+
+  <div class="card design-card">
+    <div class="stage">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="cA"><circle cx="100" cy="100" r="98"/></clipPath>
+          <pattern id="qrA" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+            <rect width="6" height="6" fill="#fff"/>
+            <rect width="3" height="3" fill="#15241B"/>
+            <rect x="3" y="3" width="3" height="3" fill="#15241B"/>
+          </pattern>
+        </defs>
+        <g clip-path="url(#cA)">
+          <circle cx="100" cy="100" r="98" fill="#FBFAF6"/>
+          <g transform="translate(100,52)">
+            <path d="M-58,8 Q-44,-18 -22,-6 Q-30,-22 -10,-26 Q-6,-44 8,-30 Q18,-44 28,-22 Q46,-22 42,-2 Q60,4 50,18 Q60,30 38,30 L-38,30 Q-60,30 -58,8 Z" fill="#2D5F3F"/>
+            <path d="M-46,4 Q-34,-12 -16,-2 Q-22,-16 -6,-18 Q-2,-32 8,-22 Q16,-32 24,-14 Q38,-14 34,2 Q48,6 40,16 L-32,16 Q-48,16 -46,4 Z" fill="#87A878"/>
+          </g>
+          <rect x="62" y="80" width="76" height="76" fill="url(#qrA)" rx="3"/>
+          <rect x="62" y="80" width="20" height="20" fill="none" stroke="#15241B" stroke-width="3"/>
+          <rect x="68" y="86" width="8" height="8" fill="#15241B"/>
+          <rect x="118" y="80" width="20" height="20" fill="none" stroke="#15241B" stroke-width="3"/>
+          <rect x="124" y="86" width="8" height="8" fill="#15241B"/>
+          <rect x="62" y="136" width="20" height="20" fill="none" stroke="#15241B" stroke-width="3"/>
+          <rect x="68" y="142" width="8" height="8" fill="#15241B"/>
+          <text x="100" y="178" text-anchor="middle" fill="#1F4D2C" font-family="Georgia,serif" font-size="14" font-weight="600" letter-spacing="2">planum</text>
+        </g>
+        <circle cx="100" cy="100" r="98" fill="none" stroke="#E2E6DD"/>
+      </svg>
+    </div>
+    <span class="tag">Variante A</span>
+    <h3>Leaf Crown</h3>
+    <p>Klassisch &amp; ruhig. Botanischer Bogen über dem QR, Wortmarke unten.</p>
+  </div>
+
+  <div class="card design-card">
+    <div class="stage">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="cB"><circle cx="100" cy="100" r="98"/></clipPath>
+          <pattern id="qrB" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+            <rect width="6" height="6" fill="#fff"/>
+            <rect width="3" height="3" fill="#15241B"/>
+            <rect x="3" y="3" width="3" height="3" fill="#15241B"/>
+          </pattern>
+        </defs>
+        <g clip-path="url(#cB)">
+          <circle cx="100" cy="100" r="98" fill="#1F4D2C"/>
+          <g fill="#87A878" opacity=".55">
+            <ellipse cx="100" cy="14" rx="6" ry="3" transform="rotate(0 100 100)"/>
+            <ellipse cx="100" cy="14" rx="6" ry="3" transform="rotate(45 100 100)"/>
+            <ellipse cx="100" cy="14" rx="6" ry="3" transform="rotate(90 100 100)"/>
+            <ellipse cx="100" cy="14" rx="6" ry="3" transform="rotate(135 100 100)"/>
+            <ellipse cx="100" cy="14" rx="6" ry="3" transform="rotate(180 100 100)"/>
+            <ellipse cx="100" cy="14" rx="6" ry="3" transform="rotate(225 100 100)"/>
+            <ellipse cx="100" cy="14" rx="6" ry="3" transform="rotate(270 100 100)"/>
+            <ellipse cx="100" cy="14" rx="6" ry="3" transform="rotate(315 100 100)"/>
+          </g>
+          <circle cx="100" cy="100" r="68" fill="#FBFAF6"/>
+          <path d="M100,40 Q92,46 96,54 Q100,46 104,54 Q108,46 100,40 Z" fill="#2D5F3F"/>
+          <rect x="68" y="68" width="64" height="64" fill="url(#qrB)" rx="2"/>
+          <rect x="68" y="68" width="18" height="18" fill="none" stroke="#15241B" stroke-width="2.6"/>
+          <rect x="73" y="73" width="8" height="8" fill="#15241B"/>
+          <rect x="114" y="68" width="18" height="18" fill="none" stroke="#15241B" stroke-width="2.6"/>
+          <rect x="119" y="73" width="8" height="8" fill="#15241B"/>
+          <rect x="68" y="114" width="18" height="18" fill="none" stroke="#15241B" stroke-width="2.6"/>
+          <rect x="73" y="119" width="8" height="8" fill="#15241B"/>
+          <text x="100" y="148" text-anchor="middle" fill="#1F4D2C" font-family="Georgia,serif" font-size="9" letter-spacing="3" font-weight="600">PLANUM</text>
+          <text x="100" y="158" text-anchor="middle" fill="#5C6B61" font-size="6" letter-spacing="1">app.planum.de</text>
+        </g>
+        <circle cx="100" cy="100" r="98" fill="none" stroke="#15241B" stroke-width=".8" opacity=".4"/>
+      </svg>
+    </div>
+    <span class="tag">Variante B</span>
+    <h3>Forest Frame</h3>
+    <p>Premium &amp; auffällig. Tiefgrüner Außenring, weißer QR-Innenkreis.</p>
+  </div>
+
+  <div class="card design-card">
+    <div class="stage">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="cC"><circle cx="100" cy="100" r="98"/></clipPath>
+          <pattern id="qrC" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+            <rect width="6" height="6" fill="#fff"/>
+            <rect width="3" height="3" fill="#15241B"/>
+            <rect x="3" y="3" width="3" height="3" fill="#15241B"/>
+          </pattern>
+        </defs>
+        <g clip-path="url(#cC)">
+          <circle cx="100" cy="100" r="98" fill="#F5F1E8"/>
+          <g transform="translate(28,100) rotate(-20)">
+            <path d="M0,0 Q-8,-50 28,-58 Q40,-30 48,0 Q40,30 28,58 Q-8,50 0,0 Z" fill="#2D5F3F"/>
+            <path d="M14,-40 L26,-30 M18,-20 L30,-12 M20,0 L34,0 M18,20 L30,12 M14,40 L26,30" stroke="#F5F1E8" stroke-width="3" stroke-linecap="round" fill="none"/>
+          </g>
+          <g transform="translate(172,100) rotate(160)">
+            <path d="M0,0 Q-8,-50 28,-58 Q40,-30 48,0 Q40,30 28,58 Q-8,50 0,0 Z" fill="#87A878"/>
+            <path d="M14,-40 L26,-30 M18,-20 L30,-12 M20,0 L34,0 M18,20 L30,12 M14,40 L26,30" stroke="#F5F1E8" stroke-width="3" stroke-linecap="round" fill="none"/>
+          </g>
+          <rect x="62" y="62" width="76" height="76" rx="10" fill="#fff" stroke="#E2E6DD"/>
+          <rect x="68" y="68" width="64" height="64" fill="url(#qrC)" rx="2"/>
+          <rect x="68" y="68" width="18" height="18" fill="none" stroke="#15241B" stroke-width="2.6"/>
+          <rect x="73" y="73" width="8" height="8" fill="#15241B"/>
+          <rect x="114" y="68" width="18" height="18" fill="none" stroke="#15241B" stroke-width="2.6"/>
+          <rect x="119" y="73" width="8" height="8" fill="#15241B"/>
+          <rect x="68" y="114" width="18" height="18" fill="none" stroke="#15241B" stroke-width="2.6"/>
+          <rect x="73" y="119" width="8" height="8" fill="#15241B"/>
+          <text x="100" y="172" text-anchor="middle" fill="#1F4D2C" font-family="Georgia,serif" font-size="11" font-weight="600" letter-spacing="2.5">planum</text>
+        </g>
+        <circle cx="100" cy="100" r="98" fill="none" stroke="#E2E6DD"/>
+      </svg>
+    </div>
+    <span class="tag">Variante C</span>
+    <h3>Monstera Hug</h3>
+    <p>Verspielt &amp; botanisch. Zwei Monstera-Blätter umarmen den QR.</p>
+  </div>
+
+</div>
+
+<div class="callout">
+<strong>Empfehlung:</strong> Eine Designvariante als Hauptlinie wählen — alle Sticker werden identisch produziert (QR + NFC kombiniert). Variante <strong>A („Leaf Crown")</strong> wirkt am breitesten anschlussfähig, Variante <strong>B („Forest Frame")</strong> setzt auf Premium-Look, Variante C eignet sich als spätere Saison-Edition.
+</div>
+
+<div class="pagebreak"></div>
+
+<h2>3 · Technische Spezifikationen</h2>
+<table>
+<tr><th>Form &amp; Maße</th><td>Rund, Durchmesser 30 mm (Premium-Option zusätzlich 25 mm)</td></tr>
+<tr><th>Trägerfolie</th><td>Weißes PP / Vinyl, 80–100 µm, reißfest</td></tr>
+<tr><th>Klebstoff</th><td>Permanent-Acrylat, lösungsmittelfrei, &gt; 8 N/25 mm Anfangshaftung, −20 °C bis +80 °C</td></tr>
+<tr><th>Druck</th><td>4-farbig CMYK Offset oder UV-Digital, ≥ 600 dpi</td></tr>
+<tr><th>Veredelung</th><td>Matt-Laminat + UV-Schutzlack, wasserfest (24 h Wasserlagerung), Wollskala &gt; 6</td></tr>
+<tr><th>Haltbarkeit</th><td>Mindestens 3 Jahre</td></tr>
+<tr><th>QR-Code</th><td>QR Modell 2, Fehlerkorrektur Level <strong>H</strong> (30 %), Modulgröße ≥ 0,5 mm, Inhalt: <code>https://app.planum.de/plant/{UUID}</code></td></tr>
+<tr><th>Personalisierung</th><td>Jeder Sticker mit einzigartiger UUID v4 (CSV von uns)</td></tr>
+<tr><th>NFC (alle Einheiten)</th><td>NXP NTAG 213 (180 Byte) als Standard, 13,56 MHz, ISO/IEC 14443A, vorprogrammiert. Optionales Upgrade auf NTAG 215 (504 Byte).</td></tr>
+<tr><th>Verpackung</th><td>20 Sticker pro Endkunden-Paket auf A6-Trägerbogen + Anleitungs-Insert + Markenumschlag</td></tr>
+<tr><th>Außenkarton</th><td>50 Endkunden-Pakete pro Karton, mit Charge + Datum</td></tr>
+<tr><th>Zertifizierungen</th><td>REACH, RoHS, EU 10/2011, NFC-Chip CE/FCC</td></tr>
+</table>
+
+<h2>4 · Produkt &amp; Mengen</h2>
+<div class="grid-2">
+  <div class="card">
+    <h3>Hardware (eine SKU)</h3>
+    <table>
+      <tr><th>Sticker / Paket</th><td>20</td></tr>
+      <tr><th>Pakete (1. Bestellung)</th><td><strong>50</strong></td></tr>
+      <tr><th>Sticker gesamt</th><td>1.000 (alle QR + NFC)</td></tr>
+      <tr><th>Verkaufspreis Paket</th><td>29,00 € (Hardware)</td></tr>
+      <tr><th>Ziel-Stückkosten</th><td>≤ 0,55 € pro Sticker</td></tr>
+    </table>
+    <p style="font-size:8.5pt;color:var(--muted);margin-top:6px">Jeder Sticker enthält QR-Code + NFC-Tag. Endkunden entscheiden frei, welche Methode sie nutzen — Smartphone-Scan oder NFC-Tap.</p>
+  </div>
+  <div class="card">
+    <h3>App-Add-on „Pro" (Software)</h3>
+    <table>
+      <tr><th>Aufpreis pro Paket</th><td>+ 10,00 €</td></tr>
+      <tr><th>Leistung 1</th><td>Wöchentlicher automatischer Krankheits-Check per Bilderkennung</td></tr>
+      <tr><th>Leistung 2</th><td>Vollständig ausformulierter Pflegeplan pro Pflanze</td></tr>
+      <tr><th>Buchung</th><td>In der App, jederzeit zubuchbar</td></tr>
+      <tr><th>API-Quelle</th><td>Plant.id Health / PlantNet / interner LLM-Layer</td></tr>
+    </table>
+    <p style="font-size:8.5pt;color:var(--muted);margin-top:6px">Hardware-Hersteller ist davon nicht betroffen — reine Software-/API-Leistung.</p>
+  </div>
+</div>
+<div class="callout warn">
+<strong>Hinweis MOQ:</strong> 1.000 Stück liegt unter dem typischen Alibaba-MOQ. Wir formulieren die Anfrage als <em>Sample-/Pilot-Run</em> mit klarer Folgebestell-Option (Skalierung auf 10–50 k Stück nach Marktvalidierung).
+</div>
+
+<h2>5 · Anforderungen an den Hersteller</h2>
+<div class="grid-2">
+  <div class="card">
+    <h3>Pflicht</h3>
+    <ul class="checks">
+      <li>Annahme einer CSV mit 1.000+ unique UUIDs für Variabel-Druck</li>
+      <li>NFC-Chips vorprogrammiert mit URL pro UUID</li>
+      <li>Vollständig konfektioniertes Test-Paket vor Hauptproduktion (1–2 Endkunden-Sets)</li>
+      <li>Digitaler Proof / Druckvorschau vor Freigabe</li>
+      <li>Test-Reports Wasserfestigkeit, UV, Klebkraft</li>
+      <li>Lieferung CIF Hamburg oder DDP Deutschland</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Wünschenswert</h3>
+    <ul class="checks">
+      <li>FSC-Papier für Trägerbogen + plastikfreie Außenverpackung</li>
+      <li>Eigene Lager-/Fulfillment-Option für Folgebestellungen</li>
+      <li>Erfahrung mit NFC-Stickern</li>
+      <li>NDA-Unterzeichnung bei Bedarf</li>
+    </ul>
+  </div>
+</div>
+
+<h2>6 · Markenfarben</h2>
+<p class="legend">
+<span class="swatch" style="background:#1F4D2C"></span>Forest #1F4D2C
+<span class="swatch" style="background:#2D5F3F"></span>Leaf #2D5F3F
+<span class="swatch" style="background:#87A878"></span>Sage #87A878
+<span class="swatch" style="background:#C7D7C2"></span>Mist #C7D7C2
+<span class="swatch" style="background:#F5F1E8"></span>Cream #F5F1E8
+<span class="swatch" style="background:#FBFAF6"></span>Paper #FBFAF6
+<span class="swatch" style="background:#15241B"></span>Ink #15241B
+</p>
+
+<h2>7 · Liefer- &amp; Zahlungsanforderungen</h2>
+<table>
+<tr><th>Sample-Lieferung</th><td>Innerhalb 14 Tagen, DHL Express</td></tr>
+<tr><th>Hauptproduktion</th><td>Start nach Sample-Freigabe, ≤ 30 Tage Lieferzeit</td></tr>
+<tr><th>Versand</th><td>CIF Hamburg oder DDP Deutschland</td></tr>
+<tr><th>Zahlung</th><td>Alibaba Trade Assurance bevorzugt; alternativ 30 % / 70 %</td></tr>
+<tr><th>Garantie</th><td>Ersatz / Gutschrift bei Mängelquote &gt; 2 %</td></tr>
+</table>
+
+<footer>Planum — Konzeptstand 25.04.2026 · Vertraulich · Felix Bredl · felix.bredl@gmail.com</footer>
+
+</body>
+</html>

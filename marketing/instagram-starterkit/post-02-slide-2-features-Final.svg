@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <radialGradient id="bgPost" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#fefcf7"/>
+      <stop offset="60%" stop-color="#f6f7f4"/>
+      <stop offset="100%" stop-color="#e8ebe2"/>
+    </radialGradient>
+    <radialGradient id="blob1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c3d9c3" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#c3d9c3" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blob2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e0ccab" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#e0ccab" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="0" dy="10" result="offsetblur"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.10"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1350" fill="url(#bgPost)"/>
+  <circle cx="900" cy="180" r="320" fill="url(#blob1)"/>
+  <circle cx="120" cy="1200" r="380" fill="url(#blob2)"/>
+
+  <!-- Top: Logo + Brand -->
+  <g transform="translate(540 130)">
+    <g transform="translate(-180 -45)">
+      <rect width="90" height="90" rx="22" fill="#386538"/>
+      <g transform="translate(45 45) scale(3.2) translate(-12 -12)">
+        <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s1 7.5-4.2 11.8"
+              fill="none" stroke="#ffffff" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6.7 17.3c3-3 4.7-7.6 5.1-11.3"
+              fill="none" stroke="#ffffff" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </g>
+    <text x="-72" y="20" font-family="Lora, Georgia, serif"
+          font-size="68" font-weight="700" fill="#353c2e">Planum</text>
+  </g>
+
+  <!-- Pill: Karussell-Indikator -->
+  <g transform="translate(540 270)">
+    <rect x="-220" y="-32" width="440" height="64" rx="32" fill="#e0ece0"/>
+    <text x="0" y="8" text-anchor="middle"
+          font-family="Lato, 'Helvetica Neue', sans-serif" font-size="26"
+          font-weight="600" fill="#386538" letter-spacing="2">POST 02  ·  2 / 3</text>
+  </g>
+
+  <!-- Headline (2 Zeilen) -->
+  <text x="540" y="395" text-anchor="middle"
+        font-family="Lora, Georgia, serif"
+        font-size="68" font-weight="700" fill="#353c2e">4 Funktionen, die du</text>
+  <text x="540" y="490" text-anchor="middle"
+        font-family="Lora, Georgia, serif"
+        font-size="80" font-style="italic" font-weight="700" fill="#9a683a">noch nicht kennst.</text>
+
+  <!-- ============== CARDS 2x2 ============== -->
+  <!-- Card 1: Pflege-Tracker (top-left) -->
+  <g transform="translate(290 700)" filter="url(#cardShadow)">
+    <rect x="-225" y="-135" width="450" height="270" rx="22" fill="#ffffff" stroke="#e8ebe2" stroke-width="1"/>
+    <!-- Icon block -->
+    <g transform="translate(0 -65)">
+      <rect x="-40" y="-40" width="80" height="80" rx="18" fill="#f0e3d0"/>
+      <g transform="scale(2.5) translate(-12 -12)" stroke="#9a683a" stroke-width="1.6" fill="none"
+         stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+      </g>
+    </g>
+    <text x="0" y="35" text-anchor="middle"
+          font-family="Lato, 'Helvetica Neue', sans-serif"
+          font-size="34" font-weight="700" fill="#353c2e">Pflege-Tracker</text>
+    <text x="0" y="80" text-anchor="middle"
+          font-family="Lato, 'Helvetica Neue', sans-serif"
+          font-size="24" fill="#7a8963">Gießen, Düngen, Umtopfen</text>
+    <text x="0" y="112" text-anchor="middle"
+          font-family="Lato, 'Helvetica Neue', sans-serif"
+          font-size="24" fill="#7a8963">in einem Tap.</text>
+  </g>
+
+  <!-- Card 2: Wachstumsgalerie (top-right) -->
+  <g transform="translate(790 700)" filter="url(#cardShadow)">
+    <rect x="-225" y="-135" width="450" height="270" rx="22" fill="#ffffff" stroke="#e8ebe2" stroke-width="1"/>
+    <g transform="translate(0 -65)">
+      <rect x="-40" y="-40" width="80" height="80" rx="18" fill="#f0e3d0"/>
+      <g transform="scale(2.5) translate(-12 -12)" stroke="#9a683a" stroke-width="1.6" fill="none"
+         stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+        <circle cx="12" cy="13" r="4"/>
+      </g>
+    </g>
+    <text x="0" y="35" text-anchor="middle"
+          font-family="Lato, 'Helvetica Neue', sans-serif"
+          font-size="34" font-weight="700" fill="#353c2e">Wachstums­galerie</text>
+    <text x="0" y="80" text-anchor="middle"
+          font-family="Lato, 'Helvetica Neue', sans-serif"
+          font-size="24" fill="#7a8963">Foto-Verlauf jeder Pflanze</text>
+    <text x="0" y="112" text-anchor="middle"
+          font-family="Lato, 'Helvetica Neue', sans-serif"
+          font-size="24" fill="#7a8963">über Monate.</text>
+  </g>
+
+  <!-- Card 3: Push-Erinnerungen (bottom-left) -->
+  <g transform="translate(290 1010)" filter="url(#cardShadow)">
+    <rect x="-225" y="-135" width="450" height="270" rx="22" fill="#ffffff" stroke="#e8ebe2" stroke-width="1"/>
+    <g transform="translate(0 -65)">
+      <rect x="-40" y="-40" width="80" height="80" rx="18" fill="#f0e3d0"/>
+      <g transform="scale(2.5) translate(-12 -12)" stroke="#9a683a" stroke-width="1.6" fill="none"
+         stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9z"/>
+        <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+      </g>
+    </g>
+    <text x="0" y="35" text-anchor="middle"
+          font-family="Lato, 'Helvetica Neue', sans-serif"
+          font-size="34" font-weight="700" fill="#353c2e">Push-Erinnerung</text>
+    <text x="0" y="80" text-anchor="middle"
+          font-family="Lato, 'Helvetica Neue', sans-serif"
+          font-size="24" fill="#7a8963">Sobald die Ampel auf</text>
+    <text x="0" y="112" text-anchor="middle"
+          font-family="Lato, 'Helvetica Neue', sans-serif"
+          font-size="24" fill="#7a8963"><tspan fill="#c79320" font-weight="700">gelb</tspan> oder <tspan fill="#a83a2a" font-weight="700">rot</tspan> kippt.</text>
+  </g>
+
+  <!-- Card 4: Pflegeshop (bottom-right) -->
+  <g transform="translate(790 1010)" filter="url(#cardShadow)">
+    <rect x="-225" y="-135" width="450" height="270" rx="22" fill="#ffffff" stroke="#e8ebe2" stroke-width="1"/>
+    <g transform="translate(0 -65)">
+      <rect x="-40" y="-40" width="80" height="80" rx="18" fill="#f0e3d0"/>
+      <g transform="scale(2.5) translate(-12 -12)" stroke="#9a683a" stroke-width="1.6" fill="none"
+         stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9" cy="21" r="1"/>
+        <circle cx="20" cy="21" r="1"/>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+      </g>
+    </g>
+    <text x="0" y="35" text-anchor="middle"
+          font-family="Lato, 'Helvetica Neue', sans-serif"
+          font-size="34" font-weight="700" fill="#353c2e">Pflegeshop</text>
+    <text x="0" y="80" text-anchor="middle"
+          font-family="Lato, 'Helvetica Neue', sans-serif"
+          font-size="24" fill="#7a8963">Erde, Dünger, Töpfe —</text>
+    <text x="0" y="112" text-anchor="middle"
+          font-family="Lato, 'Helvetica Neue', sans-serif"
+          font-size="24" fill="#7a8963">kuratiert &amp; verlinkt.</text>
+  </g>
+
+  <!-- Footer mark -->
+  <text x="540" y="1240" text-anchor="middle"
+        font-family="Lato, 'Helvetica Neue', sans-serif" font-size="22"
+        fill="#95a27e" letter-spacing="6">@PLANUM  ·  PLANUMPLANTS.de</text>
+
+  <!-- Decorative leaf (nur eine, dezent unten links) -->
+  <g transform="translate(60 1290) scale(3.5) translate(-12 -12)" opacity="0.12">
+    <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s1 7.5-4.2 11.8"
+          fill="none" stroke="#386538" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6.7 17.3c3-3 4.7-7.6 5.1-11.3"
+          fill="none" stroke="#386538" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

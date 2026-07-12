@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planum — Basis + Pro · Gesamtvorstellung</title>
+<style>
+  :root{
+    --green-900:#0f3d2e; --green-700:#1b6b4c; --green-500:#2e9e6b; --green-300:#7bd1a3;
+    --leaf:#4caf7d; --sun:#f4b740; --soil:#8a5a3b; --sky:#3a8fd6;
+    --ink:#14241d; --muted:#5d6f66; --line:#e3ece7; --bg:#f6faf7; --card:#ffffff;
+    --red:#e15554; --amber:#f4a52e; --pro:#0f3d2e;
+    --shadow:0 10px 30px rgba(15,61,46,.08); --shadow-lg:0 20px 50px rgba(15,61,46,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  section{padding:74px 0}
+  h1,h2,h3{line-height:1.18;letter-spacing:-.02em}
+  h2{font-size:30px;margin-bottom:10px}
+  h2 .num{color:var(--green-300);font-weight:800;margin-right:10px}
+  .lead{color:var(--muted);font-size:18px;max-width:760px}
+  .eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:700;color:var(--green-500);margin-bottom:14px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(246,250,247,.85);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:18px;color:var(--green-900)}
+  .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--green-500);box-shadow:0 0 0 4px rgba(46,158,107,.18)}
+  .navlinks{display:flex;gap:22px}
+  .navlinks a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600}
+  .navlinks a:hover{color:var(--green-700)}
+  @media(max-width:780px){.navlinks{display:none}}
+
+  /* HERO */
+  .hero{background:radial-gradient(1200px 500px at 80% -10%,rgba(123,209,163,.35),transparent),
+    linear-gradient(160deg,#0f3d2e 0%,#1b6b4c 60%,#2e9e6b 130%);color:#eafff4;padding:88px 0 78px}
+  .hero .eyebrow{color:var(--green-300)}
+  .hero h1{font-size:52px;color:#fff;max-width:840px}
+  .hero p{color:#cdeede;font-size:20px;max-width:680px;margin-top:18px}
+  .hero .cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:13px 22px;border-radius:12px;font-weight:700;text-decoration:none;font-size:15px}
+  .btn-light{background:#fff;color:var(--green-900)}
+  .btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3)}
+  .hero-stats{display:flex;gap:40px;margin-top:46px;flex-wrap:wrap}
+  .hero-stats div span{display:block}
+  .hero-stats .big{font-size:30px;font-weight:800;color:#fff}
+  .hero-stats .sm{font-size:13px;color:#a9dcc4}
+  @media(max-width:780px){.hero h1{font-size:36px}}
+
+  /* CARDS */
+  .grid{display:grid;gap:20px}
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:1fr 1fr 1fr}
+  @media(max-width:820px){.g2,.g3{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+  .card h3{font-size:19px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:15px}
+  .tag{display:inline-block;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;margin-bottom:12px}
+  .tag-basis{background:#eaf6ef;color:var(--green-700)}
+  .tag-pro{background:#0f3d2e;color:#9fe7c2}
+
+  /* PROBLEM list */
+  .flaw{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+  .flaw:last-child{border-bottom:0}
+  .flaw .x{flex:0 0 34px;height:34px;border-radius:9px;background:#fdecec;color:var(--red);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px}
+  .flaw h4{font-size:16px;margin-bottom:3px}
+  .flaw p{color:var(--muted);font-size:14.5px}
+
+  /* FUNNEL */
+  .funnel{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+  .frow{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);
+    border-radius:14px;padding:16px 20px;box-shadow:var(--shadow)}
+  .frow .bar{height:14px;border-radius:8px}
+  .frow .lab{min-width:150px;font-weight:700}
+  .frow .desc{color:var(--muted);font-size:14px;flex:1}
+
+  /* HUE diagram */
+  .hue{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:10px;text-align:center;margin-top:10px}
+  .node{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 12px;box-shadow:var(--shadow)}
+  .node .ic{font-size:30px}
+  .node b{display:block;margin-top:6px;font-size:15px}
+  .node small{color:var(--muted);font-size:12.5px}
+  .arrow{color:var(--green-500);font-weight:800;font-size:22px}
+  @media(max-width:820px){.hue{grid-template-columns:1fr;}.arrow{transform:rotate(90deg)}}
+
+  /* SENSOR specs */
+  .spec{display:flex;align-items:center;gap:13px;padding:14px;background:#fff;border:1px solid var(--line);border-radius:13px}
+  .spec .ic{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:21px;flex:0 0 42px}
+  .spec b{font-size:15px}.spec span{display:block;color:var(--muted);font-size:13px}
+
+  /* TABLE */
+  .tablewrap{overflow-x:auto;border-radius:16px;border:1px solid var(--line);box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;background:#fff;font-size:14.5px;min-width:640px}
+  th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line)}
+  thead th{background:#0f3d2e;color:#dff7ea;font-weight:700;font-size:13.5px}
+  tbody tr:last-child td{border-bottom:0}
+  .planum-col{background:#eaf6ef;font-weight:700;color:var(--green-900)}
+  td .good{color:var(--green-600,#2e9e6b);font-weight:700}
+  .pill{font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:999px;background:#eef3f0;color:var(--muted)}
+
+  /* PRICING */
+  .price{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:820px){.price{grid-template-columns:1fr}}
+  .pcard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;position:relative;box-shadow:var(--shadow)}
+  .pcard.feature{background:linear-gradient(165deg,#0f3d2e,#1b6b4c);color:#eafff4;border:0;box-shadow:var(--shadow-lg)}
+  .pcard.feature .sub,.pcard.feature li{color:#bfe9d3}
+  .pcard h3{font-size:18px}
+  .pcard .amt{font-size:34px;font-weight:800;margin:8px 0 2px}
+  .pcard .sub{color:var(--muted);font-size:13.5px;margin-bottom:16px}
+  .pcard ul{list-style:none;font-size:14px}
+  .pcard li{padding:6px 0 6px 24px;position:relative;color:#3a4a43}
+  .pcard li:before{content:"✓";position:absolute;left:0;color:var(--green-500);font-weight:800}
+  .pcard.feature li:before{color:#7bd1a3}
+  .badge{position:absolute;top:-12px;right:20px;background:var(--sun);color:#3a2a00;font-size:12px;font-weight:800;padding:5px 12px;border-radius:999px}
+
+  /* ECON */
+  .econ{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:820px){.econ{grid-template-columns:1fr}}
+  .bars div{margin:12px 0}
+  .bars .l{display:flex;justify-content:space-between;font-size:14px;margin-bottom:5px}
+  .track{height:13px;background:#eef3f0;border-radius:8px;overflow:hidden}
+  .fill{height:100%;border-radius:8px}
+
+  /* ROADMAP */
+  .road{position:relative;padding-left:26px}
+  .road:before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--green-300)}
+  .step{position:relative;padding:0 0 26px 18px}
+  .step:before{content:"";position:absolute;left:-23px;top:4px;width:14px;height:14px;border-radius:50%;
+    background:#fff;border:3px solid var(--green-500)}
+  .step h4{font-size:16px}.step .q{font-size:12.5px;font-weight:700;color:var(--green-500);letter-spacing:.04em}
+  .step p{color:var(--muted);font-size:14.5px}
+
+  .callout{background:#fff8e9;border:1px solid #f4e1ad;border-radius:14px;padding:18px 20px;display:flex;gap:14px}
+  .callout .ic{font-size:24px}
+  .callout b{color:#8a5a00}
+  .callout p{color:#7a6324;font-size:14.5px}
+
+  footer{background:#0f3d2e;color:#bfe9d3;padding:40px 0;font-size:14px;text-align:center}
+  .src{font-size:12.5px;color:var(--muted);margin-top:18px}
+  .src a{color:var(--green-700)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>Planum</div>
+    <div class="navlinks">
+      <a href="#warum">Warum neu</a>
+      <a href="#strategie">Strategie</a>
+      <a href="#hue">Hue-Prinzip</a>
+      <a href="#sensor">Der Sensor</a>
+      <a href="#markt">Markt</a>
+      <a href="#preise">Preise</a>
+      <a href="#modell">Geschäftsmodell</a>
+      <a href="#roadmap">Roadmap</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Gesamtvorstellung · Basis + Pro · Stand Juni 2026</div>
+    <h1>Vom Aufkleber zum Ökosystem.</h1>
+    <p>Planum wird ein Zwei-Stufen-Plant-Care-System: <b>Basis</b> bringt jede Pflanze per QR/NFC-Sticker in die App. <b>Pro</b> macht sie messbar — ein Sensor in der Erde, ein Hub im WLAN, ablesbar von überall. Nach dem bewährten Philips-Hue-Prinzip.</p>
+    <div class="cta">
+      <a class="btn btn-light" href="#strategie">Die Strategie ansehen</a>
+      <a class="btn btn-ghost" href="#preise">Preise &amp; Modell</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="big">~2,5 Mrd. $</span><span class="sm">Smart-Plant-Sensor-Markt 2024 → 6,8 Mrd. $ (2033)</span></div>
+      <div><span class="big">~15 %</span><span class="sm">CAGR p.a. · Smart-Plant-Sensoren</span></div>
+      <div><span class="big">1 € / Pflanze</span><span class="sm">Einstieg über die Sticker-Basis</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- WARUM -->
+<section id="warum" class="wrap">
+  <div class="eyebrow">Die ehrliche Diagnose</div>
+  <h2><span class="num">01</span>Warum das reine Sticker-Modell nicht trägt</h2>
+  <p class="lead">Der Sticker ist ein hervorragender Türöffner — aber als alleiniges Geschäftsmodell hat er drei strukturelle Lecks. Pro schließt alle drei.</p>
+  <div style="margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:8px 24px;box-shadow:var(--shadow)">
+    <div class="flaw">
+      <div class="x">1</div>
+      <div><h4>Razor ohne Blades</h4><p>19,99 € einmalig — danach nie wieder. Aber jeder aktive Nutzer kostet laufend Geld (KI-Calls, Hosting). Je besser das Produkt, desto teurer der Nutzer. Es gibt keinen Wiederkauf, der das auffängt.</p></div>
+    </div>
+    <div class="flaw">
+      <div class="x">2</div>
+      <div><h4>Kein Burggraben</h4><p>Ein QR/NFC-Aufkleber ist trivial kopierbar. Der Wert sitzt in Software, die Planta, Greg &amp; Co. jederzeit nachbauen können — inklusive Sticker. First-Mover eines Features, nicht einer Kategorie.</p></div>
+    </div>
+    <div class="flaw">
+      <div class="x">3</div>
+      <div><h4>Der Retention-Killer: manuelles Logging</h4><p>Das Ampelsystem lebt davon, dass Menschen Gießen &amp; Düngen von Hand eintragen. Genau das stirbt nach 2–3 Wochen. Kein Input → unzuverlässige Daten → schlechtere Tipps → Churn.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGIE -->
+<section id="strategie" style="background:#eef6f1">
+  <div class="wrap">
+    <div class="eyebrow">Die Neuausrichtung</div>
+    <h2><span class="num">02</span>Zwei Produkte, ein Trichter</h2>
+    <p class="lead">Der Sticker wird vom „Produkt" zum <b>Kundengewinnungs-Vehikel</b>. Das Geld verdient das Pro-Ökosystem — mit Wiederkauf, Lock-in und erstmals einer tragfähigen Subscription.</p>
+    <div class="grid g2" style="margin-top:26px">
+      <div class="card">
+        <span class="tag tag-basis">PLANUM BASIS</span>
+        <h3>Der Sticker — der Einstieg</h3>
+        <p>20 wetterfeste QR/NFC-Sticker, KI-Erkennung, Pflegepläne, Ampelsystem. Günstig, viral, Amazon-tauglich. Aufgabe: möglichst viele Haushalte in die App holen — zu niedrigsten Akquisekosten.</p>
+        <p style="margin-top:12px"><b style="color:var(--green-700)">Rolle:</b> Top-of-Funnel &amp; Markenkontakt. „Smart Plant Care für 1 € pro Pflanze."</p>
+      </div>
+      <div class="card" style="border-color:#0f3d2e;background:linear-gradient(170deg,#0f3d2e,#1b6b4c);color:#eafff4">
+        <span class="tag tag-pro">PLANUM PRO</span>
+        <h3 style="color:#fff">Sensor + Hub — die Maschine</h3>
+        <p style="color:#bfe9d3">Sensor misst automatisch, Hub funkt 24/7 in die Cloud. Schluss mit manuellem Logging. Wiederkauf pro Sensor, Ökosystem-Lock-in über den Hub, optionale Cloud-Subscription.</p>
+        <p style="margin-top:12px;color:#bfe9d3"><b style="color:#9fe7c2">Rolle:</b> Monetarisierung, Marge, Bindung &amp; Datenmoat.</p>
+      </div>
+    </div>
+
+    <h3 style="margin:38px 0 6px;font-size:20px">So fließt der Nutzer durch den Trichter</h3>
+    <div class="funnel">
+      <div class="frow"><span class="lab">1 · Entdeckung</span><div class="bar" style="width:100%;background:var(--green-300)"></div></div>
+      <div class="frow"><span class="lab">Sticker-Pack (19,99 €)</span><span class="desc">Kauf auf Amazon · App-Installation · erste Pflanze angelegt → in die Marke gezogen</span></div>
+      <div class="frow"><span class="lab">2 · Aktivierung</span><div class="bar" style="width:72%;background:var(--leaf)"></div></div>
+      <div class="frow"><span class="lab">Gratis-App-Nutzung</span><span class="desc">Pflegepläne, Erinnerungen, Galerie · spürt selbst, wie nervig manuelles Logging ist</span></div>
+      <div class="frow"><span class="lab">3 · Upgrade</span><div class="bar" style="width:45%;background:var(--green-500)"></div></div>
+      <div class="frow"><span class="lab">Pro: Starter-Hub + Sensor</span><span class="desc">„Lass die Pflanze selbst melden." → Hardware-Kauf, Ökosystem betreten</span></div>
+      <div class="frow"><span class="lab">4 · Expansion</span><div class="bar" style="width:30%;background:var(--green-700)"></div></div>
+      <div class="frow"><span class="lab">Weitere Sensoren + Cloud-Abo</span><span class="desc">Captive Wiederkauf je Pflanze · optionales Pro-Cloud-Abo → wiederkehrender Umsatz</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- HUE -->
+<section id="hue" class="wrap">
+  <div class="eyebrow">Das Vorbild</div>
+  <h2><span class="num">03</span>Das Philips-Hue-Prinzip</h2>
+  <p class="lead">Hue verkauft die Bridge (Hub) nahezu zum Selbstkostenpreis und verdient an den Lampen — und am Lock-in. Wer einmal eine Bridge hat, kauft jede weitere Lampe captive. Genau diese Mechanik bauen wir für Pflanzen.</p>
+
+  <div class="hue">
+    <div class="node"><div class="ic">🌱</div><b>Sensor</b><small>in der Erde · stromsparend · 1–2 Jahre Akku</small></div>
+    <div class="arrow">→</div>
+    <div class="node" style="border-color:#2e9e6b;background:#eaf6ef"><div class="ic">📡</div><b>Planum Hub</b><small>Bridge · empfängt Funk · WLAN in die Cloud</small></div>
+    <div class="arrow">→</div>
+    <div class="node"><div class="ic">📱</div><b>App · von überall</b><small>Echtzeit-Werte &amp; Push, auch unterwegs</small></div>
+  </div>
+
+  <div class="grid g3" style="margin-top:28px">
+    <div class="card"><h3>🪒 Razor &amp; Blades</h3><p>Hub knapp kalkuliert (das „Eintrittsticket"), Sensoren = die margenstarken „Blades". Jeder weitere Sensor ist Wiederkauf.</p></div>
+    <div class="card"><h3>🔒 Lock-in über den Hub</h3><p>Einmal installiert, ist der Wechsel teuer. Die installierte Hub-Basis wird zum wiederkehrenden Zubehör-Umsatz.</p></div>
+    <div class="card"><h3>🔋 Funk statt WLAN je Gerät</h3><p>Wie Hue (Zigbee): Sensoren funken stromsparend an den Hub — nur der Hub hat WLAN. So gibt's „von überall" <i>und</i> lange Akkulaufzeit.</p></div>
+  </div>
+
+  <div class="callout" style="margin-top:22px">
+    <div class="ic">⚖️</div>
+    <div><b>Lehre aus Hues Fehlern:</b><p>Hue verärgerte Nutzer mit Pflicht-Accounts &amp; Abo-Zwang. Wir halten das <b>Ablesen von überall kostenlos</b> — die Subscription verkauft nur Zusatzwert (Verlauf, Multi-User, KI-Diagnose). Lock-in ja, Geiselnahme nein.</p></div>
+  </div>
+</section>
+
+<!-- SENSOR -->
+<section id="sensor" style="background:#eef6f1">
+  <div class="wrap">
+    <div class="eyebrow">Das neue Produkt</div>
+    <h2><span class="num">04</span>Planum Pro — der Erd-Sensor</h2>
+    <p class="lead">Ein kleiner Stab, den man in die Erde steckt. Solar + Knopfzelle, wartungsarm, meldet automatisch in die App.</p>
+    <div class="grid g2" style="margin-top:24px">
+      <div class="spec"><div class="ic" style="background:#e7f1fb;color:var(--sky)">💧</div><div><b>Bodenfeuchte</b><span>Kapazitiv · der Kern-Wert · zuverlässig &amp; günstig</span></div></div>
+      <div class="spec"><div class="ic" style="background:#fdeede;color:var(--soil)">🌡️</div><div><b>Temperatur</b><span>Boden &amp; Umgebung · onboard, quasi gratis</span></div></div>
+      <div class="spec"><div class="ic" style="background:#fdf3d6;color:#caa12a">☀️</div><div><b>Lichtintensität</b><span>Lux-Sensor · Standort-Bewertung pro Pflanze</span></div></div>
+      <div class="spec"><div class="ic" style="background:#e9f6ef;color:var(--green-600)">🍃</div><div><b>Luftfeuchte</b><span>DHT-Klasse · günstig &amp; verlässlich</span></div></div>
+      <div class="spec"><div class="ic" style="background:#f0ecfb;color:#7a5cc7">⚡</div><div><b>Nährstoff-Indikator (EC)</b><span>Leitfähigkeit als Dünge-/Salz-Proxy</span></div></div>
+      <div class="spec"><div class="ic" style="background:#eef3f0;color:var(--muted)">🔋</div><div><b>Energie</b><span>Solar + CR2032 · 1–2 Jahre · Funk an Hub</span></div></div>
+    </div>
+
+    <div class="callout" style="margin-top:24px">
+      <div class="ic">⚠️</div>
+      <div><b>Ehrliche Machbarkeit:</b><p>Echte Labor-NPK-Messung ist im Consumer-Preis nicht seriös. Wie FYTA &amp; Xiaomi messen wir <b>EC (Leitfähigkeit)</b> und kommunizieren es als „Nährstoff-/Dünge-Indikator" — kein Labor-NPK. Feuchte, Temperatur, Licht &amp; Luftfeuchte sind dagegen problemlos. Saubere Erwartung = weniger Retouren &amp; bessere Reviews.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKT -->
+<section id="markt" class="wrap">
+  <div class="eyebrow">Markt &amp; Wettbewerb 2026</div>
+  <h2><span class="num">05</span>Wo wir landen</h2>
+  <p class="lead">Der direkte Gegner ist FYTA (Berlin) — gleiches Hub-Modell, aber teuer. Xiaomi ist billig, kann aber nicht „von überall". Dazwischen liegt unser Platz: Ökosystem-Komfort zum nahbaren Preis, auf Deutsch.</p>
+  <div class="tablewrap" style="margin-top:22px">
+    <table>
+      <thead>
+        <tr><th>Anbieter</th><th>Konnektivität</th><th>Von überall?</th><th>Misst</th><th>Preis (Einstieg)</th><th>Schwäche</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><b>FYTA Beam</b> <span class="pill">DE</span></td><td>Sensor → WiFi-Hub</td><td>✅ Ja</td>
+          <td>Feuchte, EC, Licht, Temp</td><td>~40 € Sensor + ~40 € Hub<br><span class="pill">5er+Hub: 219,99 €</span></td><td>Teuer · ~44 €/Sensor effektiv</td>
+        </tr>
+        <tr>
+          <td><b>Xiaomi Mi</b></td><td>Bluetooth (BLE)</td><td>❌ Nein</td>
+          <td>Feuchte, EC, Licht, Temp</td><td>~15–20 €</td><td>Handy muss in der Nähe sein · sperrige UX</td>
+        </tr>
+        <tr>
+          <td><b>Ecowitt</b></td><td>Funk → WiFi-Gateway</td><td>✅ Ja</td>
+          <td>Nur Feuchte</td><td>~15–20 € + 60–80 € Gateway</td><td>Prosumer/Outdoor · nur Feuchte · keine Pflege-KI</td>
+        </tr>
+        <tr class="planum-col">
+          <td><b>Planum Pro</b> <span class="pill" style="background:#0f3d2e;color:#9fe7c2">DE</span></td><td>Funk → WLAN-Hub</td><td>✅ Ja</td>
+          <td>Feuchte, EC, Licht, Temp, Luftfeuchte</td><td>ab 39,99 € (Hub + 1 Sensor)</td><td>Marke noch jung — aber: Sticker-Funnel als Vorsprung</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="src">Marktzahlen: Smart-Plant-Sensor-Markt ~2,5 Mrd. $ (2024) → ~6,8 Mrd. $ (2033), CAGR ~15 %. Wettbewerbspreise: FYTA-Store &amp; Amazon, Smart-Home-Tests 2026.</p>
+</section>
+
+<!-- PREISE -->
+<section id="preise" style="background:#eef6f1">
+  <div class="wrap">
+    <div class="eyebrow">Preis-Empfehlung (aus BOM + Wettbewerb hergeleitet)</div>
+    <h2><span class="num">06</span>Preise &amp; Bundles</h2>
+    <p class="lead">Strategie: <b>Hub bewusst knapp kalkuliert</b> (Eintrittsticket), Marge über Sensoren &amp; Bundles. Klar unter FYTA, deutlich über Xiaomi — mit dem Mehrwert „von überall + Pflege-KI + Deutsch".</p>
+    <div class="price" style="margin-top:24px">
+      <div class="pcard">
+        <h3>Basis-Sticker</h3>
+        <div class="amt">19,99 €</div>
+        <div class="sub">Einmalig · 20 QR/NFC-Slots</div>
+        <ul><li>KI-Pflanzenerkennung</li><li>Pflegepläne &amp; Ampelsystem</li><li>NFC-Premium-Tap optional</li><li>Funnel in das Pro-Ökosystem</li></ul>
+      </div>
+      <div class="pcard feature">
+        <span class="badge">Türöffner Pro</span>
+        <h3 style="color:#fff">Pro Starter-Set</h3>
+        <div class="amt" style="color:#fff">39,99 €</div>
+        <div class="sub">Hub + 1 Sensor</div>
+        <ul><li>Hub (WLAN-Bridge) inklusive</li><li>1 Erd-Sensor</li><li>Ablesen von überall — kostenlos</li><li>Automatisches Logging</li></ul>
+      </div>
+      <div class="pcard">
+        <h3>Erweiterung</h3>
+        <div class="amt">ab 24,99 €</div>
+        <div class="sub">Zusatz-Sensoren (captive)</div>
+        <ul><li>Einzel-Sensor 24,99 €</li><li>3er-Pack ~64,99 €</li><li>5er-Pack ~99,99 €</li><li>Wiederkauf pro Pflanze</li></ul>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:22px">
+      <div class="card">
+        <h3>☁️ Planum Pro Cloud <span class="pill" style="background:#eaf6ef;color:var(--green-700)">optional</span></h3>
+        <p style="margin-bottom:8px">Der erste tragfähige <b>Abo-Hebel</b> — den der Sticker allein nie rechtfertigen konnte:</p>
+        <ul style="list-style:none;font-size:14.5px;color:#3a4a43">
+          <li style="padding:4px 0">• Langzeit-Verlauf &amp; Trends pro Pflanze</li>
+          <li style="padding:4px 0">• Multi-User / Haushalt &amp; Pflanzen-Sitting</li>
+          <li style="padding:4px 0">• Erweiterte KI-Diagnose &amp; Krankheitserkennung</li>
+        </ul>
+        <p style="margin-top:10px"><b style="color:var(--green-700)">~2,99 €/Monat oder 24,99 €/Jahr.</b> Kern-Funktion bleibt gratis.</p>
+      </div>
+      <div class="card">
+        <h3>📐 Warum diese Zahlen</h3>
+        <p>Sensor-BOM grob ~8–12 € → VK 24,99 € = gesunde Marge. Hub-BOM ~12–18 € → VK ~29 € (im Set quersubventioniert) = bewusst dünn. FYTA-Einstieg liegt effektiv bei ~80 € (Sensor+Hub); unser Starter bei 39,99 € <b>halbiert die Einstiegshürde</b> und macht trotzdem Marge über Folge-Sensoren.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODELL -->
+<section id="modell" class="wrap">
+  <div class="eyebrow">Geschäftsmodell</div>
+  <h2><span class="num">07</span>Vier Umsatzströme statt einem</h2>
+  <p class="lead">Aus einem einmaligen 20-€-Verkauf wird ein gestapeltes Modell mit Wiederkauf und wiederkehrendem Umsatz.</p>
+  <div class="econ" style="margin-top:24px">
+    <div class="card">
+      <h3>Umsatz-Mix (Zielbild)</h3>
+      <div class="bars" style="margin-top:14px">
+        <div><div class="l"><span>Pro-Hardware (Hub + Sensoren)</span><b>~55 %</b></div><div class="track"><div class="fill" style="width:55%;background:var(--green-700)"></div></div></div>
+        <div><div class="l"><span>Basis-Sticker (Akquise)</span><b>~20 %</b></div><div class="track"><div class="fill" style="width:20%;background:var(--green-300)"></div></div></div>
+        <div><div class="l"><span>Pro-Cloud-Abo (wiederkehrend)</span><b>~15 %</b></div><div class="track"><div class="fill" style="width:15%;background:var(--leaf)"></div></div></div>
+        <div><div class="l"><span>Shop / Affiliate / Eigenmarke</span><b>~10 %</b></div><div class="track"><div class="fill" style="width:10%;background:var(--sun)"></div></div></div>
+      </div>
+      <p style="margin-top:14px;color:var(--muted);font-size:14px">Verschiebung weg vom einmaligen Sticker hin zu Hardware-Wiederkauf + Abo. Illustratives Zielbild, kein Forecast.</p>
+    </div>
+    <div class="card">
+      <h3>Was sich am LTV ändert</h3>
+      <div style="margin-top:8px">
+        <div class="flaw" style="border-bottom:1px solid var(--line)">
+          <div class="x" style="background:#fdecec;color:var(--red)">−</div>
+          <div><h4>Heute (nur Sticker)</h4><p>~20 € einmal, danach laufende Kosten ohne Gegenwert. Negativer Cash-Drift bei aktiven Nutzern.</p></div>
+        </div>
+        <div class="flaw" style="border-bottom:0">
+          <div class="x" style="background:#eaf6ef;color:var(--green-600)">+</div>
+          <div><h4>Mit Pro</h4><p>Starter 39,99 € + Folge-Sensoren (24,99 €/Stk.) + Abo (24,99 €/Jahr). LTV vervielfacht sich, Hardware finanziert die Cloud-Kosten.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap" style="background:#eef6f1">
+  <div class="wrap">
+    <div class="eyebrow">Umsetzung</div>
+    <h2><span class="num">08</span>Roadmap</h2>
+    <div class="grid g2" style="margin-top:22px">
+      <div>
+        <div class="road">
+          <div class="step"><div class="q">Q3 2026 · JETZT</div><h4>Basis härten &amp; NFC-Premium</h4><p>Sticker-Launch auf Amazon, NFC-Variante (29,99 €) als Upsell, App-Funnel auf Pro vorbereiten. Marke &amp; Listing schützen (DPMA/EUIPO).</p></div>
+          <div class="step"><div class="q">Q4 2026</div><h4>Pro-Prototyp &amp; Hub-Architektur</h4><p>Sensor-Prototyp (Feuchte/Temp/Licht/Luftfeuchte/EC), Hub mit Funk→WLAN, Firmware + Cloud-Pipeline. Hardware-Partner / Fertiger-Auswahl.</p></div>
+        </div>
+      </div>
+      <div>
+        <div class="road">
+          <div class="step"><div class="q">Q1 2027</div><h4>Closed Beta (50–100 Sets)</h4><p>Reale Akkulaufzeit, Funkreichweite, Messgenauigkeit &amp; UX validieren. Pricing am Markt gegentesten.</p></div>
+          <div class="step"><div class="q">Q2 2027</div><h4>Pro-Launch + Cloud-Abo</h4><p>Starter-Set 39,99 € auf Amazon, Pro-Cloud freischalten, Cross-Sell aus der Basis-Userbase. Skalierung der Sensor-Blades.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:24px;background:#eaf3fb;border-color:#bcd9f2">
+      <div class="ic">🔐</div>
+      <div><b>Frühzeitig mitdenken (aus CLAUDE.md):</b><p>API-Keys serverseitig · Supabase RLS auf allen Tabellen · nicht erratbare Plant-/Sensor-UUIDs mit Server-Berechtigungsprüfung · Bild-/Sensor-Uploads validieren. Bei Hardware zusätzlich: sichere Hub-Pairing-Flows &amp; Firmware-Signierung.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand" style="justify-content:center;color:#fff;margin-bottom:8px"><span class="dot"></span>Planum</div>
+    Basis + Pro · Gesamtvorstellung · Juni 2026 · Planum UG (in Gründung)
+    <p style="margin-top:10px;color:#7fb89c;font-size:12.5px">Illustrative Strategie- &amp; Modellzahlen zur Diskussion — kein verbindlicher Finanz-Forecast. Hardware-Stückkosten &amp; -Preise sind Schätzungen und vor Serienstart per Angebot zu validieren.</p>
+  </div>
+</footer>
+
+</body>
+</html>

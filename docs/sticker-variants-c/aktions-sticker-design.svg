@@ -1,0 +1,47 @@
+<svg width="100%" viewBox="0 0 680 500" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Planum Aktions-Sticker Designkonzept</title>
+<desc>Zwei runde Premium-NFC-Sticker: ein Wassertropfen-Sticker fuer die Giessen-Aktion und ein botanischer Profil-Sticker mit Monstera-Blatt, darunter eine Topf-Vignette mit beiden Stickern.</desc>
+<style>
+.th{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;font-weight:500;fill:#14241d}
+.ts{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:12px;font-weight:400;fill:#5d6f66}
+</style>
+
+<circle cx="200" cy="140" r="92" fill="#F4EFE6" stroke="#C9A35B" stroke-width="3"/>
+<circle cx="200" cy="140" r="82" fill="none" stroke="#C9A35B" stroke-width="1" opacity="0.55"/>
+<path d="M156 180 Q200 198 244 180" fill="none" stroke="#5C9A92" stroke-width="2" opacity="0.5"/>
+<path d="M170 188 Q200 202 230 188" fill="none" stroke="#3F8079" stroke-width="2" opacity="0.6"/>
+<path d="M200 92 C176 124 168 146 200 176 C232 146 224 124 200 92 Z" fill="#2C6E6A"/>
+<ellipse cx="190" cy="138" rx="6" ry="13" fill="#FFFFFF" opacity="0.30" transform="rotate(-16 190 138)"/>
+
+<circle cx="480" cy="140" r="92" fill="#E7EEE0" stroke="#C9A35B" stroke-width="3"/>
+<circle cx="480" cy="140" r="82" fill="none" stroke="#C9A35B" stroke-width="1" opacity="0.55"/>
+<path d="M480 70 C440 78 412 105 415 145 C417 182 450 210 480 216 C510 210 543 182 545 145 C548 105 520 78 480 70 Z" fill="#356B43"/>
+<path d="M480 84 L480 208" fill="none" stroke="#E7EEE0" stroke-width="3" opacity="0.9"/>
+<path d="M480 112 C460 118 446 126 433 140" fill="none" stroke="#E7EEE0" stroke-width="1.5" opacity="0.8"/>
+<path d="M480 112 C500 118 514 126 527 140" fill="none" stroke="#E7EEE0" stroke-width="1.5" opacity="0.8"/>
+<path d="M480 146 C458 151 443 159 429 171" fill="none" stroke="#E7EEE0" stroke-width="1.5" opacity="0.8"/>
+<path d="M480 146 C502 151 517 159 531 171" fill="none" stroke="#E7EEE0" stroke-width="1.5" opacity="0.8"/>
+<ellipse cx="453" cy="126" rx="4.5" ry="13" fill="#E7EEE0" transform="rotate(24 453 126)"/>
+<ellipse cx="507" cy="126" rx="4.5" ry="13" fill="#E7EEE0" transform="rotate(-24 507 126)"/>
+<ellipse cx="449" cy="166" rx="4.5" ry="14" fill="#E7EEE0" transform="rotate(20 449 166)"/>
+<ellipse cx="511" cy="166" rx="4.5" ry="14" fill="#E7EEE0" transform="rotate(-20 511 166)"/>
+<path d="M480 216 L480 232" fill="none" stroke="#2F5E3A" stroke-width="4"/>
+
+<text class="th" x="200" y="274" text-anchor="middle">Giessen-Sticker</text>
+<text class="ts" x="200" y="294" text-anchor="middle">Tippen loest Giessen aus</text>
+<text class="th" x="480" y="274" text-anchor="middle">Profil-Sticker</text>
+<text class="ts" x="480" y="294" text-anchor="middle">Oeffnet das Pflanzenprofil</text>
+
+<ellipse cx="320" cy="346" rx="13" ry="33" fill="#3C7A4A" transform="rotate(-20 320 346)"/>
+<ellipse cx="345" cy="334" rx="14" ry="40" fill="#356B43"/>
+<ellipse cx="368" cy="348" rx="12" ry="31" fill="#3C7A4A" transform="rotate(22 368 348)"/>
+<ellipse cx="340" cy="382" rx="46" ry="8" fill="#5A3B28"/>
+<rect x="292" y="372" width="96" height="16" rx="3" fill="#B05738"/>
+<polygon points="298,388 382,388 374,452 306,452" fill="#C56B45"/>
+<circle cx="322" cy="420" r="15" fill="#F4EFE6" stroke="#C9A35B" stroke-width="2"/>
+<path d="M322 412 C317 417 315 421 322 427 C329 421 327 417 322 412 Z" fill="#2C6E6A"/>
+<circle cx="362" cy="420" r="15" fill="#E7EEE0" stroke="#C9A35B" stroke-width="2"/>
+<ellipse cx="362" cy="420" rx="5" ry="10" fill="#356B43"/>
+<path d="M362 411 L362 429" fill="none" stroke="#E7EEE0" stroke-width="1"/>
+<text class="ts" x="340" y="478" text-anchor="middle">Zwei Sticker pro Topf</text>
+</svg>

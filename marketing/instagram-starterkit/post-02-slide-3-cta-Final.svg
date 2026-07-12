@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1080 1350">
+  <!-- Generator: Adobe Illustrator 30.3.0, SVG Export Plug-In . SVG Version: 2.1.3 Build 182)  -->
+  <defs>
+    <style>
+      .st0 {
+        filter: url(#cardShadow);
+      }
+
+      .st1 {
+        font-size: 38px;
+      }
+
+      .st1, .st2, .st3, .st4, .st5, .st6, .st7, .st8, .st9, .st10, .st11, .st12 {
+        isolation: isolate;
+      }
+
+      .st1, .st3, .st13, .st6, .st7, .st8, .st10, .st11, .st12 {
+        font-weight: 700;
+      }
+
+      .st1, .st13, .st7, .st8, .st12 {
+        font-family: HelveticaNeue-Bold, 'Helvetica Neue';
+      }
+
+      .st1, .st14 {
+        fill: #fff;
+      }
+
+      .st15 {
+        filter: url(#ctaShadow);
+      }
+
+      .st16 {
+        fill: url(#Unbenannter_Verlauf);
+      }
+
+      .st17 {
+        fill: url(#Unbenannter_Verlauf_2);
+      }
+
+      .st18 {
+        fill: url(#Unbenannter_Verlauf_4);
+      }
+
+      .st19 {
+        fill: url(#Unbenannter_Verlauf_3);
+      }
+
+      .st2 {
+        fill: #95a27e;
+        font-family: HelveticaNeue, 'Helvetica Neue';
+        letter-spacing: .27em;
+      }
+
+      .st2, .st7, .st8, .st9 {
+        font-size: 22px;
+      }
+
+      .st3 {
+        font-size: 80px;
+      }
+
+      .st3, .st5, .st7, .st8, .st9, .st12, .st20 {
+        fill: #386538;
+      }
+
+      .st3, .st10, .st11 {
+        font-family: Georgia-Bold, Georgia;
+      }
+
+      .st4 {
+        fill: #7a8963;
+        font-family: HelveticaNeue-Italic, 'Helvetica Neue';
+        font-size: 20px;
+      }
+
+      .st4, .st6 {
+        font-style: italic;
+      }
+
+      .st13, .st7 {
+        letter-spacing: .04em;
+      }
+
+      .st5 {
+        font-family: HelveticaNeue-Medium, 'Helvetica Neue';
+        font-size: 26px;
+        font-weight: 500;
+        letter-spacing: .08em;
+      }
+
+      .st21 {
+        stroke-width: 2.4px;
+      }
+
+      .st21, .st22, .st23, .st24, .st25 {
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .st21, .st22, .st23, .st14 {
+        stroke: #386538;
+      }
+
+      .st22 {
+        stroke-width: 7.5px;
+      }
+
+      .st23 {
+        stroke-width: 7.5px;
+      }
+
+      .st24 {
+        stroke-width: 2.8px;
+      }
+
+      .st24, .st25 {
+        stroke: #fff;
+      }
+
+      .st25 {
+        stroke-width: 4.8px;
+      }
+
+      .st14 {
+        stroke-width: 2px;
+      }
+
+      .st6 {
+        fill: #9a683a;
+        font-family: Georgia-BoldItalic, Georgia;
+        font-size: 98px;
+      }
+
+      .st8, .st26 {
+        letter-spacing: .05em;
+      }
+
+      .st27 {
+        opacity: .18;
+      }
+
+      .st28 {
+        opacity: .15;
+      }
+
+      .st26 {
+        font-family: MyriadPro-Regular, 'Myriad Pro';
+      }
+
+      .st10 {
+        font-size: 68px;
+      }
+
+      .st10, .st11 {
+        fill: #353c2e;
+      }
+
+      .st11 {
+        font-size: 86px;
+      }
+
+      .st12 {
+        font-size: 28px;
+      }
+
+      .st29 {
+        fill: #e0ece0;
+      }
+    </style>
+    <radialGradient id="Unbenannter_Verlauf" data-name="Unbenannter Verlauf" cx="-418.11" cy="1214.7" fx="-418.11" fy="1214.7" r=".8" gradientTransform="translate(452101 1640385) scale(1080 -1350)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fefcf7"/>
+      <stop offset=".6" stop-color="#f6f7f4"/>
+      <stop offset="1" stop-color="#e8ebe2"/>
+    </radialGradient>
+    <radialGradient id="Unbenannter_Verlauf_2" data-name="Unbenannter Verlauf 2" cx="-417.85" cy="1214.71" fx="-417.85" fy="1214.71" r=".5" gradientTransform="translate(268321 777595) scale(640 -640)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#c3d9c3" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#c3d9c3" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="Unbenannter_Verlauf_3" data-name="Unbenannter Verlauf 3" cx="-417.95" cy="1214.68" fx="-417.95" fy="1214.68" r=".5" gradientTransform="translate(317761 924355) scale(760 -760)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e0ccab" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#e0ccab" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="ctaShadow" x="-10%" y="-10%" width="120%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10"/>
+      <feOffset dx="0" dy="14" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA slope="0.18" type="linear"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="Unbenannter_Verlauf_4" data-name="Unbenannter Verlauf 4" x1="-417.87" y1="1216.12" x2="-417.87" y2="1215.12" gradientTransform="translate(276331 146705) scale(660 -120)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4a7f4a"/>
+      <stop offset="1" stop-color="#386538"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="0" dy="10" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA slope="0.10" type="linear"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect class="st16" width="1080" height="1350"/>
+  <circle class="st17" cx="900" cy="180" r="320"/>
+  <circle class="st19" cx="120" cy="1200" r="380"/>
+  <g>
+    <g>
+      <rect class="st20" x="360" y="85" width="90" height="90" rx="22" ry="22"/>
+      <g>
+        <path class="st25" d="M401.8,155.6c-11.96-3.16-19.1-15.41-15.95-27.37,1.69-6.4,6.12-11.73,12.11-14.55,18.24-6.4,23.04-10.88,23.04-10.88,0,0,3.2,24-13.44,37.76"/>
+        <path class="st25" d="M388.04,146.96c9.6-9.6,15.04-24.32,16.32-36.16"/>
+      </g>
+    </g>
+    <text class="st10" transform="translate(468 150)"><tspan x="0" y="0">Planum</tspan></text>
+  </g>
+  <g>
+    <path class="st29" d="M352,238h376c17.67,0,32,14.33,32,32h0c0,17.67-14.33,32-32,32h-376c-17.67,0-32-14.33-32-32h0c0-17.67,14.33-32,32-32Z"/>
+    <text class="st5" transform="translate(435.14 278)"><tspan x="0" y="0">POST 02 · 3 / 3</tspan></text>
+  </g>
+  <text class="st11" transform="translate(246.85 420)"><tspan x="0" y="0">Schon dabei?</tspan></text>
+  <text class="st3" transform="translate(303.01 540)"><tspan x="0" y="0">Dann nutze</tspan></text>
+  <text class="st6" transform="translate(346.54 660)"><tspan x="0" y="0">sie alle.</tspan></text>
+  <g class="st15">
+    <path class="st18" d="M210,770h660c33.14,0,60,26.86,60,60h0c0,33.14-26.86,60-60,60H210c-33.14,0-60-26.86-60-60h0c0-33.14,26.86-60,60-60Z"/>
+    <g>
+      <path class="st24" d="M275,846c-7.48-1.97-11.94-9.63-9.97-17.11,1.06-4,3.82-7.33,7.57-9.09,11.4-4,14.4-6.8,14.4-6.8,0,0,2,15-8.4,23.6"/>
+      <path class="st24" d="M266.4,840.6c6-6,9.4-15.2,10.2-22.6"/>
+    </g>
+    <text class="st1" transform="translate(312 840)" font-size="28"><tspan x="0" y="0">App öffnen · planumplants.de</tspan></text>
+  </g>
+  <g class="st0">
+    <path class="st14" d="M245,940h590c24.85,0,45,20.15,45,45h0c0,24.85-20.15,45-45,45H245c-24.85,0-45-20.15-45-45h0c0-24.85,20.15-45,45-45Z"/>
+    <g>
+      <circle class="st21" cx="275.5" cy="998.5" r="1.5"/>
+      <circle class="st21" cx="292" cy="998.5" r="1.5"/>
+      <path class="st21" d="M263.5,968.5h6l4.02,20.09c.28,1.43,1.55,2.44,3,2.41h14.58c1.45.03,2.72-.99,3-2.41l2.4-12.59h-25.5"/>
+    </g>
+    <text class="st12" transform="translate(363.76 996)"><tspan x="0" y="0">Family-Paket: 50 Codes · 39,99 €</tspan></text>
+  </g>
+  <text class="st4" transform="translate(337.56 1060)"><tspan x="0" y="0">erhältlich auf Amazon — keine Versandkosten</tspan></text>
+  <g>
+    <g>
+      <path class="st29" d="M276,1109h128c14.36,0,26,11.64,26,26h0c0,14.36-11.64,26-26,26h-128c-14.36,0-26-11.64-26-26h0c0-14.36,11.64-26,26-26Z"/>
+      <text class="st8" transform="translate(280.56 1143)"><tspan x="0" y="0">∞ Lifetime</tspan></text>
+    </g>
+    <g>
+      <path class="st29" d="M466,1109h148c14.36,0,26,11.64,26,26h0c0,14.36-11.64,26-26,26h-148c-14.36,0-26-11.64-26-26h0c0-14.36,11.64-26,26-26Z"/>
+      <text class="st7" transform="translate(455.08 1143)"><tspan x="0" y="0" xml:space="preserve">    Premium</tspan></text>
+    </g>
+    <g>
+      <path class="st29" d="M676,1109h128c14.36,0,26,11.64,26,26h0c0,14.36-11.64,26-26,26h-128c-14.36,0-26-11.64-26-26h0c0-14.36,11.64-26,26-26Z"/>
+      <text class="st9" transform="translate(678.79 1143)"><tspan class="st26" x="0" y="0">✓</tspan><tspan class="st13" x="11.99" y="0" xml:space="preserve"> Kein Abo</tspan></text>
+    </g>
+  </g>
+  <text class="st2" transform="translate(285 1240)"><tspan x="0" y="0">@PLANUM · PLANUMPLANTS.de</tspan></text>
+  <g class="st27">
+    <path class="st23" d="M75,420c-18.69-4.93-29.85-24.08-24.92-42.77,2.64-10,9.56-18.32,18.92-22.73,28.5-10,36-17,36-17,0,0,5,37.5-21,59"/>
+    <path class="st23" d="M53.5,406.5c15-15,23.5-38,25.5-56.5"/>
+  </g>
+  <g class="st28">
+    <path class="st22" d="M958.18,974.75c-9.73-16.7-4.08-38.13,12.62-47.86,8.94-5.21,19.72-6.19,29.45-2.7,27.22,13.08,37.48,13.44,37.48,13.44,0,0-22.98,30.05-56.57,26.87"/>
+    <path class="st22" d="M952.52,950c21.21,0,43.49-10.25,57.98-21.92"/>
+  </g>
+</svg>

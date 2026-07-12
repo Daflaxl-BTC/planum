@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "b1-burn",
+    "title": "Planum Burn",
+    "desc": "Klassisch lasergraviert — dunkler Brand auf Naturbambus. Volle QR-Fläche, Pflanzenname kursiv, Blätterbogen oben."
+  },
+  {
+    "slug": "b2-minimal",
+    "title": "Planum Minimal",
+    "desc": "Großer Pflanzenname als Hero, kleiner QR rechts unten. Reduziert, edel, gut lesbar aus 1m Distanz."
+  },
+  {
+    "slug": "b3-logo-center",
+    "title": "Planum Logo Center",
+    "desc": "Planum-Monogramm in der QR-Mitte (ECC-H). Markenakzent ohne Lesbarkeitsverlust."
+  },
+  {
+    "slug": "b4-night",
+    "title": "Planum Night",
+    "desc": "Dunkel gebeizter Bambus, hellerer Laserabtrag — Premium-Look für Indoor-/Designtöpfe."
+  },
+  {
+    "slug": "b5-uv-color",
+    "title": "Planum Color",
+    "desc": "UV-Druck in vollen Markenfarben (Forest + Sage) auf Naturbambus. Teurer, aber farbgleich zu den Stickern."
+  },
+  {
+    "slug": "b6-dots",
+    "title": "Planum Dots",
+    "desc": "Punkt-Module statt Quadraten — weicher, organischer Brand."
+  }
+]

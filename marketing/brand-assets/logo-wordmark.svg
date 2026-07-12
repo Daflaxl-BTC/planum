@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <defs>
+    <radialGradient id="bg2" cx="50%" cy="35%" r="75%">
+      <stop offset="0%" stop-color="#fefcf7"/>
+      <stop offset="80%" stop-color="#f6f7f4"/>
+      <stop offset="100%" stop-color="#e8ebe2"/>
+    </radialGradient>
+    <linearGradient id="leafGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4a7f4a"/>
+      <stop offset="100%" stop-color="#386538"/>
+    </linearGradient>
+  </defs>
+  <circle cx="540" cy="540" r="540" fill="url(#bg2)"/>
+  <circle cx="540" cy="540" r="538" fill="none" stroke="#e0ece0" stroke-width="2"/>
+  <g transform="translate(540 320) scale(11) translate(-12 -12)" opacity="0.10">
+    <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s1 7.5-4.2 11.8"
+          fill="none" stroke="#386538" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6.7 17.3c3-3 4.7-7.6 5.1-11.3"
+          fill="none" stroke="#386538" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g transform="translate(540 410)">
+    <circle cx="0" cy="0" r="60" fill="url(#leafGreen)"/>
+    <g transform="scale(3.5) translate(-12 -12)">
+      <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s1 7.5-4.2 11.8"
+            fill="none" stroke="#ffffff" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M6.7 17.3c3-3 4.7-7.6 5.1-11.3"
+            fill="none" stroke="#ffffff" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+  <text x="540" y="640" text-anchor="middle"
+        font-family="Lora, Georgia, serif"
+        font-size="170" fill="#353c2e" font-weight="700">Planum</text>
+  <text x="540" y="715" text-anchor="middle"
+        font-family="Lato, sans-serif"
+        font-size="32" fill="#7a8963" letter-spacing="6">PFLANZEN &#183; PLAN &#183; KI</text>
+  <circle cx="500" cy="760" r="4" fill="#386538"/>
+  <circle cx="540" cy="760" r="4" fill="#386538" opacity="0.6"/>
+  <circle cx="580" cy="760" r="4" fill="#386538" opacity="0.3"/>
+</svg>

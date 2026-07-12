@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "c1-classic",
+    "ok": true,
+    "decoded": "https://www.planumplants.de"
+  },
+  {
+    "slug": "c10-topdown",
+    "ok": true,
+    "decoded": "https://www.planumplants.de"
+  },
+  {
+    "slug": "c11-stained",
+    "ok": true,
+    "decoded": "https://www.planumplants.de"
+  },
+  {
+    "slug": "c12-minimal",
+    "ok": true,
+    "decoded": "https://www.planumplants.de"
+  },
+  {
+    "slug": "c2-dots",
+    "ok": true,
+    "decoded": "https://www.planumplants.de"
+  },
+  {
+    "slug": "c3-leaf-modules",
+    "ok": true,
+    "decoded": "https://www.planumplants.de"
+  },
+  {
+    "slug": "c4-gradient",
+    "ok": true,
+    "decoded": "https://www.planumplants.de"
+  },
+  {
+    "slug": "c5-logo-center",
+    "ok": true,
+    "decoded": "https://www.planumplants.de"
+  },
+  {
+    "slug": "c6-inverted",
+    "ok": true,
+    "decoded": "https://www.planumplants.de"
+  },
+  {
+    "slug": "c7-flora",
+    "ok": true,
+    "decoded": "https://www.planumplants.de"
+  },
+  {
+    "slug": "c8-gold",
+    "ok": true,
+    "decoded": "https://www.planumplants.de"
+  },
+  {
+    "slug": "c9-watercolor",
+    "ok": true,
+    "decoded": "https://www.planumplants.de"
+  }
+]

@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Planum — Sticker Showcase (überarbeitet)</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  :root {
+    --forest: #1F4D2C;
+    --forest-m: #2D5F3F;
+    --sage: #87A878;
+    --sage-light: #C7D7C2;
+    --cream: #FBFAF6;
+    --cream-warm: #F5F1E8;
+    --ink: #15241B;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  header {
+    padding: 56px 32px 24px;
+    text-align: center;
+    border-bottom: 1px solid var(--sage-light);
+  }
+  header h1 {
+    font-size: 38px;
+    margin: 0 0 8px;
+    letter-spacing: 4px;
+    color: var(--forest);
+  }
+  header .url {
+    font-family: 'SF Mono', Menlo, monospace;
+    font-size: 13px;
+    color: var(--forest-m);
+    background: var(--cream-warm);
+    padding: 4px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 8px;
+  }
+  header p {
+    color: var(--forest-m);
+    max-width: 640px;
+    margin: 16px auto 0;
+    font-size: 15px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+    padding: 48px 32px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  .card {
+    background: var(--cream);
+    border: 1px solid var(--sage-light);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(31, 77, 44, 0.08);
+  }
+  .card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    background: var(--cream-warm);
+  }
+  .card h2 {
+    font-size: 20px;
+    margin: 16px 0 4px;
+    color: var(--forest);
+    letter-spacing: 1px;
+  }
+  .card .desc {
+    font-size: 13px;
+    color: var(--forest-m);
+    margin: 0 0 12px;
+  }
+  .card .meta {
+    font-family: 'SF Mono', Menlo, monospace;
+    font-size: 11px;
+    color: var(--sage);
+    letter-spacing: 0.5px;
+  }
+  .badge-ok {
+    display: inline-block;
+    background: var(--forest);
+    color: var(--cream);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-left: 6px;
+  }
+  footer {
+    text-align: center;
+    padding: 32px;
+    color: var(--sage);
+    font-size: 12px;
+    border-top: 1px solid var(--sage-light);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>planum — Sticker-Varianten C</h1>
+  <p>Hochwertig überarbeitete Sticker-Designs mit echten, scanbaren QR-Codes.<br>
+  Wortmarke <em>Georgia serif</em> beibehalten — QR-Codes mit eleganten Modulformen, designten Findern und variierender Größe.</p>
+  <div class="url">https://www.planumplants.de</div>
+</header>
+
+<div class="grid" id="grid"></div>
+
+<footer>
+  Generiert mit segno (ECC-H) · gerendert via cairosvg · scannbarkeit verifiziert mit zxing-cpp
+</footer>
+
+<script>
+const variants = [
+  ['c1-classic',     'Classic',     'Rounded Quadrat-Module, weiche Augen — klassisch & warm.'],
+  ['c2-dots',        'Dots',        'Punkt-Module, kreisrunde Augen — modern, freundlich.'],
+  ['c3-leaf-modules','Leaves',      'Jedes Modul ein stilisiertes Blatt — vollständig botanisch.'],
+  ['c4-gradient',    'Gradient',    'Forest→Sage Verlauf in den Modulen — sanfte Tiefe.'],
+  ['c5-logo-center', 'Logo Center', 'Zentriertes Planum-Monogramm (ECC-H toleriert das).'],
+  ['c6-inverted',    'Inverted',    'Dunkler Forest-Sticker — weißer Quiet-Bereich für Scan-Sicherheit.'],
+  ['c7-flora',       'Flora',       'Blatt-Module + Augen mit Blatt-Innenleben + Blätterkranz oben.'],
+  ['c8-gold',        'Gold',        'Premium-Edition: Goldverlauf auf dunkelgrün — Limited-Box-Feeling.'],
+  ['c9-watercolor',  'Watercolor',  'Smooth-Module mit fließenden Pfaden + Aquarell-Halos.'],
+  ['c10-topdown',    'Top-down',    'Top-down-Pflanzen + Punkt-Module — luftiger, kompakter QR.'],
+  ['c11-stained',    'Mosaic',      'Diamond-Module mit Verlauf — Mosaik-Look ohne Lesbarkeitsverlust.'],
+  ['c12-minimal',    'Minimal',     'Smooth-Module, größerer ruhiger QR — sehr reduziert & edel.'],
+];
+
+const grid = document.getElementById('grid');
+variants.forEach(([slug, name, desc]) => {
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `
+    <img src="png/${slug}.png" alt="${name}" loading="lazy">
+    <h2>${name} <span class="badge-ok">scan ✓</span></h2>
+    <p class="desc">${desc}</p>
+    <div class="meta">${slug}</div>
+  `;
+  grid.appendChild(card);
+});
+</script>
+
+</body>
+</html>

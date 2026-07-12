@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Planum — Bambus-Marker Konzepte</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  :root {
+    --forest: #1F4D2C;
+    --forest-m: #2D5F3F;
+    --sage: #87A878;
+    --sage-light: #C7D7C2;
+    --cream: #FBFAF6;
+    --cream-warm: #F5F1E8;
+    --ink: #15241B;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  header {
+    padding: 56px 32px 24px;
+    text-align: center;
+    border-bottom: 1px solid var(--sage-light);
+  }
+  header h1 {
+    font-size: 38px;
+    margin: 0 0 8px;
+    letter-spacing: 4px;
+    color: var(--forest);
+  }
+  header .url {
+    font-family: 'SF Mono', Menlo, monospace;
+    font-size: 13px;
+    color: var(--forest-m);
+    background: var(--cream-warm);
+    padding: 4px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 8px;
+  }
+  header p {
+    color: var(--forest-m);
+    max-width: 720px;
+    margin: 16px auto 0;
+    font-size: 15px;
+  }
+  .controls {
+    text-align: center;
+    padding: 20px 32px 0;
+  }
+  .controls label {
+    font-size: 13px;
+    color: var(--forest-m);
+    margin-right: 8px;
+  }
+  .controls input {
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    padding: 6px 12px;
+    border: 1px solid var(--sage-light);
+    border-radius: 6px;
+    background: var(--cream);
+    color: var(--ink);
+    width: 180px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px;
+    padding: 36px 32px 64px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .card {
+    background: var(--cream);
+    border: 1px solid var(--sage-light);
+    border-radius: 12px;
+    padding: 20px 20px 24px;
+    text-align: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(31, 77, 44, 0.08);
+  }
+  .stage {
+    background: var(--cream-warm);
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 360px;
+  }
+  .stage svg { width: 200px; height: auto; display: block; }
+  .card h2 {
+    font-size: 18px;
+    margin: 16px 0 4px;
+    color: var(--forest);
+    letter-spacing: 1px;
+  }
+  .card .desc {
+    font-size: 13px;
+    color: var(--forest-m);
+    margin: 0;
+  }
+  footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--forest-m);
+    font-size: 12px;
+    border-top: 1px solid var(--sage-light);
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>PLANUM · BAMBUS</h1>
+  <div class="url">https://www.planumplants.de</div>
+  <p>Sticker-Designsystem übersetzt auf einen T-förmigen Bambus-Pflanzenstecker. Form, Material und Produktion (Laser-Gravur vs. UV-Druck) verändern die Möglichkeiten — die Markensprache bleibt.</p>
+  <div class="controls">
+    <label for="plant">Pflanzenname:</label>
+    <input id="plant" type="text" value="Parsley" maxlength="14">
+  </div>
+</header>
+<div class="grid" id="grid"></div>
+<footer>Konzept-Showcase · 6 Varianten · QR-Code Version 4 · ECC-H</footer>
+<script>
+  const variants = [{"slug": "b1-burn", "title": "Planum Burn", "desc": "Klassisch lasergraviert \u2014 dunkler Brand auf Naturbambus. Volle QR-Fl\u00e4che, Pflanzenname kursiv, Bl\u00e4tterbogen oben."}, {"slug": "b2-minimal", "title": "Planum Minimal", "desc": "Gro\u00dfer Pflanzenname als Hero, kleiner QR rechts unten. Reduziert, edel, gut lesbar aus 1m Distanz."}, {"slug": "b3-logo-center", "title": "Planum Logo Center", "desc": "Planum-Monogramm in der QR-Mitte (ECC-H). Markenakzent ohne Lesbarkeitsverlust."}, {"slug": "b4-night", "title": "Planum Night", "desc": "Dunkel gebeizter Bambus, hellerer Laserabtrag \u2014 Premium-Look f\u00fcr Indoor-/Designt\u00f6pfe."}, {"slug": "b5-uv-color", "title": "Planum Color", "desc": "UV-Druck in vollen Markenfarben (Forest + Sage) auf Naturbambus. Teurer, aber farbgleich zu den Stickern."}, {"slug": "b6-dots", "title": "Planum Dots", "desc": "Punkt-Module statt Quadraten \u2014 weicher, organischer Brand."}];
+  const grid = document.getElementById('grid');
+  const input = document.getElementById('plant');
+  const cache = {};
+
+  async function loadSvg(slug) {
+    if (cache[slug]) return cache[slug];
+    const r = await fetch('svg/' + slug + '.svg');
+    cache[slug] = await r.text();
+    return cache[slug];
+  }
+
+  function setPlantInSvg(svg, name) {
+    // Replace any text element styled in italic Georgia at font-size 22 or 36 — those are plant names.
+    return svg.replace(
+      /(<text[^>]*font-style="italic"[^>]*>)([^<]+)(<\/text>)/g,
+      (m, a, _b, c) => a + name + c
+    );
+  }
+
+  async function render(name) {
+    grid.innerHTML = '';
+    for (const v of variants) {
+      const card = document.createElement('div');
+      card.className = 'card';
+      const stage = document.createElement('div');
+      stage.className = 'stage';
+      stage.innerHTML = '<span style="color:#9aa">…</span>';
+      card.appendChild(stage);
+      const h2 = document.createElement('h2');
+      h2.textContent = v.title;
+      card.appendChild(h2);
+      const desc = document.createElement('p');
+      desc.className = 'desc';
+      desc.textContent = v.desc;
+      card.appendChild(desc);
+      grid.appendChild(card);
+      const svg = await loadSvg(v.slug);
+      stage.innerHTML = setPlantInSvg(svg, name);
+    }
+  }
+
+  render(input.value);
+  input.addEventListener('input', () => render(input.value || 'Parsley'));
+</script>
+</body>
+</html>

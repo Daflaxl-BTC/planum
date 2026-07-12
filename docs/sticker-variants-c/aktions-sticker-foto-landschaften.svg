@@ -1,0 +1,137 @@
+<svg width="100%" viewBox="0 0 680 1990" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Planum Foto-Landschaft Sticker</title>
+<desc>Zehn grossflaechige Landschaftsstile fuer Planum-Sticker, je Stil ein Giessen-Sticker mit Regen und ein Profil-Sticker mit Sonne.</desc>
+<defs>
+<linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6b99a"/><stop offset="0.55" stop-color="#f4a7b6"/><stop offset="1" stop-color="#fde4c4"/></linearGradient>
+<linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe3f2"/><stop offset="0.6" stop-color="#e9d9b0"/><stop offset="1" stop-color="#f3ead0"/></linearGradient>
+<linearGradient id="sky3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9a6d6"/><stop offset="0.6" stop-color="#d8b8d0"/><stop offset="1" stop-color="#efd9c8"/></linearGradient>
+<linearGradient id="sky4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfe6c0"/><stop offset="0.6" stop-color="#8fd0a0"/><stop offset="1" stop-color="#cdebcf"/></linearGradient>
+<linearGradient id="sky5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9cc7ec"/><stop offset="0.7" stop-color="#d7ebf5"/><stop offset="1" stop-color="#eef6ea"/></linearGradient>
+<linearGradient id="sky6" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9ead9"/><stop offset="0.6" stop-color="#bcd9bf"/><stop offset="1" stop-color="#e6f0e3"/></linearGradient>
+<linearGradient id="sky7" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7c98a"/><stop offset="0.5" stop-color="#f0a070"/><stop offset="1" stop-color="#f6d9a8"/></linearGradient>
+<linearGradient id="sky8" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fc7ee"/><stop offset="0.7" stop-color="#cfe7f5"/><stop offset="1" stop-color="#eaf4f7"/></linearGradient>
+<linearGradient id="sky9" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfe0ea"/><stop offset="0.6" stop-color="#dcefe8"/><stop offset="1" stop-color="#eef3df"/></linearGradient>
+<linearGradient id="sky10" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#acc4d6"/><stop offset="0.6" stop-color="#c9dbe2"/><stop offset="1" stop-color="#e6eef0"/></linearGradient>
+<clipPath id="cc"><circle r="54"/></clipPath>
+<g id="sc1">
+<rect x="-54" y="-54" width="108" height="108" fill="url(#sky1)"/>
+<path d="M-54 14 L-16 -20 L-6 -12 L0 -20 L54 14 Z" fill="#7e7390"/>
+<path d="M-8 -8 L0 -20 L8 -8 L3 -10 L0 -6 L-3 -10 Z" fill="#f2edf6"/>
+<rect x="-54" y="14" width="108" height="40" fill="#c9b6c6"/>
+<path d="M-30 54 C-28 34 -22 28 -28 16" stroke="#5a3a2a" stroke-width="4" fill="none"/>
+<circle cx="-30" cy="12" r="14" fill="#f4aecb"/><circle cx="-42" cy="20" r="10" fill="#f7c1d8"/><circle cx="-18" cy="20" r="10" fill="#f7c1d8"/><circle cx="-30" cy="2" r="9" fill="#fad2e0"/>
+<circle cx="36" cy="-30" r="9" fill="#f4aecb"/><circle cx="46" cy="-24" r="6" fill="#f7c1d8"/>
+</g>
+<g id="sc2">
+<rect x="-54" y="-54" width="108" height="108" fill="url(#sky2)"/>
+<path d="M-54 20 Q-20 6 12 18 Q36 26 54 16 L54 54 L-54 54 Z" fill="#aac08a"/>
+<path d="M-54 16 Q0 6 54 14 L54 20 L-54 22 Z" fill="#95ad79" opacity="0.85"/>
+<path d="M22 54 L22 18" stroke="#6b4a30" stroke-width="5" fill="none"/>
+<circle cx="22" cy="6" r="17" fill="#E0913B"/><circle cx="10" cy="14" r="11" fill="#E8A64E"/><circle cx="34" cy="13" r="11" fill="#D67E32"/><circle cx="22" cy="-6" r="11" fill="#EDB45E"/>
+<path d="M-32 26 L-32 18" stroke="#6b4a30" stroke-width="3" fill="none"/><circle cx="-32" cy="14" r="9" fill="#C98A3E"/>
+</g>
+<g id="sc3">
+<rect x="-54" y="-54" width="108" height="108" fill="url(#sky3)"/>
+<path d="M-54 16 Q0 6 54 14 L54 20 L-54 20 Z" fill="#cdbcae"/>
+<ellipse cx="-30" cy="6" rx="5" ry="17" fill="#3f5e3a"/><ellipse cx="34" cy="4" rx="6" ry="19" fill="#3a5836"/>
+<g stroke-linecap="round" fill="none">
+<path d="M-50 24 L50 24" stroke="#9b82c0" stroke-width="2.5"/>
+<path d="M-52 30 L52 30" stroke="#7e5fa6" stroke-width="3"/>
+<path d="M-54 38 L54 38" stroke="#8a6bb2" stroke-width="3.5"/>
+<path d="M-54 48 L54 48" stroke="#6f5198" stroke-width="4"/>
+</g>
+</g>
+<g id="sc4">
+<rect x="-54" y="-54" width="108" height="108" fill="url(#sky4)"/>
+<circle cx="-30" cy="-22" r="18" fill="#6fb87f" opacity="0.55"/><circle cx="32" cy="-26" r="16" fill="#5fa873" opacity="0.55"/>
+<ellipse cx="-36" cy="28" rx="10" ry="20" fill="#3c8a52" transform="rotate(-30 -36 28)"/>
+<ellipse cx="38" cy="30" rx="9" ry="18" fill="#358048" transform="rotate(30 38 30)"/>
+<path d="M0 -42 C-34 -30 -44 6 0 44 C44 6 34 -30 0 -42 Z" fill="#2f7a44"/>
+<path d="M0 -34 L0 38" stroke="#7fd08f" stroke-width="2"/>
+<path d="M0 -16 C-12 -10 -20 -2 -28 8" fill="none" stroke="#7fd08f" stroke-width="1.4"/>
+<path d="M0 -16 C12 -10 20 -2 28 8" fill="none" stroke="#7fd08f" stroke-width="1.4"/>
+</g>
+<g id="sc5">
+<rect x="-54" y="-54" width="108" height="108" fill="url(#sky5)"/>
+<path d="M-54 8 L-28 -22 L-10 0 L6 -18 L24 2 L40 -16 L54 6 L54 12 L-54 12 Z" fill="#8fa3b8"/>
+<path d="M-34 -12 L-28 -22 L-22 -12 Z" fill="#f1f5f8"/><path d="M0 -8 L6 -18 L12 -8 Z" fill="#f1f5f8"/><path d="M34 -6 L40 -16 L46 -6 Z" fill="#f1f5f8"/>
+<rect x="-54" y="12" width="108" height="42" fill="#86bb6a"/>
+<path d="M-54 18 Q0 12 54 18 L54 12 L-54 12 Z" fill="#9ccb7e"/>
+<circle cx="-30" cy="34" r="2.5" fill="#f2d24a"/><circle cx="-10" cy="42" r="2.5" fill="#fdfdfd"/><circle cx="14" cy="36" r="2.5" fill="#e87aa0"/><circle cx="32" cy="44" r="2.5" fill="#f2d24a"/><circle cx="-44" cy="46" r="2.5" fill="#7e9bd6"/>
+</g>
+<g id="sc6">
+<rect x="-54" y="-54" width="108" height="108" fill="url(#sky6)"/>
+<rect x="-54" y="-12" width="108" height="20" fill="#ffffff" opacity="0.22"/>
+<g stroke-linecap="round" fill="none">
+<path d="M-32 54 L-32 -42" stroke="#5a9e54" stroke-width="4"/>
+<path d="M-14 54 L-14 -50" stroke="#6cae62" stroke-width="4"/>
+<path d="M6 54 L6 -44" stroke="#5a9e54" stroke-width="4"/>
+<path d="M24 54 L24 -50" stroke="#6cae62" stroke-width="4"/>
+<path d="M42 54 L42 -40" stroke="#4f8e4a" stroke-width="4"/>
+</g>
+<g stroke="#3f7a3c" stroke-width="1.6" stroke-linecap="round" fill="none">
+<path d="M24 -38 L36 -46"/><path d="M-14 -40 L-26 -48"/><path d="M6 -30 L18 -36"/>
+</g>
+</g>
+<g id="sc7">
+<rect x="-54" y="-54" width="108" height="108" fill="url(#sky7)"/>
+<path d="M-54 18 Q-20 8 10 18 Q34 26 54 16 L54 54 L-54 54 Z" fill="#e3b878"/>
+<path d="M-54 30 Q0 22 54 30 L54 54 L-54 54 Z" fill="#d2a05f"/>
+<path d="M0 54 L0 -6" stroke="#4f8a4a" stroke-width="7" fill="none" stroke-linecap="round"/>
+<path d="M0 14 L-12 14 L-12 2" stroke="#4f8a4a" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M0 6 L12 6 L12 -8" stroke="#4f8a4a" stroke-width="6" fill="none" stroke-linecap="round"/>
+<ellipse cx="-30" cy="38" rx="5" ry="11" fill="#4f8a4a"/>
+</g>
+<g id="sc8">
+<rect x="-54" y="-54" width="108" height="108" fill="url(#sky8)"/>
+<rect x="-54" y="16" width="108" height="38" fill="#cdd86a"/>
+<circle cx="-36" cy="20" r="4" fill="#e9b93a"/><circle cx="-12" cy="18" r="4" fill="#e9b93a"/><circle cx="16" cy="20" r="4" fill="#e9b93a"/><circle cx="40" cy="18" r="4" fill="#e9b93a"/>
+<path d="M10 54 L10 14" stroke="#5e8a3a" stroke-width="3" fill="none"/>
+<g transform="translate(10,2)">
+<g fill="#F4B72A">
+<ellipse cx="0" cy="-15" rx="5" ry="10"/><ellipse cx="0" cy="-15" rx="5" ry="10" transform="rotate(45)"/><ellipse cx="0" cy="-15" rx="5" ry="10" transform="rotate(90)"/><ellipse cx="0" cy="-15" rx="5" ry="10" transform="rotate(135)"/><ellipse cx="0" cy="-15" rx="5" ry="10" transform="rotate(180)"/><ellipse cx="0" cy="-15" rx="5" ry="10" transform="rotate(225)"/><ellipse cx="0" cy="-15" rx="5" ry="10" transform="rotate(270)"/><ellipse cx="0" cy="-15" rx="5" ry="10" transform="rotate(315)"/>
+</g>
+<circle r="8" fill="#7a4a25"/>
+</g>
+</g>
+<g id="sc9">
+<rect x="-54" y="-54" width="108" height="108" fill="url(#sky9)"/>
+<rect x="-54" y="6" width="108" height="13" fill="#7ab4bf"/>
+<rect x="-54" y="18" width="108" height="36" fill="#c2c08a"/>
+<path d="M-20 54 C-18 34 -24 28 -20 20" stroke="#7a6a4a" stroke-width="4" fill="none"/>
+<circle cx="-20" cy="14" r="15" fill="#9bb087"/><circle cx="-32" cy="20" r="10" fill="#aebd96"/><circle cx="-8" cy="20" r="10" fill="#8aa178"/>
+<path d="M30 34 L30 24" stroke="#7a6a4a" stroke-width="3" fill="none"/><circle cx="30" cy="20" r="11" fill="#9bb087"/>
+</g>
+<g id="sc10">
+<rect x="-54" y="-54" width="108" height="108" fill="url(#sky10)"/>
+<path d="M-54 6 L-24 -20 L0 4 L26 -16 L54 6 L54 12 L-54 12 Z" fill="#7d93a6"/>
+<path d="M-30 -10 L-24 -20 L-18 -10 Z" fill="#eef3f6"/><path d="M20 -8 L26 -16 L32 -8 Z" fill="#eef3f6"/>
+<rect x="-54" y="12" width="108" height="42" fill="#9cbcce"/>
+<path d="M-54 16 L54 16" stroke="#bcd3e0" stroke-width="1" opacity="0.6"/>
+<path d="M-30 32 L-22 2 L-14 32 Z" fill="#2f5240"/>
+<path d="M28 34 L36 0 L44 34 Z" fill="#2a4a39"/>
+<path d="M-22 38 L-22 32 M36 40 L36 34" stroke="#5a4632" stroke-width="3"/>
+</g>
+<g id="rain" stroke="#e7f2fb" stroke-width="1.4" opacity="0.8" stroke-linecap="round" fill="none"><path d="M-34 -38 L-39 -28"/><path d="M-18 -42 L-23 -32"/><path d="M-2 -40 L-7 -30"/><path d="M16 -42 L11 -32"/><path d="M32 -38 L27 -28"/></g>
+<g id="sun"><circle cx="22" cy="-32" r="8" fill="#FFEAB0" opacity="0.9"/></g>
+</defs>
+<style>
+.nm{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:15px;font-weight:500;fill:#14241d}
+.ds{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:12px;font-weight:400;fill:#5d6f66}
+.cap{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:11px;font-weight:400;fill:#5d6f66}
+.hd{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:17px;font-weight:500;fill:#14241d}
+.div{stroke:#e3e0d6;stroke-width:1}
+</style>
+<text class="hd" x="20" y="28">Sticker-Stile — Foto-Landschaften</text>
+<text class="ds" x="20" y="48">Grossflaechige Szenen · Giessen (links) + Profil (rechts)</text>
+<g transform="translate(0,70)"><line class="div" x1="20" y1="0" x2="660" y2="0"/><text class="nm" x="20" y="40">1 · Japanischer Ahorn</text><text class="ds" x="20" y="60">Sakura &amp; Fuji im Sonnenuntergang.</text><use href="#sc1" transform="translate(380,96)" clip-path="url(#cc)"/><use href="#rain" transform="translate(380,96)" clip-path="url(#cc)"/><circle cx="380" cy="96" r="54" fill="none" stroke="#C9A35B" stroke-width="3"/><use href="#sc1" transform="translate(560,96)" clip-path="url(#cc)"/><use href="#sun" transform="translate(560,96)" clip-path="url(#cc)"/><circle cx="560" cy="96" r="54" fill="none" stroke="#C9A35B" stroke-width="3"/><text class="cap" x="380" y="176" text-anchor="middle">Giessen</text><text class="cap" x="560" y="176" text-anchor="middle">Profil</text></g>
+<g transform="translate(0,260)"><line class="div" x1="20" y1="0" x2="660" y2="0"/><text class="nm" x="20" y="40">2 · Buchenhügel</text><text class="ds" x="20" y="60">Deutscher Herbstwald, warme Hügel.</text><use href="#sc2" transform="translate(380,96)" clip-path="url(#cc)"/><use href="#rain" transform="translate(380,96)" clip-path="url(#cc)"/><circle cx="380" cy="96" r="54" fill="none" stroke="#C9A35B" stroke-width="3"/><use href="#sc2" transform="translate(560,96)" clip-path="url(#cc)"/><use href="#sun" transform="translate(560,96)" clip-path="url(#cc)"/><circle cx="560" cy="96" r="54" fill="none" stroke="#C9A35B" stroke-width="3"/><text class="cap" x="380" y="176" text-anchor="middle">Giessen</text><text class="cap" x="560" y="176" text-anchor="middle">Profil</text></g>
+<g transform="translate(0,450)"><line class="div" x1="20" y1="0" x2="660" y2="0"/><text class="nm" x="20" y="40">3 · Lavendelfeld</text><text class="ds" x="20" y="60">Lavendelreihen mit Zypressen.</text><use href="#sc3" transform="translate(380,96)" clip-path="url(#cc)"/><use href="#rain" transform="translate(380,96)" clip-path="url(#cc)"/><circle cx="380" cy="96" r="54" fill="none" stroke="#C9A35B" stroke-width="3"/><use href="#sc3" transform="translate(560,96)" clip-path="url(#cc)"/><use href="#sun" transform="translate(560,96)" clip-path="url(#cc)"/><circle cx="560" cy="96" r="54" fill="none" stroke="#C9A35B" stroke-width="3"/><text class="cap" x="380" y="176" text-anchor="middle">Giessen</text><text class="cap" x="560" y="176" text-anchor="middle">Profil</text></g>
+<g transform="translate(0,640)"><line class="div" x1="20" y1="0" x2="660" y2="0"/><text class="nm" x="20" y="40">4 · Monstera</text><text class="ds" x="20" y="60">Tropisches Dickicht, sattes Grün.</text><use href="#sc4" transform="translate(380,96)" clip-path="url(#cc)"/><use href="#rain" transform="translate(380,96)" clip-path="url(#cc)"/><circle cx="380" cy="96" r="54" fill="none" stroke="#C9A35B" stroke-width="3"/><use href="#sc4" transform="translate(560,96)" clip-path="url(#cc)"/><use href="#sun" transform="translate(560,96)" clip-path="url(#cc)"/><circle cx="560" cy="96" r="54" fill="none" stroke="#C9A35B" stroke-width="3"/><text class="cap" x="380" y="176" text-anchor="middle">Giessen</text><text class="cap" x="560" y="176" text-anchor="middle">Profil</text></g>
+<g transform="translate(0,830)"><line class="div" x1="20" y1="0" x2="660" y2="0"/><text class="nm" x="20" y="40">5 · Alpenwiese</text><text class="ds" x="20" y="60">Wildblumen vor Schneegipfeln.</text><use href="#sc5" transform="translate(380,96)" clip-path="url(#cc)"/><use href="#rain" transform="translate(380,96)" clip-path="url(#cc)"/><circle cx="380" cy="96" r="54" fill="none" stroke="#C9A35B" stroke-width="3"/><use href="#sc5" transform="translate(560,96)" clip-path="url(#cc)"/><use href="#sun" transform="translate(560,96)" clip-path="url(#cc)"/><circle cx="560" cy="96" r="54" fill="none" stroke="#C9A35B" stroke-width="3"/><text class="cap" x="380" y="176" text-anchor="middle">Giessen</text><text class="cap" x="560" y="176" text-anchor="middle">Profil</text></g>
+<g transform="translate(0,1020)"><line class="div" x1="20" y1="0" x2="660" y2="0"/><text class="nm" x="20" y="40">6 · Bambushain</text><text class="ds" x="20" y="60">Asiatischer Hain, nebliges Grün.</text><use href="#sc6" transform="translate(380,96)" clip-path="url(#cc)"/><use href="#rain" transform="translate(380,96)" clip-path="url(#cc)"/><circle cx="380" cy="96" r="54" fill="none" stroke="#C9A35B" stroke-width="3"/><use href="#sc6" transform="translate(560,96)" clip-path="url(#cc)"/><use href="#sun" transform="translate(560,96)" clip-path="url(#cc)"/><circle cx="560" cy="96" r="54" fill="none" stroke="#C9A35B" stroke-width="3"/><text class="cap" x="380" y="176" text-anchor="middle">Giessen</text><text class="cap" x="560" y="176" text-anchor="middle">Profil</text></g>
+<g transform="translate(0,1210)"><line class="div" x1="20" y1="0" x2="660" y2="0"/><text class="nm" x="20" y="40">7 · Wüstenkaktus</text><text class="ds" x="20" y="60">Saguaro in der Abenddämmerung.</text><use href="#sc7" transform="translate(380,96)" clip-path="url(#cc)"/><use href="#rain" transform="translate(380,96)" clip-path="url(#cc)"/><circle cx="380" cy="96" r="54" fill="none" stroke="#C9A35B" stroke-width="3"/><use href="#sc7" transform="translate(560,96)" clip-path="url(#cc)"/><use href="#sun" transform="translate(560,96)" clip-path="url(#cc)"/><circle cx="560" cy="96" r="54" fill="none" stroke="#C9A35B" stroke-width="3"/><text class="cap" x="380" y="176" text-anchor="middle">Giessen</text><text class="cap" x="560" y="176" text-anchor="middle">Profil</text></g>
+<g transform="translate(0,1400)"><line class="div" x1="20" y1="0" x2="660" y2="0"/><text class="nm" x="20" y="40">8 · Sonnenblumenfeld</text><text class="ds" x="20" y="60">Sommerfeld, kräftiges Gelb.</text><use href="#sc8" transform="translate(380,96)" clip-path="url(#cc)"/><use href="#rain" transform="translate(380,96)" clip-path="url(#cc)"/><circle cx="380" cy="96" r="54" fill="none" stroke="#C9A35B" stroke-width="3"/><use href="#sc8" transform="translate(560,96)" clip-path="url(#cc)"/><use href="#sun" transform="translate(560,96)" clip-path="url(#cc)"/><circle cx="560" cy="96" r="54" fill="none" stroke="#C9A35B" stroke-width="3"/><text class="cap" x="380" y="176" text-anchor="middle">Giessen</text><text class="cap" x="560" y="176" text-anchor="middle">Profil</text></g>
+<g transform="translate(0,1590)"><line class="div" x1="20" y1="0" x2="660" y2="0"/><text class="nm" x="20" y="40">9 · Olivenhain</text><text class="ds" x="20" y="60">Mittelmeer, silbriges Laub.</text><use href="#sc9" transform="translate(380,96)" clip-path="url(#cc)"/><use href="#rain" transform="translate(380,96)" clip-path="url(#cc)"/><circle cx="380" cy="96" r="54" fill="none" stroke="#C9A35B" stroke-width="3"/><use href="#sc9" transform="translate(560,96)" clip-path="url(#cc)"/><use href="#sun" transform="translate(560,96)" clip-path="url(#cc)"/><circle cx="560" cy="96" r="54" fill="none" stroke="#C9A35B" stroke-width="3"/><text class="cap" x="380" y="176" text-anchor="middle">Giessen</text><text class="cap" x="560" y="176" text-anchor="middle">Profil</text></g>
+<g transform="translate(0,1780)"><line class="div" x1="20" y1="0" x2="660" y2="0"/><text class="nm" x="20" y="40">10 · Nordische Kiefer</text><text class="ds" x="20" y="60">Skandinavischer See &amp; Berge.</text><use href="#sc10" transform="translate(380,96)" clip-path="url(#cc)"/><use href="#rain" transform="translate(380,96)" clip-path="url(#cc)"/><circle cx="380" cy="96" r="54" fill="none" stroke="#C9A35B" stroke-width="3"/><use href="#sc10" transform="translate(560,96)" clip-path="url(#cc)"/><use href="#sun" transform="translate(560,96)" clip-path="url(#cc)"/><circle cx="560" cy="96" r="54" fill="none" stroke="#C9A35B" stroke-width="3"/><text class="cap" x="380" y="176" text-anchor="middle">Giessen</text><text class="cap" x="560" y="176" text-anchor="middle">Profil</text></g>
+</svg>

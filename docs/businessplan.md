@@ -53,6 +53,27 @@ Der globale Markt für Pflanzen-Identifikations-Apps wurde 2024 auf **1,2 Mrd. U
 - **Wachstumsgalerie**: Fotoverlauf jeder Pflanze
 - **Shop**: Kuratierte Pflegeprodukte (Affiliate + Eigenmarke)
 
+### 3.3 Aktions-Sticker — Designkonzept (Entwurf)
+
+Die Sticker entwickeln sich vom QR-Funktionsobjekt zum **hochwertigen Designobjekt**, das den Topf ästhetisch aufwertet. Kein sichtbarer QR-Code mehr — die NFC-Antenne liegt unsichtbar unter einem premium gestalteten Motiv (Design-Sheet: `docs/sticker-variants-c/aktions-sticker-design.svg`).
+
+**Zwei-Sticker-System pro Pflanze:**
+
+1. **Gießen-Sticker (Wassertropfen):** Tippen löst direkt den Befehl „Gießen" aus — der Eintrag wird automatisch geloggt (NDEF-URL mit `?action=giessen`). Löst den größten Retention-Killer (manuelles Logging) ohne Sensor.
+2. **Profil-Sticker (botanisches Motiv, z. B. Monstera-Blatt):** Tippen öffnet das Pflanzenprofil (App oder Web-Fallback, falls App nicht installiert).
+
+**Designsprache:** runde Die-Cut-Sticker, matte Sage-/Cremetöne, Messing-Akzentring, botanische Line-Art. Premium-Anmutung als Kaufargument und Amazon-Foto-Hero.
+
+**Setup / Paarung:** Beide Sticker werden bei der Ersteinrichtung einmal der zuvor registrierten Pflanze zugeordnet. Danach genügt ein Tap.
+
+**Erlebnis-Layer:** Beim Auslösen von „Gießen" spielt die App/Web-App einen Regen-/Wassertropfen-Sound — die Nutzung wird zum kleinen sinnlichen Moment statt einer Karteikarten-Aktion.
+
+**Caveats (umzusetzen):**
+- *iOS:* bei geschlossener App erscheint zuerst ein Tipp-Banner (nicht ganz „dranhalten, fertig"); Android löst direkt aus.
+- *Undo:* versehentliche Taps brauchen eine kurze „Rückgängig"-Bestätigung.
+- *Pack-Mathematik:* 2 Sticker/Pflanze → ein 20er-Pack deckt ~10 Pflanzen. Pack-Größen/Preise (20–30 €) entsprechend kalkulieren.
+- *Sicherheit:* Web-Fallback nur mit serverseitiger Eigentümer-Prüfung (unguessable UUID), damit fremde Taps keine Pflanzendaten zeigen.
+
 ---
 
 ## 4. Finanzplanung
@@ -123,10 +144,26 @@ Der globale Markt für Pflanzen-Identifikations-Apps wurde 2024 auf **1,2 Mrd. U
 
 ## 5. Monetarisierungsstrategie
 
-### 5.1 Primär: Amazon-Verkauf (QR-Code-Pakete)
-- **Starter-Paket**: 20 QR-Codes für 19,99€
-- **Erweiterungs-Paket**: 10 QR-Codes für 9,99€
-- **Family-Paket**: 50 QR-Codes für 39,99€
+### 5.0 Dreistufenmodell: Gratis / Basis / Pro (Entscheidung 10.07.2026)
+
+Die Erlöslogik ruht auf drei Stufen. Leitprinzip: **Pro ⊇ Basis** — kein Feature wird auf einer höheren Stufe wieder weggenommen oder erneut verkauft. Die Gratis-Stufe gibt das **Gedächtnis** (Verlauf, Historie, Emotion) und rationiert die **Intelligenz** (KI-Calls = einzige nennenswerte Grenzkoste). Vollständige Spezifikation: `docs/entitlements-stufenmodell.md`.
+
+| | **Gratis** | **Basis** | **Pro** |
+|---|---|---|---|
+| **Einstieg** | App, Konto | Sticker-Paket 19,99 € (Amazon) | Pro Starter-Kit 39,99 € + optional Cloud-Abo 2,99 €/Mo |
+| **Pflanzen** | max. 5, einzeln aufrufbar | unbegrenzt, NFC-Tap | wie Basis + Sensor |
+| **KI-Pflegeabfragen** | 1×/Monat je Pflanze | 2×/Woche je Pflanze | wie Basis + KI-Diagnose aus Sensordaten (Abo) |
+| **Bilderverlauf + Timelapse** | ✅ gratis | ✅ | ✅ |
+| **Erlösquelle** | Funnel → Konversion | Einmalkauf + Erweiterungen | Hardware-Marge + Abo |
+
+- **Gratis** ist bewusst *vollwertig*, kein verkrüppeltes Demo: Anlegen, Fotografieren, manuelles Logging und der **dauerhafte Bilderverlauf** (inkl. Timelapse-Video als Web-Feature) sind frei. Die Schranke verläuft entlang KI-Kosten (1×/Monat je Pflanze) und Komfort (kein NFC), nicht entlang der Grundfunktion. Die Artenbestimmung bei Erstregistrierung zählt nicht gegen das Limit.
+- **Basis** wird durch Registrierung des ersten Sticker-Pakets **lifetime** freigeschaltet (`basis_unlock`, kein Abo) und hebt die KI-Frequenz auf alltagstaugliche 2×/Woche je Pflanze; NFC-Tap ersetzt das manuelle Aufrufen und Loggen.
+- **Pro** folgt dem Hue-Prinzip (Hub = Bridge, Sensoren = Blades): Messwerte für immer gratis, das Cloud-Abo (2,99 €/Mo) nur für Mehrwert (Langzeit-Historie, Multi-User, Sensor-KI-Diagnose). Zeitplan Q3/26–Q2/27.
+
+### 5.1 Primär: Amazon-Verkauf (Sticker-/QR-Pakete → Basis-Freischaltung)
+- **Starter-Paket**: 20 Sticker/QR-Codes für 19,99€ (schaltet Basis lifetime frei)
+- **Erweiterungs-Paket**: 10 Codes für 9,99€
+- **Family-Paket**: 50 Codes für 39,99€
 
 ### 5.2 Sekundär: Integrierter Pflegeshop
 - **Affiliate-Einnahmen** (Amazon PartnerNet): 3–10% auf empfohlene Produkte
@@ -136,8 +173,9 @@ Der globale Markt für Pflanzen-Identifikations-Apps wurde 2024 auf **1,2 Mrd. U
   - Planum Bio-Dünger, Planum Pflanzenerde
   - Margen: 40–60%
 
-### 5.3 Tertiär: Premium-Features (Phase 2)
-- **Planum Pro** (einmalig 4,99€): Erweiterte KI-Diagnose, Krankheitserkennung, unbegrenzte Pflanzen
+### 5.3 Tertiär: Pro-Stufe & Abo (Hardware + Cloud)
+- **Planum Pro** (Sensor-Hardware, Starter-Kit 39,99€): Sensor-Autologging, Messwerte dauerhaft gratis; Marge über Sensor-„Blades".
+- **Cloud-Abo** (2,99€/Mo): Langzeit-Historie der Sensordaten, Multi-User, KI-Diagnose aus Sensordaten.
 - **Planum für Teams**: Büro-/Gemeinschaftsgärten (B2B)
 - **API-Zugang**: Für Gärtnereien und Pflanzenhändler
 

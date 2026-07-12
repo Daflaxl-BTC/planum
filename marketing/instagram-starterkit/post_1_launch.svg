@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" width="1080" height="1350">
+  <defs>
+    <radialGradient id="bgPost" cx="50%" cy="40%" r="80%">
+      <stop offset="0%" stop-color="#fefcf7"/>
+      <stop offset="60%" stop-color="#f6f7f4"/>
+      <stop offset="100%" stop-color="#e8ebe2"/>
+    </radialGradient>
+    <radialGradient id="blob1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c3d9c3" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#c3d9c3" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blob2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e0ccab" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#e0ccab" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mossBtn" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4a7f4a"/>
+      <stop offset="100%" stop-color="#386538"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="0" dy="10" result="offsetblur"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.10"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1350" fill="url(#bgPost)"/>
+
+  <!-- Decorative blobs -->
+  <circle cx="900" cy="180" r="320" fill="url(#blob1)"/>
+  <circle cx="120" cy="1200" r="380" fill="url(#blob2)"/>
+
+  <!-- Top: Logo + Brand -->
+  <g transform="translate(540 130)">
+    <g transform="translate(-180 -45)">
+      <rect width="90" height="90" rx="22" fill="#386538"/>
+      <g transform="translate(45 45) scale(3.2) translate(-12 -12)">
+        <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s1 7.5-4.2 11.8"
+              fill="none" stroke="#ffffff" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M6.7 17.3c3-3 4.7-7.6 5.1-11.3"
+              fill="none" stroke="#ffffff" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </g>
+    <text x="-72" y="20" font-family="Lora, Georgia, serif"
+          font-size="68" font-weight="700" fill="#353c2e">Planum</text>
+  </g>
+
+  <!-- Pill badge -->
+  <g transform="translate(540 270)">
+    <rect x="-220" y="-32" width="440" height="64" rx="32" fill="#e0ece0"/>
+    <text x="0" y="8" text-anchor="middle"
+          font-family="Lato, sans-serif" font-size="26"
+          font-weight="600" fill="#386538" letter-spacing="2">✨ HALLO INSTAGRAM!</text>
+  </g>
+
+  <!-- Headline -->
+  <text x="540" y="430" text-anchor="middle"
+        font-family="Lora, Georgia, serif"
+        font-size="100" font-weight="700" fill="#353c2e">Jede Pflanze</text>
+  <text x="540" y="540" text-anchor="middle"
+        font-family="Lora, Georgia, serif"
+        font-size="100" font-weight="700" fill="#386538">verdient einen</text>
+  <text x="540" y="660" text-anchor="middle"
+        font-family="Lora, Georgia, serif"
+        font-size="120" font-style="italic" font-weight="700" fill="#9a683a">Plan.</text>
+
+  <!-- Subline -->
+  <text x="540" y="760" text-anchor="middle"
+        font-family="Lato, sans-serif"
+        font-size="34" fill="#7a8963">QR-Code scannen · KI erkennt · Pflegeplan startet.</text>
+
+  <!-- Feature pills row -->
+  <g transform="translate(540 880)" filter="url(#cardShadow)">
+    <!-- Pill 1 -->
+    <g transform="translate(-380 0)">
+      <rect x="-130" y="-50" width="260" height="100" rx="20" fill="#ffffff" stroke="#e8ebe2" stroke-width="1"/>
+      <text x="0" y="-8" text-anchor="middle" font-family="Lato, sans-serif"
+            font-size="44" font-weight="700" fill="#386538">20+</text>
+      <text x="0" y="28" text-anchor="middle" font-family="Lato, sans-serif"
+            font-size="20" fill="#7a8963">Pflanzenarten</text>
+    </g>
+    <!-- Pill 2 -->
+    <g transform="translate(0 0)">
+      <rect x="-130" y="-50" width="260" height="100" rx="20" fill="#ffffff" stroke="#e8ebe2" stroke-width="1"/>
+      <text x="0" y="-8" text-anchor="middle" font-family="Lato, sans-serif"
+            font-size="44" font-weight="700" fill="#386538">95%</text>
+      <text x="0" y="28" text-anchor="middle" font-family="Lato, sans-serif"
+            font-size="20" fill="#7a8963">KI-Erkennung</text>
+    </g>
+    <!-- Pill 3 -->
+    <g transform="translate(380 0)">
+      <rect x="-130" y="-50" width="260" height="100" rx="20" fill="#ffffff" stroke="#e8ebe2" stroke-width="1"/>
+      <text x="0" y="-8" text-anchor="middle" font-family="Lato, sans-serif"
+            font-size="44" font-weight="700" fill="#386538">0€</text>
+      <text x="0" y="28" text-anchor="middle" font-family="Lato, sans-serif"
+            font-size="20" fill="#7a8963">Abo / Monat</text>
+    </g>
+  </g>
+
+  <!-- CTA button -->
+  <g transform="translate(540 1080)">
+    <rect x="-260" y="-50" width="520" height="100" rx="50" fill="url(#mossBtn)"/>
+    <text x="0" y="14" text-anchor="middle" font-family="Lato, sans-serif"
+          font-size="34" font-weight="700" fill="#ffffff">🌱  Folgen für grüne Tipps</text>
+  </g>
+
+  <!-- Footer mark -->
+  <text x="540" y="1240" text-anchor="middle"
+        font-family="Lato, sans-serif" font-size="22"
+        fill="#95a27e" letter-spacing="6">@PLANUM.DE  ·  PLANUM.DE</text>
+
+  <!-- Decorative leaves -->
+  <g transform="translate(80 380) scale(5) translate(-12 -12)" opacity="0.18">
+    <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s1 7.5-4.2 11.8"
+          fill="none" stroke="#386538" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6.7 17.3c3-3 4.7-7.6 5.1-11.3"
+          fill="none" stroke="#386538" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g transform="translate(990 950) scale(5) rotate(45) translate(-12 -12)" opacity="0.15">
+    <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s1 7.5-4.2 11.8"
+          fill="none" stroke="#386538" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6.7 17.3c3-3 4.7-7.6 5.1-11.3"
+          fill="none" stroke="#386538" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "c1-classic",
+    "title": "Planum Classic",
+    "desc": "Rounded Quadrat-Module, weiche Augen, klassischer Blätter-Bogen oben."
+  },
+  {
+    "slug": "c2-dots",
+    "title": "Planum Dots",
+    "desc": "Punkt-Module + kreisrunde Augen — modern und freundlich."
+  },
+  {
+    "slug": "c3-leaf-modules",
+    "title": "Planum Leaves",
+    "desc": "Jedes Modul ein stilisiertes Blatt, Augen mit Blatt-Innenleben."
+  },
+  {
+    "slug": "c4-gradient",
+    "title": "Planum Gradient",
+    "desc": "Forest→Sage Verlauf in den abgerundeten Modulen."
+  },
+  {
+    "slug": "c5-logo-center",
+    "title": "Planum Logo Center",
+    "desc": "Zentriertes Planum-Monogramm — ECC-H toleriert die Logo-Maske."
+  },
+  {
+    "slug": "c6-inverted",
+    "title": "Planum Night",
+    "desc": "Dunkler Forest-Sticker, cremefarbener Quiet-Bereich für Scan-Sicherheit."
+  },
+  {
+    "slug": "c7-flora",
+    "title": "Planum Flora",
+    "desc": "Blatt-Module + Augen mit Blatt-Innenleben + Blätterkranz oben."
+  },
+  {
+    "slug": "c8-gold",
+    "title": "Planum Gold",
+    "desc": "Premium-Edition: Goldverlauf auf dunkelgrün — ideal für limitierte Boxen."
+  },
+  {
+    "slug": "c9-watercolor",
+    "title": "Planum Aquarell",
+    "desc": "Smooth-Module mit fließenden Pfaden + sanfte Aquarell-Halos."
+  },
+  {
+    "slug": "c10-topdown",
+    "title": "Planum Top-down",
+    "desc": "Top-down-Pflanzen-Akzente + kompakter, luftiger Punkt-QR."
+  },
+  {
+    "slug": "c11-stained",
+    "title": "Planum Mosaic",
+    "desc": "Diamond-Module mit Verlauf — Mosaik-Look ohne Lesbarkeitsverlust."
+  },
+  {
+    "slug": "c12-minimal",
+    "title": "Planum Minimal",
+    "desc": "Smooth-Module, größerer ruhiger QR — sehr reduziert und edel."
+  }
+]
