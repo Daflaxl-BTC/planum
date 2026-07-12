@@ -10,3 +10,12 @@ dist
 
 .DS_Store
 *.log
+
+# Supabase CLI lokaler State (Projekt-Ref, Pooler-URL, linked-project)
+supabase/.temp/
+
+# Temporaerdateien
+*.tmp
+
+# Versehentlich reinkopiertes npm-Paket @next/env (gehoert nicht ins Repo)
+/env/
