@@ -47,12 +47,13 @@ export default function PlantDetail() {
   const { user } = useAuth()
   const [plant, setPlant] = useState(null)
   const [logs, setLogs] = useState([])
+  const [photos, setPhotos] = useState([])
   const [loading, setLoading] = useState(true)
   const [pendingAction, setPendingAction] = useState(null)
   const [deleting, setDeleting] = useState(false)
 
   async function load() {
-    const [{ data: plantData, error: plantErr }, { data: logData }] = await Promise.all([
+    const [{ data: plantData, error: plantErr }, { data: logData }, { data: photoData }] = await Promise.all([
       supabase
         .from('plants')
         .select('*, species:plant_species(*)')
@@ -64,10 +65,18 @@ export default function PlantDetail() {
         .eq('plant_id', id)
         .order('logged_at', { ascending: false })
         .limit(20),
+      supabase
+        .from('plant_photos')
+        .select('id, image_url, assessment, taken_at')
+        .eq('plant_id', id)
+        .eq('status', 'confirmed')
+        .order('taken_at', { ascending: false })
+        .limit(12),
     ])
     if (plantErr) console.error(plantErr)
     setPlant(plantData)
     setLogs(logData ?? [])
+    setPhotos(photoData ?? [])
     setLoading(false)
   }
 
@@ -213,6 +222,49 @@ export default function PlantDetail() {
                 <p className="text-sm text-sage-700 leading-relaxed">{species.care_notes}</p>
               </div>
             </div>
+          </div>
+        </section>
+      )}
+
+      {/* Zustand (letztes KI-Assessment) */}
+      {photos[0]?.assessment && (
+        <section className="px-6 mt-6">
+          <h2 className="font-display text-lg text-sage-900 mb-3">Zustand</h2>
+          <div className="card p-4">
+            <div className="flex items-center gap-3">
+              <span className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${photos[0].assessment.is_healthy === false ? 'bg-red-500' : 'bg-green-500'}`} />
+              <p className="text-sm font-medium text-sage-800">
+                {photos[0].assessment.is_healthy === false ? 'Auffälligkeiten erkannt' : 'Sieht gesund aus'}
+              </p>
+              <span className="ml-auto text-xs text-sage-400">{prettyRelative(photos[0].taken_at)}</span>
+            </div>
+            {photos[0].assessment.diseases?.length > 0 && (
+              <ul className="mt-3 space-y-1.5">
+                {photos[0].assessment.diseases.map((d, i) => (
+                  <li key={i} className="flex items-center justify-between text-xs text-sage-600">
+                    <span className="truncate">{d.name}</span>
+                    <span className="text-sage-400 ml-2 flex-shrink-0">{Math.round((d.probability ?? 0) * 100)}%</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* Bilderverlauf */}
+      {photos.length > 0 && (
+        <section className="px-6 mt-6">
+          <h2 className="font-display text-lg text-sage-900 mb-3">Bilderverlauf</h2>
+          <div className="flex gap-3 overflow-x-auto pb-2 -mx-6 px-6">
+            {photos.map((img) => (
+              <img
+                key={img.id}
+                src={img.image_url}
+                alt="Pflanzenfoto"
+                className="w-24 h-24 rounded-2xl object-cover flex-shrink-0 border border-sage-100"
+              />
+            ))}
           </div>
         </section>
       )}
