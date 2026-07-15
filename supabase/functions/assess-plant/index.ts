@@ -53,11 +53,16 @@ Deno.serve(async (req) => {
     const plant = await loadOwnedPlant(admin, plant_id, householdIds);
     if (!plant) return json({ error: "plant not in household" }, 403);
 
+    // Foto muss zum eigenen Haushalt gehoeren (sonst Fremdbild-Zuordnung moeglich)
+    const { data: photo } = await admin.from("plant_photos")
+      .select("household_id, image_url").eq("id", photo_id).maybeSingle();
+    if (!photo || !householdIds.includes(photo.household_id))
+      return json({ error: "photo not in household" }, 403);
+
     const species = await loadSpecies(admin, plant.species_id);
     const sched = computeSchedule(plant, species ?? {}, new Date());
     await admin.from("plant_photos").update({ plant_id, status: "confirmed" }).eq("id", photo_id);
-    const { data: photo } = await admin.from("plant_photos").select("image_url").eq("id", photo_id).maybeSingle();
-    await admin.from("plants").update({ ...sched, photo_url: photo?.image_url ?? undefined }).eq("id", plant_id);
+    await admin.from("plants").update({ ...sched, photo_url: photo.image_url ?? undefined }).eq("id", plant_id);
     return json({ ok: true });
   }
 
@@ -101,6 +106,12 @@ Deno.serve(async (req) => {
   }
 
   // Skip-Zweig: Pflanze unbekannt → Identify + Ranking + Bestaetigung
+  // Zuerst pruefen, ob der Haushalt ueberhaupt Pflanzen hat — sonst keine teuren API-Calls.
+  const { data: plants } = await admin.from("plants")
+    .select("id, species_id, updated_at, household_id, nickname, photo_url")
+    .in("household_id", householdIds).is("archived_at", null);
+  if (!plants || plants.length === 0) return json({ error: "no plants to match" }, 422);
+
   let species_id: string | null = null;
   try {
     const ident = await identifySpecies(apiKey, imageBase64);
@@ -111,22 +122,20 @@ Deno.serve(async (req) => {
     }
   } catch (e) { console.error("identify failed", e); /* Ranking faellt auf zuletzt zurueck */ }
 
-  const { data: plants } = await admin.from("plants")
-    .select("id, species_id, updated_at, household_id, nickname, photo_url")
-    .in("household_id", householdIds).is("archived_at", null);
-  const ranked = rankPlants((plants ?? []) as any, { species_id });
+  const ranked = rankPlants(plants as any, { species_id });
   const suggested = ranked.suggested;
+
+  // Quota VOR der teuren Gesundheitsanalyse pruefen (kein Bezahl-Call bei ausgeschoepftem Kontingent).
+  if (suggested) {
+    const quota = await checkCareQuery(admin, userId, suggested.id);
+    if (!quota.ok) return json({ error: "quota exceeded", retryAt: quota.retryAt }, 429);
+  }
 
   let assessment;
   try { assessment = await assessHealth(apiKey, imageBase64); }
   catch (e) { console.error(e); return json({ error: "assessment failed" }, 502); }
 
-  // Quota gegen suggested (falls vorhanden); ohne suggested wird bei confirm gezaehlt.
-  if (suggested) {
-    const quota = await checkCareQuery(admin, userId, suggested.id);
-    if (!quota.ok) return json({ error: "quota exceeded", retryAt: quota.retryAt }, 429);
-    await countCareQuery(admin, userId, suggested.id);
-  }
+  if (suggested) await countCareQuery(admin, userId, suggested.id);
 
   const { data: photo } = await admin.from("plant_photos").insert({
     plant_id: suggested?.id ?? null, household_id: householdIds[0], user_id: userId,
