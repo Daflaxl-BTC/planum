@@ -840,9 +840,9 @@ function Footer() {
           <div>
             <h4 className="font-semibold text-white mb-4">Rechtliches</h4>
             <ul className="space-y-2 text-sm">
-              <li><a href="#" className="hover:text-white transition-colors">Impressum</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Datenschutz</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">AGB</a></li>
+              <li><a href="/app/impressum" className="hover:text-white transition-colors">Impressum</a></li>
+              <li><a href="/app/datenschutz" className="hover:text-white transition-colors">Datenschutz</a></li>
+              <li><a href="/app/agb" className="hover:text-white transition-colors">AGB</a></li>
             </ul>
           </div>
         </div>

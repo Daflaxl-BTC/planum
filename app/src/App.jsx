@@ -11,6 +11,9 @@ import Settings from './pages/Settings.jsx'
 import Scan from './pages/Scan.jsx'
 import ScanResolver from './pages/ScanResolver.jsx'
 import Shop from './pages/Shop.jsx'
+import Datenschutz from './pages/Datenschutz.jsx'
+import AGB from './pages/AGB.jsx'
+import Impressum from './pages/Impressum.jsx'
 import NotFound from './pages/NotFound.jsx'
 
 export default function App() {
@@ -19,6 +22,9 @@ export default function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/auth/callback" element={<AuthCallback />} />
+      <Route path="/datenschutz" element={<Datenschutz />} />
+      <Route path="/agb" element={<AGB />} />
+      <Route path="/impressum" element={<Impressum />} />
 
       <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
         <Route index element={<Dashboard />} />

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { supabase } from '../lib/supabase.js'
 import { useAuth } from '../contexts/AuthContext.jsx'
 import { LogoutIcon } from '../components/Icons.jsx'
@@ -134,6 +135,14 @@ export default function Settings() {
           <LogoutIcon className="w-4 h-4" />
           Abmelden
         </button>
+
+        <nav className="pt-6 flex items-center justify-center gap-4 text-xs text-sage-400">
+          <Link to="/impressum" className="hover:text-sage-700">Impressum</Link>
+          <span aria-hidden="true">·</span>
+          <Link to="/datenschutz" className="hover:text-sage-700">Datenschutz</Link>
+          <span aria-hidden="true">·</span>
+          <Link to="/agb" className="hover:text-sage-700">AGB</Link>
+        </nav>
       </div>
     </div>
   )
