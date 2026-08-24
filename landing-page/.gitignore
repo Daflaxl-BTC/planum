@@ -1,1 +1,10 @@
 .vercel
+
+# Vite schreibt beim Laden der ESM-Config Temporaerdateien hierhin.
+vite.config.js.timestamp-*
+
+# Lizenzierte Ausgangsfotos (7,4 MB) aus der frueheren Foto-Pipeline. Die Seite
+# nutzt sie nicht mehr — das Hero-Objekt und die Makroansicht kommen aus dem
+# 3D-Modell. Auf der Platte bleiben sie liegen, ins Repo gehoeren Originale
+# ohnehin nicht.
+scripts/composites/source/

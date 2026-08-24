@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <!--
+      Rendert planum-medallion-d40.glb offline zu Einzelbildern.
+
+      Wird ausschliesslich von scripts/render-medallion.mjs aufgerufen und
+      niemals ausgeliefert. three.js liegt dafuer in scripts/vendor/ und ist
+      bewusst NICHT in package.json: die Bibliothek gehoert zur
+      Asset-Erzeugung, nicht zur Seite. Im Bundle waere sie ~170 kB gzip und
+      dazu kaeme das 7-MB-Modell — beides ein Vielfaches des Budgets fuer die
+      gesamte Landingpage.
+
+      Parameter ueber die Query:
+        ?yaw=<grad>&pitch=<grad>&roll=<grad>&size=<px>&h=<px>&q=<0..1>
+        &fill=<faktor>&panx=<einheiten>&pany=<einheiten>
+      Ergebnis steht als WebP-Data-URI im <img id="out">, das render-medallion.mjs
+      per --dump-dom abholt. Ueber toDataURL statt --screenshot, weil nur so der
+      Alphakanal erhalten bleibt.
+    -->
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: transparent;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../vendor/three.module.js",
+          "three/addons/": "../vendor/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <img id="out" alt="" />
+    <!-- Ohne diesen Handler bleibt der Titel bei einem Fehler leer und der
+         Treiber laeuft stumm in seinen Timeout. -->
+    <script>
+      addEventListener('error', (event) => {
+        document.title = `error: ${event.message || event.error}`
+      })
+      addEventListener('unhandledrejection', (event) => {
+        document.title = `error: ${event.reason}`
+      })
+    </script>
+    <script type="module">
+      import * as THREE from 'three'
+      import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
+      import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js'
+
+      const params = new URLSearchParams(location.search)
+      const yaw = THREE.MathUtils.degToRad(Number(params.get('yaw') ?? -19))
+      const pitch = THREE.MathUtils.degToRad(Number(params.get('pitch') ?? 13))
+      const roll = THREE.MathUtils.degToRad(Number(params.get('roll') ?? -5))
+      const size = Number(params.get('size') ?? 900)
+      const height = Number(params.get('h') ?? size)
+      const quality = Number(params.get('q') ?? 0.82)
+      // fill > 1 faehrt naeher heran, als das Objekt vollstaendig braucht —
+      // fuer Makroansichten, die absichtlich anschneiden.
+      const zoom = Number(params.get('fill') ?? 0.94)
+      // Bildausschnitt verschieben, ohne die Blickrichtung zu kippen: Kamera
+      // und Zielpunkt wandern gemeinsam. Einheiten des normierten Objekts.
+      const panX = Number(params.get('panx') ?? 0)
+      const panY = Number(params.get('pany') ?? 0)
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+      renderer.setSize(size, height)
+      renderer.setPixelRatio(1)
+      renderer.toneMapping = THREE.ACESFilmicToneMapping
+      // 1.0 statt hoeher: ACES hellt Mitteltoene ohnehin auf. Mit mehr
+      // Belichtung kippt das Terracotta ins Lachsfarbene und verliert genau
+      // den Materialeindruck, um den es hier geht.
+      renderer.toneMappingExposure = 1
+      renderer.outputColorSpace = THREE.SRGBColorSpace
+      // Kein Schattenwurf: die Szene enthaelt keine Bodenflaeche, auf die ein
+      // Schatten fallen koennte. Der Kontaktschatten unter dem Objekt entsteht
+      // in CSS und bleibt dadurch an die Seitenfarbe gebunden.
+      document.body.append(renderer.domElement)
+
+      const scene = new THREE.Scene()
+
+      // Weiche Umgebungsreflexion aus einem synthetischen Raum. Ohne sie
+      // wirken matte PBR-Materialien flach und stumpf, weil sie ausser dem
+      // Direktlicht nichts zu spiegeln haben.
+      const pmrem = new THREE.PMREMGenerator(renderer)
+      scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture
+      scene.environmentIntensity = 0.6
+
+      // Lichtsetzung wie im Briefing: ein gerichtetes Licht von oben links
+      // (Nordfenster), warmes Aufhellen von rechts unten, kein zweites
+      // Spitzlicht — sonst kippt die Anmutung Richtung Produktrender.
+      const key = new THREE.DirectionalLight(0xfff3e6, 2.1)
+      key.position.set(-3.2, 4.2, 3.4)
+      scene.add(key)
+
+      const fill = new THREE.DirectionalLight(0xffd9bd, 0.4)
+      fill.position.set(3.6, -1.8, 2.2)
+      scene.add(fill)
+
+      // Sehr wenig Grundhelligkeit. Ambient hebt die Schattenseite des Reliefs
+      // an — genau die Kanten, die die Praegung ueberhaupt erst zeigen.
+      scene.add(new THREE.AmbientLight(0xf7ede0, 0.12))
+
+      const camera = new THREE.PerspectiveCamera(26, size / height, 0.1, 100)
+
+      const loader = new GLTFLoader()
+      loader.load(
+        '../../3D-Objekt/planum-medallion-d40.glb',
+        (gltf) => {
+          const model = gltf.scene
+
+          model.traverse((child) => {
+            if (!child.isMesh) return
+            // Der Exporter setzt flatShading nicht; ohne glatte Normalen wird
+            // das Relief zur Facettenlandschaft.
+            if (child.geometry && !child.geometry.attributes.normal) {
+              child.geometry.computeVertexNormals()
+            }
+          })
+
+          // Der Export liegt flach in der XZ-Ebene — die Scheibe schaut also
+          // nach oben, nicht zur Kamera. Erkennbar daran, dass die duenne
+          // Achse Y ist. Aufrichten, bevor irgendetwas anderes gemessen wird.
+          const raw = new THREE.Box3().setFromObject(model).getSize(new THREE.Vector3())
+          if (raw.y < Math.min(raw.x, raw.z) * 0.5) {
+            // +90 Grad, nicht -90: die Praegung liegt auf der Oberseite. Bei
+            // der Gegenrichtung schaut die leere Rueckseite zur Kamera und die
+            // Schrift steht auf dem Kopf.
+            model.rotation.x = Math.PI / 2
+            model.updateMatrixWorld(true)
+          }
+
+          // Auf Einheitsgroesse normieren und zentrieren, damit die Kamera
+          // unabhaengig vom Exportmassstab passt.
+          const box = new THREE.Box3().setFromObject(model)
+          const center = box.getCenter(new THREE.Vector3())
+          const extent = box.getSize(new THREE.Vector3())
+          const scale = 1 / Math.max(extent.x, extent.y, extent.z)
+          model.position.sub(center)
+
+          const pivot = new THREE.Group()
+          pivot.add(model)
+          pivot.scale.setScalar(scale)
+
+          const rig = new THREE.Group()
+          rig.add(pivot)
+          rig.rotation.order = 'YXZ'
+          rig.rotation.y = yaw
+          rig.rotation.x = pitch
+          rig.rotation.z = roll
+          scene.add(rig)
+
+          // Kameraabstand aus der Umkugel des normierten Objekts. Fix gesetzte
+          // Abstaende passen nur zu genau einer Blickrichtung; beim Umlauf
+          // waechst die sichtbare Breite und das Objekt liefe aus dem Bild.
+          const radius = Math.SQRT1_2 // Umkugel eines Einheitswuerfels /sqrt(2)
+          const fov = THREE.MathUtils.degToRad(camera.fov)
+          // Bei nicht-quadratischem Bild ist die schmalere Achse massgeblich,
+          // sonst laeuft das Objekt seitlich aus dem Rahmen.
+          const hFov = 2 * Math.atan(Math.tan(fov / 2) * camera.aspect)
+          const distance = Math.max(
+            radius / Math.sin(fov / 2),
+            radius / Math.sin(hFov / 2),
+          )
+          // zoom 0.94 laesst einen schmalen Rand, damit der Kontaktschatten im
+          // Layout nicht an der Bildkante abgeschnitten wirkt.
+          camera.position.set(panX, panY, distance / zoom)
+          camera.lookAt(panX, panY, 0)
+          camera.updateProjectionMatrix()
+
+          renderer.render(scene, camera)
+          document.getElementById('out').src = renderer.domElement.toDataURL(
+            'image/webp',
+            quality,
+          )
+          document.title = 'ready'
+        },
+        undefined,
+        (error) => {
+          document.title = `error: ${error}`
+        },
+      )
+    </script>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Nur die Startseite. Impressum und Datenschutz tragen bewusst
+  `noindex, follow` — eine noindex-Seite in die Sitemap zu schreiben waere ein
+  Widerspruch, den die Search Console auch als solchen meldet. Erreichbar
+  bleiben beide ueber die Footer-Links, was § 5 DDG verlangt.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.planumplants.de/</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
