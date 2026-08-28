@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Die App hinter /app/ ist ein eingeloggter Bereich — nichts davon gehoert in
+# einen Index. Die Bestaetigungsseite traegt zusaetzlich noindex im HTML.
+Disallow: /app/
+Disallow: /danke
+
+Sitemap: https://www.planumplants.de/sitemap.xml

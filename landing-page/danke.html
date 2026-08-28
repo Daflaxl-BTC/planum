@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/planum-icon.svg" />
+
+    <title>Danke — Planum</title>
+    <meta name="robots" content="noindex, nofollow" />
+
+    <link
+      rel="preload"
+      href="/fonts/fraunces-latin-var.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/inter-latin-var.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+  </head>
+  <body class="bg-paper text-ink">
+    <main class="mx-auto flex min-h-screen max-w-[34rem] flex-col justify-center px-6 py-section">
+      <p class="flex items-center gap-3 text-micro font-medium uppercase text-ink/50">
+        <span aria-hidden="true" class="h-px w-6 bg-terra-700"></span>
+        Warteliste
+      </p>
+
+      <h1 id="danke-titel" class="mt-6 font-display text-h2">
+        Eingetragen.
+      </h1>
+
+      <p id="danke-text" class="mt-5 text-lead text-ink/70">
+        Wir schreiben dir genau einmal — sobald das Sticker-Set bestellbar ist.
+        Bis dahin hörst du nichts von uns.
+      </p>
+
+      <a href="/" class="btn-primary mt-10 self-start"> Zurück zur Startseite </a>
+    </main>
+
+    <!-- Kein Inline-Script: die CSP erlaubt nur script-src 'self'. -->
+    <script type="module" src="/src/pages/danke.js"></script>
+  </body>
+</html>

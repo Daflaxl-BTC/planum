@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Planum OG</title>
+    <!--
+      Quelle fuer public/og-image.png. Gerendert mit `npm run og` (headless
+      Chrome, 1200x630, deviceScaleFactor 1). Bewusst kein Foto: solange das
+      lizenzierte Topfbild fehlt (AP3), traegt die Karte die echten
+      D2-Druckvektoren statt eines erfundenen Mockups.
+
+      Styles stehen inline und dupliziert — die Datei wird nie ausgeliefert und
+      soll ohne Build-Schritt in Chrome oeffenbar bleiben.
+    -->
+    <style>
+      @font-face {
+        font-family: 'Fraunces';
+        font-style: normal;
+        font-weight: 300 700;
+        src: url('../public/fonts/fraunces-latin-var.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 300 700;
+        src: url('../public/fonts/inter-latin-var.woff2') format('woff2');
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+
+      body {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 64px;
+        padding: 0 84px;
+        background: #fbf9f4;
+        color: #14201a;
+        font-family: 'Inter', sans-serif;
+        font-feature-settings: 'ss01', 'cv05';
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* Dasselbe feTurbulence-Rauschen wie auf der Seite, damit die Karte in
+         sozialen Feeds nicht flacher wirkt als das Ziel. */
+      body::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.022;
+        mix-blend-mode: multiply;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='3'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
+      .copy {
+        flex: 1 1 auto;
+      }
+
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        color: rgba(20, 32, 26, 0.5);
+      }
+
+      .eyebrow span {
+        width: 34px;
+        height: 1px;
+        background: #96522f;
+      }
+
+      h1 {
+        margin-top: 30px;
+        font-family: 'Fraunces', serif;
+        font-size: 78px;
+        font-weight: 400;
+        line-height: 0.98;
+        letter-spacing: -0.035em;
+      }
+
+      p {
+        margin-top: 26px;
+        max-width: 30ch;
+        font-size: 23px;
+        line-height: 1.5;
+        color: rgba(20, 32, 26, 0.7);
+      }
+
+      .plate {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: flex-end;
+        gap: 34px;
+        padding: 52px 46px;
+        border-radius: 10px;
+        background: #f4f0e7;
+      }
+
+      .plate img.profil {
+        width: 200px;
+      }
+
+      .plate img.giessen {
+        width: 152px;
+      }
+
+      .rule {
+        position: absolute;
+        left: 84px;
+        right: 84px;
+        bottom: 56px;
+        display: flex;
+        justify-content: space-between;
+        padding-top: 20px;
+        border-top: 1px solid rgba(20, 32, 26, 0.1);
+        font-size: 15px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(20, 32, 26, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="copy">
+      <p class="eyebrow"><span></span>NFC-Sticker für Pflanzen</p>
+      <h1>Die Erinnerung<br />klebt am Topf.</h1>
+      <p>Ein Tap am Blumentopf — und die Pflanze weiß wieder, wann sie zuletzt Wasser bekam.</p>
+    </div>
+
+    <div class="plate">
+      <img class="profil" src="../public/stickers/d2-terracotta-relief-profil.svg" alt="" />
+      <img class="giessen" src="../public/stickers/d2-terracotta-relief-giessen.svg" alt="" />
+    </div>
+
+    <div class="rule">
+      <span>Planum</span>
+      <span>Profil · Ø 40 mm · NTAG213</span>
+    </div>
+  </body>
+</html>

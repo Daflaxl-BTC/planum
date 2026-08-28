@@ -1,0 +1,19 @@
+# Exported by three-d-stage
+newmtl terracotta-matte
+Kd 0.5520 0.1746 0.0723
+Ks 0.2000 0.2000 0.2000
+Ns 44
+d 1.0000
+
+newmtl terracotta-rim
+Kd 0.4564 0.1301 0.0467
+Ks 0.2000 0.2000 0.2000
+Ns 32
+d 1.0000
+
+newmtl terracotta-back
+Kd 0.4125 0.1144 0.0409
+Ks 0.2000 0.2000 0.2000
+Ns 24
+d 1.0000
+

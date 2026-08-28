@@ -2,13 +2,105 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/planum-icon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Planum – Dein intelligenter Pflanzen-Tracker. 20 QR-Code Sticker, KI-Pflanzenerkennung und smarte Pflegeerinnerungen." />
-    <title>Planum – Intelligentes Pflanzen-Tracking</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="/planum-icon.svg" />
+
+    <title>Planum — die Erinnerung klebt am Topf</title>
+    <meta
+      name="description"
+      content="Ein Aufkleber am Blumentopf, ein Tippen mit dem Handy: Planum merkt sich, wann deine Pflanze zuletzt Wasser bekam. Ohne Abo, ohne Zettelwirtschaft."
+    />
+    <link rel="canonical" href="https://www.planumplants.de/" />
+
+    <!-- Fonts liegen self-hosted in public/fonts (kein Google-CDN, DSGVO). -->
+    <link
+      rel="preload"
+      href="/fonts/fraunces-latin-var.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/inter-latin-var.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!--
+      Das Hero-Objekt ist ein offline gerendertes Bild und damit der
+      LCP-Kandidat. Ohne Preload wuerde es erst angefragt, nachdem das Bundle
+      ausgefuehrt ist — es steckt in einer React-Komponente und nicht im HTML.
+      Die 24 Frames der Drehung sind bewusst nicht vorgeladen; sie kommen erst
+      beim ersten Zeigerkontakt.
+    -->
+    <link
+      rel="preload"
+      as="image"
+      href="/medallion/front-1120.webp"
+      imagesrcset="/medallion/front-560.webp 560w, /medallion/front-1120.webp 1120w"
+      imagesizes="(min-width: 1024px) 30rem, 80vw"
+      fetchpriority="high"
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="Planum" />
+    <meta property="og:title" content="Planum — die Erinnerung klebt am Topf" />
+    <meta
+      property="og:description"
+      content="Ein Aufkleber am Blumentopf, ein Tippen mit dem Handy: Planum merkt sich, wann deine Pflanze zuletzt Wasser bekam."
+    />
+    <meta property="og:url" content="https://www.planumplants.de/" />
+    <meta property="og:image" content="https://www.planumplants.de/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/png" />
+    <meta
+      property="og:image:alt"
+      content="Planum-Wortmarke mit den beiden Sticker-Motiven in Terracotta-Relief"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!--
+      Nur Organization und WebSite. Bewusst KEIN Product/Offer: strukturierte
+      Preisdaten ohne Kaufmoeglichkeit sind irrefuehrend (§ 5 UWG) und
+      verstossen gegen Googles Merchant-Richtlinien.
+      Kein CSP-Problem: script--Bloecke mit application/ld+json sind Datenbloecke,
+      script-src greift nur bei JavaScript-MIME-Typen.
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.planumplants.de/#organization",
+            "name": "Planum",
+            "url": "https://www.planumplants.de/",
+            "logo": "https://www.planumplants.de/planum-icon.svg",
+            "email": "felix.ventures.contact@proton.me",
+            "founder": { "@type": "Person", "name": "Felix Georg Bredl" },
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "c/o Autorenglück #43669, Albert-Einstein-Str. 47",
+              "postalCode": "02977",
+              "addressLocality": "Hoyerswerda",
+              "addressCountry": "DE"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.planumplants.de/#website",
+            "url": "https://www.planumplants.de/",
+            "name": "Planum",
+            "inLanguage": "de-DE",
+            "publisher": { "@id": "https://www.planumplants.de/#organization" }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
