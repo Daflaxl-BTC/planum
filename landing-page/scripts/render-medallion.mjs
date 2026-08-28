@@ -32,15 +32,33 @@ const outDir = resolve(root, 'public/medallion')
 const POSE = { yaw: -19, pitch: 13, roll: -5 }
 
 // Zwei Breiten: 1x fuer normale Displays, 2x fuer Retina. Mehr Stufen bringen
-// nichts, weil das Objekt im Layout eine feste relative Groesse hat.
+// nichts, weil das Objekt im Layout eine feste relative Groesse hat (30rem,
+// also 480 px) — 1120 deckt damit schon mehr als das Doppelte ab.
 const STILL_WIDTHS = [560, 1120]
 
 // 24 Frames = 15 Grad pro Schritt. Darunter ruckelt die Drehung sichtbar,
 // darueber waechst nur die Datenmenge.
 const TURN_FRAMES = 24
-const TURN_WIDTH = 440
+// 560 statt der frueheren 440: die Frames stehen an derselben Stelle wie die
+// Ruhelage (480 px im Layout). Bei 440 wurde das Objekt beim Drehen also
+// hochskaliert und sichtbar weicher als davor und danach. Mehr als 560 lohnt
+// nicht — 24 Frames zahlen jede Breite 24-fach.
+const TURN_WIDTH = 560
 
-const QUALITY = 0.78
+// Ueberabtastung im Renderer (siehe composites/medallion.html): dreifach
+// gerendert und heruntergerechnet. Das Relief hat 232.000 Dreiecke, deren
+// Schattierung innerhalb der Flaeche wechselt — dagegen hilft kein MSAA,
+// sondern nur echtes Downsampling.
+const SUPERSAMPLE = 3
+
+// Getrennte Qualitaeten: die Ruhelage und das Makro sind Standbilder und
+// werden angesehen, die 24 Umlauf-Frames huschen in ~800 ms vorbei.
+//
+// Unter 0,7 bringt die Umlauf-Serie kaum noch etwas: gemessen 190 statt
+// 196 kB bei q 0,62. Die Datenmenge steckt im Alphakanal, den WebP verlustfrei
+// speichert — an dem dreht der Qualitaetsregler nicht.
+const STILL_QUALITY = 0.88
+const TURN_QUALITY = 0.72
 
 // Makroansicht fuer die Sticker-Sektion. Sie ersetzt das fruehere
 // Foto-Komposit, bei dem ein flacher Vektor auf einen Topffoto geklebt war.
@@ -53,7 +71,7 @@ const QUALITY = 0.78
 const DETAIL = {
   // fill > 1 schneidet bewusst an: ein Ausschnitt liest sich als Makro,
   // ein vollstaendiges Objekt als zweites Produktbild.
-  detail: { yaw: -11, pitch: 27, roll: -4, fill: 1.9, pany: -0.02, ratio: 4 / 3, widths: [640, 1280] },
+  detail: { yaw: -11, pitch: 27, roll: -4, fill: 1.9, pany: -0.02, ratio: 4 / 3, widths: [768, 1536] },
 }
 
 function kb(bytes) {
@@ -73,6 +91,7 @@ function frameUrl({
   height = size,
   fill,
   pany,
+  quality = STILL_QUALITY,
 }) {
   const params = new URLSearchParams({
     yaw: String(yaw),
@@ -80,7 +99,8 @@ function frameUrl({
     roll: String(roll),
     size: String(size),
     h: String(Math.round(height)),
-    q: String(QUALITY),
+    q: String(quality),
+    ss: String(SUPERSAMPLE),
   })
   if (fill !== undefined) params.set('fill', String(fill))
   if (pany !== undefined) params.set('pany', String(pany))
@@ -114,7 +134,7 @@ try {
   for (let index = 0; index < turnCount; index += 1) {
     const yaw = POSE.yaw + (index * 360) / TURN_FRAMES
     const name = `turn-${String(index).padStart(2, '0')}.webp`
-    total += await render(name, { yaw, size: TURN_WIDTH })
+    total += await render(name, { yaw, size: TURN_WIDTH, quality: TURN_QUALITY })
     console.log(name)
   }
 

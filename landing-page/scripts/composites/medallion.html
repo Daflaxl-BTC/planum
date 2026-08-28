@@ -14,7 +14,7 @@
 
       Parameter ueber die Query:
         ?yaw=<grad>&pitch=<grad>&roll=<grad>&size=<px>&h=<px>&q=<0..1>
-        &fill=<faktor>&panx=<einheiten>&pany=<einheiten>
+        &fill=<faktor>&panx=<einheiten>&pany=<einheiten>&ss=<faktor>
       Ergebnis steht als WebP-Data-URI im <img id="out">, das render-medallion.mjs
       per --dump-dom abholt. Ueber toDataURL statt --screenshot, weil nur so der
       Alphakanal erhalten bleibt.
@@ -69,9 +69,17 @@
       // und Zielpunkt wandern gemeinsam. Einheiten des normierten Objekts.
       const panX = Number(params.get('panx') ?? 0)
       const panY = Number(params.get('pany') ?? 0)
+      // Ueberabtastung: gerendert wird um diesen Faktor groesser und danach auf
+      // die Zielgroesse heruntergerechnet. MSAA hilft hier kaum — es glaettet
+      // Geometriekanten, das Relief besteht aber aus 232.000 Dreiecken, deren
+      // Schattierung INNERHALB der Flaeche wechselt. Genau dort entsteht das
+      // Griesseln, und dagegen hilft nur echtes Downsampling.
+      const supersample = Number(params.get('ss') ?? 3)
+      const renderWidth = Math.round(size * supersample)
+      const renderHeight = Math.round(height * supersample)
 
       const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-      renderer.setSize(size, height)
+      renderer.setSize(renderWidth, renderHeight)
       renderer.setPixelRatio(1)
       renderer.toneMapping = THREE.ACESFilmicToneMapping
       // 1.0 statt hoeher: ACES hellt Mitteltoene ohnehin auf. Mit mehr
@@ -109,6 +117,39 @@
       scene.add(new THREE.AmbientLight(0xf7ede0, 0.12))
 
       const camera = new THREE.PerspectiveCamera(26, size / height, 0.1, 100)
+
+      // Herunterrechnen in Halbierungsschritten. Ein einzelner drawImage-Sprung
+      // von 3x auf 1x tastet die Quelle nur an wenigen Stellen ab und laesst
+      // feine Reliefkanten flimmern; halbieren mittelt dagegen jeweils vier
+      // Nachbarpixel und ist genau die Mittelung, die hier gebraucht wird.
+      function downscale(source, targetWidth, targetHeight) {
+        let current = source
+        let currentWidth = source.width
+        let currentHeight = source.height
+
+        while (currentWidth > targetWidth * 2) {
+          const nextWidth = Math.max(targetWidth, Math.round(currentWidth / 2))
+          const nextHeight = Math.max(targetHeight, Math.round(currentHeight / 2))
+          current = paint(current, nextWidth, nextHeight)
+          currentWidth = nextWidth
+          currentHeight = nextHeight
+        }
+
+        return currentWidth === targetWidth && currentHeight === targetHeight
+          ? current
+          : paint(current, targetWidth, targetHeight)
+      }
+
+      function paint(source, width, height) {
+        const canvas = document.createElement('canvas')
+        canvas.width = width
+        canvas.height = height
+        const ctx = canvas.getContext('2d')
+        ctx.imageSmoothingEnabled = true
+        ctx.imageSmoothingQuality = 'high'
+        ctx.drawImage(source, 0, 0, width, height)
+        return canvas
+      }
 
       const loader = new GLTFLoader()
       loader.load(
@@ -176,7 +217,8 @@
           camera.updateProjectionMatrix()
 
           renderer.render(scene, camera)
-          document.getElementById('out').src = renderer.domElement.toDataURL(
+          const output = downscale(renderer.domElement, size, height)
+          document.getElementById('out').src = output.toDataURL(
             'image/webp',
             quality,
           )

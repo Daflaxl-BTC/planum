@@ -69,11 +69,11 @@ export function StickerCraft() {
           <Reveal>
             <figure>
               <img
-                src="/medallion/detail-1280.webp"
-                srcSet="/medallion/detail-640.webp 640w, /medallion/detail-1280.webp 1280w"
+                src="/medallion/detail-1536.webp"
+                srcSet="/medallion/detail-768.webp 768w, /medallion/detail-1536.webp 1536w"
                 sizes="(min-width: 768px) 46vw, 92vw"
-                width="1280"
-                height="960"
+                width="1536"
+                height="1152"
                 alt="Makroansicht des Motivs: Pflanzenranke, NFC-Wellen und Schriftzug PLANUM in Terracotta-Tönen."
                 loading="lazy"
                 decoding="async"

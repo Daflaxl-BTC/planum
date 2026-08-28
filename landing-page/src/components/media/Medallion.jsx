@@ -49,7 +49,7 @@ export function Medallion({ className = '' }) {
 
   const base = flipped ? HALF_TURN : 0
 
-  // Die Umlauf-Frames sind zusammen rund 110 kB. Sie werden deshalb erst nach
+  // Die Umlauf-Frames sind zusammen rund 200 kB. Sie werden deshalb erst nach
   // dem ersten Zeigerkontakt geladen — bis dahin steht die Ruhelage, und die
   // Ladezeit der Seite bleibt unberuehrt. Auf Geraeten ohne Zeiger passiert
   // das nie.
@@ -192,8 +192,8 @@ export function Medallion({ className = '' }) {
                 key={index}
                 className="medallion-frame"
                 src={frameSrc(index)}
-                width="440"
-                height="440"
+                width="560"
+                height="560"
                 alt=""
                 aria-hidden="true"
                 loading="lazy"
