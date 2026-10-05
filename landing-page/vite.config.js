@@ -11,6 +11,10 @@ const root = dirname(fileURLToPath(import.meta.url))
 export default defineConfig({
   plugins: [react()],
   build: {
+    // Der einzige grosse Chunk ist die 3D-Buehne (three.js, ~135 kB gzip). Er
+    // wird per dynamic import erst geladen, wenn die Seite steht und der
+    // Browser Luft hat — er liegt nicht im kritischen Pfad.
+    chunkSizeWarningLimit: 600,
     rollupOptions: {
       input: {
         main: resolve(root, 'index.html'),

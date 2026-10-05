@@ -18,7 +18,8 @@ export const META = {
 export const NAV = {
   links: [
     { href: '#so-gehts', label: 'So funktioniert es' },
-    { href: '#sticker', label: 'Die Sticker' },
+    { href: '#in-der-app', label: 'App' },
+    { href: '#sticker', label: 'Sticker' },
     { href: '#stufen', label: 'Stufen' },
     { href: '#fragen', label: 'Fragen' },
   ],
@@ -34,22 +35,6 @@ export const HERO = {
   formPlaceholder: 'du@beispiel.de',
   submit: 'Zum Start benachrichtigen',
   reassurance: 'Eine Mail zum Start. Keine Werbung dazwischen. Jederzeit abbestellbar.',
-};
-
-export const STATUS = {
-  text: 'Noch nicht erhältlich — die erste Charge entsteht gerade.',
-  emphasis: 'Trag dich ein, wir melden uns, sobald es losgeht.',
-};
-
-export const INSIGHT = {
-  eyebrow: 'Warum noch eine Pflanzen-App',
-  headline: 'Pflege-Apps erinnern dich im Büro.\nGegossen wird zu Hause.',
-  body: [
-    'Jede Pflanzen-App scheitert an derselben Stelle. Sie verlangt, dass du nach dem Gießen das Handy herausholst, die App suchst, die richtige Pflanze antippst und einen Haken setzt. Das hält niemand länger als drei Wochen durch.',
-    'Danach stimmen die Daten nicht mehr. Die Erinnerungen werden falsch. Und die App landet im Ordner mit den anderen guten Vorsätzen.',
-  ],
-  turn:
-    'Planum dreht das um: Der Auslöser sitzt dort, wo die Handlung passiert. Am Topf.',
 };
 
 export const ECOSYSTEM = {
@@ -96,7 +81,7 @@ export const FOOTER = {
   ],
   contact: 'felix.ventures.contact@proton.me',
   provider: 'Felix Ventures, Inh. Felix Georg Bredl',
-  updated: 'Stand: August 2026',
+  updated: 'Stand: Oktober 2026',
   // Kein Stockmaterial, also keine Attributionspflicht. Der Hinweis steht
   // trotzdem da: eigene Aufnahmen sind ein Qualitaetsargument, kein Kleingedrucktes.
   credits: 'Produktfotos: eigene Aufnahmen',

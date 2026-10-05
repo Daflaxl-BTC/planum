@@ -1,4 +1,4 @@
-import { FOOTER, SITE } from '../../content/site'
+import { FOOTER, NAV, SITE } from '../../content/site'
 import { Container } from './Container'
 import { Wordmark } from './Wordmark'
 
@@ -6,41 +6,53 @@ import { Wordmark } from './Wordmark'
 // nicht beworben, solange nichts bestellbar ist.
 export function Footer() {
   return (
-    <footer className="border-t border-ink/10 bg-paper-deep py-16">
+    <footer className="relative overflow-hidden bg-night pb-10 pt-20 text-paper">
       <Container>
-        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
-          <div className="max-w-measure-tight">
-            <Wordmark />
-            <p className="mt-4 text-small text-ink/70">{FOOTER.claim}</p>
+        <div className="grid gap-12 md:grid-cols-12">
+          <div className="md:col-span-4">
+            <Wordmark tone="paper" />
+            <p className="mt-5 max-w-measure-tight text-small text-paper/55">{FOOTER.claim}</p>
           </div>
 
-          <div className="flex flex-col gap-3 text-small">
-            <p className="text-micro uppercase text-ink/50">Rechtliches</p>
+          <div className="flex flex-col gap-3 text-small md:col-span-2 md:col-start-6">
+            <p className="text-micro uppercase text-paper/40">Seite</p>
+            {NAV.links.map((link) => (
+              <a key={link.href} href={link.href} className="text-paper/65 transition-colors hover:text-paper">
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          <div className="flex flex-col gap-3 text-small md:col-span-2">
+            <p className="text-micro uppercase text-paper/40">Rechtliches</p>
             {FOOTER.legal.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="text-ink/70 transition-colors hover:text-ink"
-              >
+              <a key={item.href} href={item.href} className="text-paper/65 transition-colors hover:text-paper">
                 {item.label}
               </a>
             ))}
           </div>
 
-          <div className="flex flex-col gap-3 text-small">
-            <p className="text-micro uppercase text-ink/50">Kontakt</p>
+          <div className="flex flex-col gap-3 text-small md:col-span-3">
+            <p className="text-micro uppercase text-paper/40">Kontakt</p>
             <a
               href={`mailto:${FOOTER.contact}`}
-              className="text-ink/70 transition-colors hover:text-ink"
+              className="break-all text-paper/65 transition-colors hover:text-paper"
             >
               {FOOTER.contact}
             </a>
-            <p className="text-ink/70">{FOOTER.provider}</p>
-            <p className="text-note text-ink/50">{FOOTER.credits}</p>
+            <p className="text-paper/65">{FOOTER.provider}</p>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-ink/10 pt-6 text-micro uppercase text-ink/50 sm:flex-row sm:items-center sm:justify-between">
+        {/* Riesige Wortmarke als Abschluss, angeschnitten. */}
+        <p
+          aria-hidden="true"
+          className="pointer-events-none mt-20 select-none text-center font-display text-[22vw] font-semibold leading-[0.75] tracking-[-0.06em] text-white/[0.035]"
+        >
+          Planum
+        </p>
+
+        <div className="mt-6 flex flex-col gap-2 border-t border-white/10 pt-6 text-note text-paper/40 sm:flex-row sm:items-center sm:justify-between">
           <p>
             {SITE.name} — {SITE.tagline}
           </p>

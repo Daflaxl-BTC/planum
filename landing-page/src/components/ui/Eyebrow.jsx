@@ -1,9 +1,9 @@
-// Kleine Vorzeile. Bewusst KEINE Badge-Pill mit Hintergrund — ein kurzer
-// Strich plus Versalien reicht und ist das unauffaelligere Signal.
-export function Eyebrow({ children, className = '' }) {
+// Kleine Vorzeile in Versalien mit Terracotta-Punkt.
+export function Eyebrow({ children, tone = 'light', className = '' }) {
+  const text = tone === 'dark' ? 'text-paper/55' : 'text-ink/55'
   return (
-    <p className={`flex items-center gap-3 text-micro font-medium uppercase text-ink/50 ${className}`}>
-      <span aria-hidden="true" className="h-px w-6 bg-terra-700" />
+    <p className={`flex items-center gap-2.5 text-micro font-semibold uppercase ${text} ${className}`}>
+      <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-terra-500" />
       {children}
     </p>
   )

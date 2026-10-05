@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <!--
+      Offline-Export aus derselben 3D-Buehne, die auf der Seite live laeuft
+      (src/three/stage.js). Wird ausschliesslich von scripts/render-stage.mjs
+      ueber den Vite-Dev-Server aufgerufen und niemals ausgeliefert.
+
+      ?mode=poster&pose=hero|macro&w=<px>&h=<px>&q=<0..1>
+        Rendert ein Standbild mit Alphakanal, zweifach ueberabgetastet.
+      ?mode=glb
+        Exportiert beide Sticker als GLB (Meter, +Y oben, Motiv zeigt nach +Z).
+
+      Ergebnis steht als Data-URI in <img id="out">; document.title meldet
+      'ready' oder 'error: …'.
+    -->
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: transparent;
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <img id="out" alt="" />
+    <canvas id="stage"></canvas>
+    <script>
+      addEventListener('error', (event) => {
+        document.title = `error: ${event.message || event.error}`
+      })
+      addEventListener('unhandledrejection', (event) => {
+        document.title = `error: ${event.reason}`
+      })
+    </script>
+    <script type="module">
+      import * as THREE from 'three'
+      import { GLTFExporter } from 'three/examples/jsm/exporters/GLTFExporter.js'
+      import { createStage } from '/src/three/stage.js'
+      import { HERO_POSE, MACRO_POSE } from '/src/three/poses.js'
+
+      const params = new URLSearchParams(location.search)
+      const mode = params.get('mode') ?? 'poster'
+      const canvas = document.getElementById('stage')
+      const out = document.getElementById('out')
+
+      // Zweifach groesser rendern und danach herunterrechnen — glaettet die
+      // feinen Kanten der Praegung, die MSAA allein nicht erwischt.
+      const SUPERSAMPLE = 2
+
+      function downscale(source, width, height) {
+        const target = document.createElement('canvas')
+        target.width = width
+        target.height = height
+        const ctx = target.getContext('2d')
+        ctx.imageSmoothingEnabled = true
+        ctx.imageSmoothingQuality = 'high'
+        ctx.drawImage(source, 0, 0, width, height)
+        return target
+      }
+
+      function toBase64(buffer) {
+        const bytes = new Uint8Array(buffer)
+        let binary = ''
+        for (let i = 0; i < bytes.length; i += 0x8000) {
+          binary += String.fromCharCode(...bytes.subarray(i, i + 0x8000))
+        }
+        return btoa(binary)
+      }
+
+      async function poster() {
+        const width = Number(params.get('w') ?? 1120)
+        const height = Number(params.get('h') ?? width)
+        const quality = Number(params.get('q') ?? 0.9)
+        const pose = params.get('pose') === 'macro' ? MACRO_POSE : HERO_POSE
+
+        canvas.style.width = `${width * SUPERSAMPLE}px`
+        canvas.style.height = `${height * SUPERSAMPLE}px`
+        const stage = await createStage(canvas, {
+          reducedMotion: true,
+          preserveDrawingBuffer: true,
+          pixelRatio: 1,
+        })
+        stage.resize()
+        stage.setPose(pose, { instant: true })
+        stage.renderOnce()
+        out.src = downscale(canvas, width, height).toDataURL('image/webp', quality)
+      }
+
+      async function glb() {
+        canvas.style.width = '64px'
+        canvas.style.height = '64px'
+        const stage = await createStage(canvas, { reducedMotion: true, pixelRatio: 1 })
+
+        const root = new THREE.Group()
+        root.name = 'planum_stickers_d2'
+        // Seite rechnet in Millimetern, glTF in Metern.
+        root.scale.setScalar(0.001)
+
+        const spacing = { medallion: -24, drop: 22 }
+        for (const [name, mesh] of Object.entries(stage.actors)) {
+          const copy = mesh.clone()
+          copy.position.set(spacing[name], 0, 0)
+          for (const key of ['map', 'normalMap']) {
+            const texture = copy.material[key]
+            // Farb- und Normalentextur als JPEG — PNG waere bei 2048 px das
+            // Vierfache, ohne sichtbaren Unterschied auf einer matten Flaeche.
+            if (texture) texture.userData.mimeType = 'image/jpeg'
+          }
+          root.add(copy)
+        }
+
+        const exporter = new GLTFExporter()
+        const buffer = await exporter.parseAsync(root, { binary: true })
+        out.src = `data:model/gltf-binary;base64,${toBase64(buffer)}`
+      }
+
+      try {
+        if (mode === 'glb') await glb()
+        else await poster()
+        document.title = 'ready'
+      } catch (error) {
+        document.title = `error: ${error?.message ?? error}`
+      }
+    </script>
+  </body>
+</html>
