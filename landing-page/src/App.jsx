@@ -1,16 +1,15 @@
 import { Nav } from './components/layout/Nav'
 import { Footer } from './components/layout/Footer'
 import { Hero } from './sections/Hero'
-import { StatusBar } from './sections/StatusBar'
+import { Compat } from './sections/Compat'
 import { Insight } from './sections/Insight'
-import { HowItWorks } from './sections/HowItWorks'
-import { StickerCraft } from './sections/StickerCraft'
-import { AppProof } from './sections/AppProof'
+import { Story } from './sections/Story'
+import { Bento } from './sections/Bento'
+import { Craft } from './sections/Craft'
 import { Tiers } from './sections/Tiers'
-import { ProOutlook } from './sections/ProOutlook'
-import { Ecosystem } from './sections/Ecosystem'
-import { Waitlist } from './sections/Waitlist'
+import { Roadmap } from './sections/Roadmap'
 import { Faq } from './sections/Faq'
+import { FinalCta } from './sections/FinalCta'
 
 // Nur Komposition. Saemtliche Copy liegt in src/content/* — damit laesst sich
 // ein Claim-Review fahren, ohne JSX zu lesen (siehe content/claims-guard.md).
@@ -20,16 +19,15 @@ export default function App() {
       <Nav />
       <main>
         <Hero />
-        <StatusBar />
+        <Compat />
         <Insight />
-        <HowItWorks />
-        <StickerCraft />
-        <AppProof />
+        <Story />
+        <Bento />
+        <Craft />
         <Tiers />
-        <ProOutlook />
-        <Ecosystem />
-        <Waitlist />
+        <Roadmap />
         <Faq />
+        <FinalCta />
       </main>
       <Footer />
     </div>

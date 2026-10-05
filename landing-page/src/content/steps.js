@@ -8,22 +8,18 @@ export const STEPS = {
   items: [
     {
       n: '01',
-      // Verweist auf eine Zeichnung in components/media/StepDiagram.jsx.
-      art: 'stick',
       title: 'Aufkleben',
       body:
         'Zwei Sticker pro Pflanze: eine runde Medaille fürs Profil, ein Tropfen fürs Gießen. Beide kleben auf Ton, Keramik und Kunststoff.',
     },
     {
       n: '02',
-      art: 'tap',
       title: 'Antippen',
       body:
         'Handy kurz an die Medaille halten. Das Pflanzenprofil öffnet sich sofort — ohne dass du in einer Liste nach der richtigen Pflanze suchst.',
     },
     {
       n: '03',
-      art: 'log',
       title: 'Gießen loggen',
       body:
         'Nach dem Gießen einmal den Tropfen antippen. Das war es. Kein Haken, kein Formular, kein „mach ich später".',

@@ -1,6 +1,7 @@
-// Sektionsrahmen mit variierendem Rhythmus. Ueberall dasselbe py-32 ist eines
-// der deutlichsten Merkmale generisch gebauter Seiten.
+// Sektionsrahmen mit variierendem Rhythmus. Hell und dunkel wechseln sich ab:
+// die dunklen Buehnen tragen das 3D-Objekt, die hellen den Lesetext.
 const SPACE = {
+  none: '',
   sm: 'py-section',
   md: 'py-section md:py-section-lg',
   lg: 'py-section-lg md:py-section-xl',
@@ -9,7 +10,7 @@ const SPACE = {
 const TONE = {
   paper: 'bg-paper text-ink',
   deep: 'bg-paper-deep text-ink',
-  dark: 'bg-moss-900 text-paper',
+  dark: 'bg-night text-paper',
 }
 
 export function Section({
@@ -23,7 +24,8 @@ export function Section({
   return (
     <section
       id={id}
-      className={`${SPACE[space]} ${TONE[tone]} ${className}`}
+      data-tone={tone}
+      className={`relative ${SPACE[space]} ${TONE[tone]} ${className}`}
       {...rest}
     >
       {children}
