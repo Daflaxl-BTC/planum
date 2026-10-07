@@ -28,7 +28,10 @@ export async function createStage(
     // nach dem Rendern ausliest.
     preserveDrawingBuffer,
   })
-  renderer.setPixelRatio(pixelRatio ?? Math.min(window.devicePixelRatio || 1, 2))
+  // Handys melden oft 3x. Fuer ein mattes Objekt ohne feine Kanten reicht
+  // 1,5x — das spart mehr als die Haelfte der Pixel pro Bild.
+  const touch = window.matchMedia?.('(pointer: coarse)').matches
+  renderer.setPixelRatio(pixelRatio ?? Math.min(window.devicePixelRatio || 1, touch ? 1.5 : 2))
   renderer.toneMapping = THREE.NeutralToneMapping
   renderer.toneMappingExposure = 0.92
   renderer.outputColorSpace = THREE.SRGBColorSpace

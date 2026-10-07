@@ -147,15 +147,26 @@
   .reveal {
     opacity: 0;
     transform: translateY(14px);
-    filter: blur(4px);
     transition: opacity var(--reveal-duration) var(--reveal-ease),
-      transform var(--reveal-duration) var(--reveal-ease),
-      filter var(--reveal-duration) var(--reveal-ease);
+      transform var(--reveal-duration) var(--reveal-ease);
   }
   .reveal[data-visible='true'] {
     opacity: 1;
     transform: none;
-    filter: none;
+  }
+
+  /* Weichzeichner beim Einblenden nur am Desktop: mobiles Safari rechnet
+     filter: blur pro Bild neu, und das kostet beim Scrollen sichtbar Frames. */
+  @media (min-width: 768px) and (pointer: fine) {
+    .reveal {
+      filter: blur(4px);
+      transition: opacity var(--reveal-duration) var(--reveal-ease),
+        transform var(--reveal-duration) var(--reveal-ease),
+        filter var(--reveal-duration) var(--reveal-ease);
+    }
+    .reveal[data-visible='true'] {
+      filter: none;
+    }
   }
 }
 

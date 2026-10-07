@@ -37,6 +37,9 @@ export function Craft() {
               <StickerStage
                 pose={MACRO_POSE}
                 poster={POSTER}
+                // Auf dem Handy reicht das Standbild: es ist dieselbe Ansicht,
+                // und ein dritter WebGL-Kontext waere dort reiner Speicherdruck.
+                live="desktop"
                 posterAlt="Makroansicht des Motivs: Pflanzenranke, NFC-Zeichen und Schriftzug PLANUM in Terracotta-Tönen."
                 posterClassName="inset-0 h-full w-full object-cover"
                 className="aspect-[4/3.4] w-full"

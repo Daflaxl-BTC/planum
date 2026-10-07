@@ -26,6 +26,10 @@ export function StickerStage({
   posterClassName = '',
   tone = 'dark',
   interactive = true,
+  // 'desktop': auf Handys bleibt das Standbild stehen und es entsteht kein
+  // WebGL-Kontext. Fuer Buehnen, die dort keinen Mehrwert gegenueber dem
+  // Poster haben — jeder Kontext kostet Grafikspeicher.
+  live = 'all',
   className = '',
   children,
 }) {
@@ -42,6 +46,9 @@ export function StickerStage({
     const wrap = wrapRef.current
     const canvas = canvasRef.current
     if (!wrap || !canvas || !supportsWebGL()) return undefined
+    if (live === 'desktop' && window.matchMedia('(max-width: 767px), (pointer: coarse)').matches) {
+      return undefined
+    }
 
     let disposed = false
     let visible = false
@@ -49,6 +56,14 @@ export function StickerStage({
 
     const onReady = () => setReady(true)
     canvas.addEventListener('stage:ready', onReady)
+
+    // Verwirft der Browser den Grafikkontext (iOS bei Speicherdruck), bleibt
+    // die Flaeche sonst leer. Dann zurueck auf das Standbild.
+    const onLost = () => {
+      stageRef.current?.stop()
+      setReady(false)
+    }
+    canvas.addEventListener('webglcontextlost', onLost)
 
     const boot = async () => {
       const { createStage } = await import('../../three/stage')
@@ -68,36 +83,49 @@ export function StickerStage({
       }
     }
 
+    // Aufbau (Texturen hochladen, Shader kompilieren) kostet auf Handys einige
+    // hundert Millisekunden. Deshalb schon gut eine Bildschirmhoehe vorher
+    // starten — sonst faellt genau dieser Aussetzer in das Scrollen hinein.
     let booted = false
-    const observer = new IntersectionObserver(
+    const bootObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || booted) return
+        booted = true
+        bootObserver.disconnect()
+        const go = () => boot().catch(() => {})
+        if ('requestIdleCallback' in window) requestIdleCallback(go, { timeout: 1200 })
+        else setTimeout(go, 200)
+      },
+      { rootMargin: '120% 0px' },
+    )
+    bootObserver.observe(wrap)
+
+    // Gerendert wird nur, solange die Buehne wirklich zu sehen ist.
+    const runObserver = new IntersectionObserver(
       ([entry]) => {
         visible = entry.isIntersecting
-        if (visible && !booted) {
-          booted = true
-          const go = () => boot().catch(() => {})
-          if ('requestIdleCallback' in window) requestIdleCallback(go, { timeout: 1200 })
-          else setTimeout(go, 200)
-        }
         if (!stage || reduced) return
         if (visible) stage.start()
         else stage.stop()
       },
-      { rootMargin: '200px 0px' },
+      { rootMargin: '80px 0px' },
     )
-    observer.observe(wrap)
+    runObserver.observe(wrap)
 
     const resizeObserver = new ResizeObserver(() => stageRef.current?.resize())
     resizeObserver.observe(wrap)
 
     return () => {
       disposed = true
-      observer.disconnect()
+      bootObserver.disconnect()
+      runObserver.disconnect()
       resizeObserver.disconnect()
       canvas.removeEventListener('stage:ready', onReady)
+      canvas.removeEventListener('webglcontextlost', onLost)
       stageRef.current?.dispose()
       stageRef.current = null
     }
-  }, [reduced, tone])
+  }, [reduced, tone, live])
 
   useEffect(() => {
     stageRef.current?.setPose(pose)
