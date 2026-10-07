@@ -18,7 +18,14 @@ export function useScrollProgress(ref, onProgress, { mode = 'through' } = {}) {
     const measure = () => {
       frame = 0
       const rect = el.getBoundingClientRect()
-      const vh = window.innerHeight
+      // Im Sticky-Modus zaehlt die Hoehe des fixierten Kinds (100svh), nicht
+      // innerHeight: mobile Browser blenden beim Scrollen die Adressleiste
+      // ein und aus, innerHeight springt dabei um bis zu 100 px — und mit ihm
+      // der Fortschritt, sodass Schritte an den Grenzen hin- und herkippten.
+      const vh =
+        mode === 'sticky'
+          ? el.firstElementChild?.getBoundingClientRect().height || window.innerHeight
+          : window.innerHeight
       const raw =
         mode === 'sticky'
           ? -rect.top / Math.max(1, rect.height - vh)

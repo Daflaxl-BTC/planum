@@ -10,9 +10,16 @@ import { bakeRelief } from './textures'
 // Terracotta). Neu ist das Relief: nicht mehr als Dreiecksgebirge, sondern als
 // Normal-Map direkt aus den Druckvektoren — siehe textures.js.
 
-// 5,12 px je SVG-Einheit = 2048 px ueber das Medaillon. Genug fuer die
-// Nahaufnahme, und die Texturen bleiben unter 16 MB Grafikspeicher.
-const PX_PER_UNIT = 5.12
+// 5,12 px je SVG-Einheit = 2048 px ueber das Medaillon — genug fuer die
+// Nahaufnahme am Desktop. Auf Handys die Haelfte (1024 px): dort ist das
+// Objekt kaum 350 px gross, und jede Buehne laedt ihre Texturen eigens in den
+// Grafikspeicher. Mit 2048 px lagen zwei Buehnen bei ~170 MB — genug, dass
+// iOS-Safari WebGL-Kontexte verwirft und die Flaechen leer bleiben.
+const PX_PER_UNIT =
+  typeof window !== 'undefined' &&
+  window.matchMedia?.('(max-width: 767px), (pointer: coarse)').matches
+    ? 2.56
+    : 5.12
 const THICKNESS_MM = 1
 
 let bakePromise = null
